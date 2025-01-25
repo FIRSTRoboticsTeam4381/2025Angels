@@ -36,7 +36,7 @@ public class Coralintake extends SubsystemBase {
 motor3 = new SparkMax(55,MotorType.kBrushless);
 motor4 = new SparkMax(56,MotorType.kBrushless);
 //sets the can ID for a sensor
-coralsensor = new DigitalInput(57);
+coralsensor = new DigitalInput(1);
 coralsensor.get();
 
 //set up the config
@@ -63,7 +63,6 @@ this.setDefaultCommand(
   ()->{return false;}, //isfinished
   this)
 );
-
 
   }
 
