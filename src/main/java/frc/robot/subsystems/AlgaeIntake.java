@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
+import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 
 
 @Logged
@@ -59,7 +60,8 @@ public class AlgaeIntake extends SubsystemBase
                 {
             return new SequentialCommandGroup(
                 new InstantCommand(()-> motor1.set(-1), this),
-                new WaitCommand(2),
+                new WaitUntilCommand(()->!sensor.get()),
+                new WaitCommand(1),
                 new InstantCommand(()-> motor1.set(0),this)
             ).withName("AlgaeIntake");  
                 } 
@@ -67,7 +69,8 @@ public class AlgaeIntake extends SubsystemBase
             {
             return new SequentialCommandGroup(
                 new InstantCommand(()-> motor1.set(1), this),
-                new WaitCommand(2),
+                new WaitUntilCommand(()->!sensor.get()),
+                new WaitCommand(1.5),
                 new InstantCommand(()-> motor1.set(0),this)
             ).withName("AlgaeOuttake");
             }
