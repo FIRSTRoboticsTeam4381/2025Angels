@@ -12,15 +12,15 @@ import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 
 import edu.wpi.first.epilogue.Logged;
-//import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-//import edu.wpi.first.wpilibj2.command.Command;
-//import edu.wpi.first.wpilibj2.command.ConditionalCommand;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ConditionalCommand;
 import edu.wpi.first.wpilibj2.command.FunctionalCommand;
-//import edu.wpi.first.wpilibj2.command.InstantCommand;
-//import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-//import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
+import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 
 
 @Logged
@@ -32,8 +32,8 @@ public class Hang extends SubsystemBase {
 
   public Hang() {
 //assign cAn ID and Motor type
-motor5 = new SparkMax(40,MotorType.kBrushless);
-motor6 = new SparkMax(41,MotorType.kBrushless);
+motor5 = new SparkMax(58,MotorType.kBrushless);
+motor6 = new SparkMax(59,MotorType.kBrushless);
 
 //set up the config
 SparkMaxConfig motor5Config = new SparkMaxConfig();
@@ -65,13 +65,7 @@ this.setDefaultCommand(
     // This method will be called once per scheduler run
     SmartDashboard.putData(this);
   }
-
-  
+public Command hanging(){
+return new InstantCommand(()->motor5.set(1));
+  }
 }
-
-
-
-
-
-
-

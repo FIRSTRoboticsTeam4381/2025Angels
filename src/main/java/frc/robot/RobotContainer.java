@@ -23,6 +23,7 @@ import frc.robot.commands.TeleopSwerve;
 import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.Coralintake;
 import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.Hang;
 import frc.robot.subsystems.Swerve;
 
 @Logged
@@ -40,6 +41,7 @@ public class RobotContainer {
   public final Coralintake coralintake = new Coralintake();
   public final AlgaeIntake algaeintake = new AlgaeIntake();
   public final Elevator elevator = new Elevator();
+  public final Hang hang = new Hang();
   //public final PhotonCam camA = new PhotonCam("Camera A", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(-7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/-4-Math.PI)) );
   //public final PhotonCam camB = new PhotonCam("Camera B", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/4-Math.PI)) );
   //public final PhotonCam camC = new PhotonCam("Camera C", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/4-Math.PI)) );
@@ -83,6 +85,7 @@ public class RobotContainer {
 specialist.rightBumper().onTrue(coralintake.Coralinorout());
 specialist.leftBumper().onTrue(algaeintake.IntakeandOut());
 elevator.setDefaultCommand(elevator.joystickcontrol(specialist::getLeftY));
+specialist.x().onTrue(hang.hanging());
 
 
 specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));
