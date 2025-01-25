@@ -28,8 +28,8 @@ public class Elevator extends SubsystemBase {
  
   /** Creates a new Elevator. */
   public Elevator() {
-        motorEL1 = new SparkFlex(50,MotorType.kBrushless);
-        motorEL2 = new SparkFlex(51,MotorType.kBrushless);
+        motorEL1 = new SparkFlex(60,MotorType.kBrushless);
+        motorEL2 = new SparkFlex(61,MotorType.kBrushless);
 
         SparkFlexConfig motorEL1Config = new SparkFlexConfig();
              motorEL1Config.smartCurrentLimit(25)
