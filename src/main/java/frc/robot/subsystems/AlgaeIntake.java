@@ -61,7 +61,7 @@ public class AlgaeIntake extends SubsystemBase
             return new SequentialCommandGroup(
                 new InstantCommand(()-> motor1.set(-1), this),
                 new WaitUntilCommand(()->!sensor.get()),
-                new WaitCommand(1),
+                new WaitCommand(1.5),
                 new InstantCommand(()-> motor1.set(0),this)
             ).withName("AlgaeIntake");  
                 } 
