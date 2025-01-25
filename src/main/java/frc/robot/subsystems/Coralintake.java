@@ -93,7 +93,7 @@ this.setDefaultCommand(
     return new SequentialCommandGroup(
       //this command will run until the sensor sees the coral
       new InstantCommand(()-> motor3.set(-1),this),
-      new WaitUntilCommand(()->!coralsensor.get()),
+      new WaitUntilCommand(()->coralsensor.get()),
       new WaitCommand(0.5),
       new InstantCommand(()->motor3.set(0),this)
       ).withName("Coral Intaking");
