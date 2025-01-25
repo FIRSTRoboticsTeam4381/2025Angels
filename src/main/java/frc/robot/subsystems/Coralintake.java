@@ -76,13 +76,13 @@ this.setDefaultCommand(
 {//creating a sequential command group
   return new SequentialCommandGroup(
     //seting the motor speed to 1
-    new InstantCommand(()-> motor3.set(1)),
+    new InstantCommand(()-> motor3.set(1),this),
     //checking to see if the sensor can see the coral
     new WaitUntilCommand(()->!coralsensor.get()),
     //wait time after throwing coral out
     new WaitUntilCommand(1.5),
     //stopping the motor.
-    new InstantCommand(()->motor3.set(0))
+    new InstantCommand(()->motor3.set(0),this)
     //giving the action a name for logging/
   ).withName("Coral Outaking");
   };
@@ -91,10 +91,10 @@ this.setDefaultCommand(
   {
     return new SequentialCommandGroup(
       //this command will run until the sensor sees the coral
-      new InstantCommand(()-> motor3.set(-1))
+      new InstantCommand(()-> motor3.set(-1),this)
       .until(coralsensor::get),
       new WaitUntilCommand(0.5),
-      new InstantCommand(()->motor3.set(0))
+      new InstantCommand(()->motor3.set(0),this)
       ).withName("Coral Intaking");
   }
 
