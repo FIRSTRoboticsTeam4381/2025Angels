@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.Autos;
 import frc.robot.commands.TeleopSwerve;
+import frc.robot.subsystems.Coralintake;
 import frc.robot.subsystems.PhotonCam;
 import frc.robot.subsystems.Swerve;
 
@@ -36,7 +37,7 @@ public class RobotContainer {
 
   // Subsystems
   public final Swerve swerve = new Swerve();
-
+  public final Coralintake coralintake = new Coralintake();
   
   //public final PhotonCam camA = new PhotonCam("Camera A", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(-7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/-4-Math.PI)) );
   //public final PhotonCam camB = new PhotonCam("Camera B", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/4-Math.PI)) );
@@ -78,6 +79,9 @@ public class RobotContainer {
           //interpolateJoystick(driver::getLeftX,0.05), 
           interpolateJoystick (driver::getRightX,0.05),
              true, driver.leftBumper()::getAsBoolean));
+specialist.rightBumper().onTrue(coralintake.Coralinorout());
+
+
   }
 
   public Command getAutonomousCommand() {
