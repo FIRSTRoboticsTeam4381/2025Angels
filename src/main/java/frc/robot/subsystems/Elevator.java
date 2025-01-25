@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RepeatCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.commands.SparkPosition;
 
 @Logged
 public class Elevator extends SubsystemBase {
@@ -55,6 +56,32 @@ public class Elevator extends SubsystemBase {
       return new RepeatCommand(
         new InstantCommand(() -> motorEL1.set(joystickMove.get()))
       );
+    }
+    
+    public Command goToPosition(double target, double range){
+      return new SparkPosition(motorEL1, target, range, this);
+    }
+    
+    
+    public Command level4()
+    {
+      return goToPosition(400, 0.5);
+    }
+    public Command level3()
+    {
+      return goToPosition(300, 0.5);
+    }
+    public Command level2()
+    {
+      return goToPosition(200, 0.5);
+    }
+    public Command level1()
+    {
+      return goToPosition(100, 0.5);
+    }
+    public Command net()
+    {
+      return goToPosition(600, 0.5);
     }
 
 }

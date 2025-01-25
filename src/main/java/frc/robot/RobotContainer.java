@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ScheduleCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
@@ -82,6 +83,9 @@ public class RobotContainer {
 specialist.rightBumper().onTrue(coralintake.Coralinorout());
 specialist.leftBumper().onTrue(algaeintake.IntakeandOut());
 elevator.setDefaultCommand(elevator.joystickcontrol(specialist::getLeftY));
+
+
+specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));
 
 
 
