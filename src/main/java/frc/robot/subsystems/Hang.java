@@ -66,6 +66,6 @@ this.setDefaultCommand(
     SmartDashboard.putData(this);
   }
 public Command hanging(){
-return new InstantCommand(()->motor5.set(1));
+return new InstantCommand(()->motor5.set(1),this);
   }
 }
