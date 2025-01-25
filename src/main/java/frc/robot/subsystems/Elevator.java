@@ -59,7 +59,7 @@ public class Elevator extends SubsystemBase {
     }
     
     public Command goToPosition(double target, double range){
-      return new SparkPosition(motorEL1, target, range, this);
+      return new SparkPosition(motorEL1, target, range, this).withName("goToPose");
     }
     
     
