@@ -49,7 +49,10 @@ public class Robot extends TimedRobot {
           Map.entry(30, "Swerve/BR/Drive"),
           Map.entry(31, "Swerve/BR/Angle"),
           Map.entry(40, "Swerve/BL/Drive"),
-          Map.entry(41, "Swerve/BL/Angle")
+          Map.entry(41, "Swerve/BL/Angle"),
+          Map.entry(55, "Coralintake/motor3"),
+          Map.entry(56,"Coralintake/motor4"),
+          Map.entry(57,"CoralIntake/coralsensor")
       ));
 
     // Start logging driver station data
