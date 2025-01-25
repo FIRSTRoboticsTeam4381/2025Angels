@@ -34,7 +34,7 @@ public class AlgaeIntake extends SubsystemBase
 
         
         SparkMaxConfig motor1Config = new SparkMaxConfig();
-             motor1Config.smartCurrentLimit(25)
+             motor1Config.smartCurrentLimit(10)
              .idleMode(IdleMode.kCoast);
 
         motor1.configure(motor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
@@ -69,7 +69,7 @@ public class AlgaeIntake extends SubsystemBase
             {
             return new SequentialCommandGroup(
                 new InstantCommand(()-> motor1.set(1), this),
-                new WaitUntilCommand(()->!sensor.get()),
+                new WaitUntilCommand(()->sensor.get()),
                 new WaitCommand(1.5),
                 new InstantCommand(()-> motor1.set(0),this)
             ).withName("AlgaeOuttake");
