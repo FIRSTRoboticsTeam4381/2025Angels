@@ -73,7 +73,7 @@ public class AlgaeIntake extends SubsystemBase
             }
          public Command IntakeandOut() 
          {
-            return new ConditionalCommand(Intake(), Outtake(), sensor::get).withName("IntakeandOuttake");
+            return new ConditionalCommand(Intake(), Outtake(), sensor::get).withName("AlgaeIntakeandOuttake");
          }
     
 }
