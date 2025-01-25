@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj2.command.FunctionalCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 
 
@@ -80,7 +81,7 @@ this.setDefaultCommand(
     //checking to see if the sensor can see the coral
     new WaitUntilCommand(()->!coralsensor.get()),
     //wait time after throwing coral out
-    new WaitUntilCommand(1.5),
+    new WaitCommand(1.5),
     //stopping the motor.
     new InstantCommand(()->motor3.set(0),this)
     //giving the action a name for logging/
@@ -93,7 +94,7 @@ this.setDefaultCommand(
       //this command will run until the sensor sees the coral
       new InstantCommand(()-> motor3.set(-1),this)
       .until(coralsensor::get),
-      new WaitUntilCommand(0.5),
+      new WaitCommand(0.5),
       new InstantCommand(()->motor3.set(0),this)
       ).withName("Coral Intaking");
   }
