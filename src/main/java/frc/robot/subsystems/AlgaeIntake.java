@@ -3,6 +3,9 @@ package frc.robot.subsystems;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+
+import java.util.function.IntFunction;
+
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
@@ -65,7 +68,8 @@ public class AlgaeIntake extends SubsystemBase
                 new InstantCommand(()-> motor1.set(0),this)
             ).withName("AlgaeIntake");  
                 } 
-         public Command Outtake() 
+        
+            public Command Outtake() 
             {
             return new SequentialCommandGroup(
                 new InstantCommand(()-> motor1.set(1), this),
@@ -74,9 +78,10 @@ public class AlgaeIntake extends SubsystemBase
                 new InstantCommand(()-> motor1.set(0),this)
             ).withName("AlgaeOuttake");
             }
-         public Command IntakeandOut() 
+         
+            public Command IntakeandOut() 
          {
             return new ConditionalCommand(Intake(), Outtake(), sensor::get).withName("AlgaeIntakeandOuttake");
          }
-    
+        
 }

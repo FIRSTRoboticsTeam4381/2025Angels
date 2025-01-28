@@ -6,9 +6,11 @@ package frc.robot;
 
 import static edu.wpi.first.units.Units.Newton;
 
+import java.nio.channels.Channel;
 import java.util.function.Supplier;
 
 import edu.wpi.first.epilogue.Logged;
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -90,6 +92,7 @@ specialist.povUp().onTrue(elevator.level4());
 specialist.povRight().onTrue(elevator.level3());
 specialist.povDown().onTrue(elevator.level2());
 specialist.povLeft().onTrue(elevator.level1());
+specialist.setRumble(GenericHID.RumbleType.kRightRumble, 1);
 
 
 specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));
