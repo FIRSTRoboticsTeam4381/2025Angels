@@ -27,37 +27,49 @@ import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 @Logged
 public class Coralintake extends SubsystemBase {
 //**creating the variables for the motors**
+
   private SparkMax motor3;
   private SparkMax motor4;
+
   //creating a sensor
   private DigitalInput coralsensor;
+
   // Creates a new Coralintake
   public Coralintake() {
+
 //assign cAn ID and Motor type
 motor3 = new SparkMax(55,MotorType.kBrushless);
 motor4 = new SparkMax(56,MotorType.kBrushless);
+
 //sets the can ID for a sensor
 coralsensor = new DigitalInput(1);
 coralsensor.get();
 
 //set up the config
 SparkMaxConfig motor3Config = new SparkMaxConfig();
+
 //assign properties to motor
 motor3Config
 .smartCurrentLimit(30)
 .idleMode(IdleMode.kBrake);
+
 //set whether it will reset parameters when they are changed, and the persist mode
 motor3.configure(motor3Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+
 //making motor4 follow motor3
 SparkMaxConfig motor4Config = new SparkMaxConfig();
 motor4Config.apply(motor4Config);
 motor4Config.follow(motor3//telling motor4 to be a follower of motor3
 );
+
 motor4.configure(motor4Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+
 this.setDefaultCommand(
   //sets default command
+
   new FunctionalCommand(
     //basic functional command
+
     ()->motor3.set(0), //oninit
     ()->{}, //onexecute
   (killed)->{}, //on end
@@ -78,10 +90,13 @@ this.setDefaultCommand(
   return new SequentialCommandGroup(
     //seting the motor speed to 1
     new InstantCommand(()-> motor3.set(1),this),
+
     //checking to see if the sensor can see the coral
     new WaitUntilCommand(()->!coralsensor.get()),
+
     //wait time after throwing coral out
     new WaitCommand(1.5),
+
     //stopping the motor.
     new InstantCommand(()->motor3.set(0),this)
     //giving the action a name for logging/
@@ -104,7 +119,7 @@ this.setDefaultCommand(
     return new ConditionalCommand(
       CoralOut(), // this will run when the sensor sees something
        Coralin(), //this will run when the sensor doesn't see anything
-        coralsensor::get); //this tells it which sensor to use
+        coralsensor::get).withName("Coral in or out is running"); //this tells it which sensor to use
   }
 }
 
