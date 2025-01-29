@@ -26,6 +26,7 @@ import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.Coralintake;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Hang;
+import frc.robot.subsystems.Pivot;
 import frc.robot.subsystems.Swerve;
 
 @Logged
@@ -44,6 +45,7 @@ public class RobotContainer {
   public final AlgaeIntake algaeintake = new AlgaeIntake();
   public final Elevator elevator = new Elevator();
   public final Hang hang = new Hang();
+  public final Pivot pivot = new Pivot();
   //public final PhotonCam camA = new PhotonCam("Camera A", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(-7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/-4-Math.PI)) );
   //public final PhotonCam camB = new PhotonCam("Camera B", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/4-Math.PI)) );
   //public final PhotonCam camC = new PhotonCam("Camera C", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/4-Math.PI)) );
@@ -84,9 +86,11 @@ public class RobotContainer {
           //interpolateJoystick(driver::getLeftX,0.05), 
           interpolateJoystick (driver::getRightX,0.05),
              true, driver.leftBumper()::getAsBoolean));
+
 specialist.rightBumper().onTrue(coralintake.Coralinorout());
 specialist.leftBumper().onTrue(algaeintake.IntakeandOut());
 elevator.setDefaultCommand(elevator.joystickcontrol(specialist::getLeftY));
+pivot.setDefaultCommand(pivot.joystickcontrol(specialist::getRightY));
 specialist.x().onTrue(hang.hanging());
 specialist.povUp().onTrue(elevator.level4());
 specialist.povRight().onTrue(elevator.level3());
