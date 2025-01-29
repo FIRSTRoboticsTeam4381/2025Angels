@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj2.command.ScheduleCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.commands.AdvancedCommands;
 import frc.robot.commands.Autos;
 import frc.robot.commands.TeleopSwerve;
 import frc.robot.subsystems.AlgaeIntake;
@@ -51,6 +52,7 @@ public class RobotContainer {
   //public final PhotonCam camC = new PhotonCam("Camera C", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/4-Math.PI)) );
   //public final PhotonCam camD = new PhotonCam("Camera D", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/4-Math.PI)) );
 
+  public final AdvancedCommands advancedCommands = new AdvancedCommands(this);
 
   // Constructor: set up the robot! 
   public RobotContainer() {
@@ -92,10 +94,10 @@ specialist.leftBumper().onTrue(algaeintake.IntakeandOut());
 elevator.setDefaultCommand(elevator.joystickcontrol(specialist::getLeftY));
 pivot.setDefaultCommand(pivot.joystickcontrol(specialist::getRightY));
 specialist.x().onTrue(hang.HangControl());
-specialist.povUp().onTrue(elevator.level4());
-specialist.povRight().onTrue(elevator.level3());
-specialist.povDown().onTrue(elevator.level2());
-specialist.povLeft().onTrue(elevator.level1());
+specialist.povUp().onTrue(advancedCommands.l4());
+specialist.povRight().onTrue(advancedCommands.l3());
+specialist.povDown().onTrue(advancedCommands.l2());
+specialist.povLeft().onTrue(advancedCommands.l1());
 specialist.setRumble(GenericHID.RumbleType.kRightRumble, 1);
 
 
