@@ -21,67 +21,55 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 
-
 @Logged
-public class AlgaeIntake extends SubsystemBase 
-{
+public class AlgaeIntake extends SubsystemBase {
     private SparkMax motor1;
     private SparkMax motor2;
     private DigitalInput sensor;
-    
-     public AlgaeIntake() 
-        {
-        motor1 = new SparkMax(50,MotorType.kBrushless);
-        motor2 = new SparkMax(51,MotorType.kBrushless);
+
+    public AlgaeIntake() {
+        motor1 = new SparkMax(50, MotorType.kBrushless);
+        motor2 = new SparkMax(51, MotorType.kBrushless);
         sensor = new DigitalInput(0);
 
-        
         SparkMaxConfig motor1Config = new SparkMaxConfig();
-             motor1Config.smartCurrentLimit(10)
-             .idleMode(IdleMode.kCoast);
+        motor1Config.smartCurrentLimit(10)
+                .idleMode(IdleMode.kCoast);
 
         motor1.configure(motor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
+        SparkMaxConfig motor2Config = new SparkMaxConfig();
 
-
-    SparkMaxConfig motor2Config = new SparkMaxConfig();
-    
         motor2Config.apply(motor1Config);
         motor2Config.follow(motor1, true);
 
-    motor2.configure(motor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-        }  
-    
+        motor2.configure(motor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    }
+
     @Override
-    public void periodic() 
-    {
+    public void periodic() {
         // This method will be called once per scheduler run
         SmartDashboard.putData(this);
     }
-        
-        public Command Intake() 
-                {
-            return new SequentialCommandGroup(
-                new InstantCommand(()-> motor1.set(-1), this),
-                new WaitUntilCommand(()->!sensor.get()),
+
+    public Command Intake() {
+        return new SequentialCommandGroup(
+                new InstantCommand(() -> motor1.set(-1), this),
+                new WaitUntilCommand(() -> !sensor.get()),
                 new WaitCommand(1.5),
-                new InstantCommand(()-> motor1.set(0),this)
-            ).withName("AlgaeIntake");  
-                } 
-        
-            public Command Outtake() 
-            {
-            return new SequentialCommandGroup(
-                new InstantCommand(()-> motor1.set(1), this),
-                new WaitUntilCommand(()->sensor.get()),
+                new InstantCommand(() -> motor1.set(0), this)).withName("AlgaeIntake");
+    }
+
+    public Command Outtake() {
+        return new SequentialCommandGroup(
+                new InstantCommand(() -> motor1.set(1), this),
+                new WaitUntilCommand(() -> sensor.get()),
                 new WaitCommand(1.5),
-                new InstantCommand(()-> motor1.set(0),this)
-            ).withName("AlgaeOuttake");
-            }
-         
-            public Command IntakeandOut() 
-         {
-            return new ConditionalCommand(Intake(), Outtake(), sensor::get).withName("AlgaeIntakeandOuttake");
-         }
-        
+                new InstantCommand(() -> motor1.set(0), this)).withName("AlgaeOuttake");
+    }
+
+    public Command IntakeandOut() {
+        return new ConditionalCommand(Intake(), Outtake(), sensor::get).withName("AlgaeIntakeandOuttake");
+    }
+
 }

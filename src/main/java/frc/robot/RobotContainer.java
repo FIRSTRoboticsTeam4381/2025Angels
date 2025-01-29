@@ -91,7 +91,7 @@ specialist.rightBumper().onTrue(coralintake.Coralinorout());
 specialist.leftBumper().onTrue(algaeintake.IntakeandOut());
 elevator.setDefaultCommand(elevator.joystickcontrol(specialist::getLeftY));
 pivot.setDefaultCommand(pivot.joystickcontrol(specialist::getRightY));
-specialist.x().onTrue(hang.hanging());
+specialist.x().onTrue(hang.HangControl());
 specialist.povUp().onTrue(elevator.level4());
 specialist.povRight().onTrue(elevator.level3());
 specialist.povDown().onTrue(elevator.level2());
