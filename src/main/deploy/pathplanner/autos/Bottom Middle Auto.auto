@@ -1,0 +1,43 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Start to Reef G"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Reef G to B Coral Station"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "B Coral Station to D Reef"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Reef D to B Coral Station"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "B Coral Sation to Reef B"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}
