@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+import com.pathplanner.lib.auto.NamedCommands;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
@@ -47,7 +48,8 @@ public class Coralintake extends SubsystemBase {
 
   //set up the config
   SparkMaxConfig motor3Config = new SparkMaxConfig();
-
+  NamedCommands.registerCommand("coral in", Coralin());
+  NamedCommands.registerCommand("coral out", CoralOut());
   //assign properties to motor
   motor3Config
   .smartCurrentLimit(30)
@@ -75,6 +77,7 @@ this.setDefaultCommand(
     (killed)->{}, //on end
     ()->{return false;}, //isfinished
     this)
+    
 );
 
   }
