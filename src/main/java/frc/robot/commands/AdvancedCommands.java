@@ -4,6 +4,8 @@
 
 package frc.robot.commands;
 
+import com.pathplanner.lib.auto.NamedCommands;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import frc.robot.RobotContainer;
@@ -15,6 +17,10 @@ public class AdvancedCommands {
   /** Creates a new AdvancedCommands. */
   public AdvancedCommands(RobotContainer r) {
     robot = r;
+    NamedCommands.registerCommand("l4", l4());
+    NamedCommands.registerCommand("l3", l3());
+    NamedCommands.registerCommand("l2", l2());
+    NamedCommands.registerCommand("l1", l1());
   }
 
   public Command l4() {

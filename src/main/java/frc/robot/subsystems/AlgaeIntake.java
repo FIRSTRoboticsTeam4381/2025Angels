@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.pathplanner.lib.auto.NamedCommands;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
@@ -44,6 +45,7 @@ public class AlgaeIntake extends SubsystemBase {
         motor2Config.follow(motor1, true);
 
         motor2.configure(motor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+        NamedCommands.registerCommand("InAndOut", IntakeandOut());
     }
 
     @Override
