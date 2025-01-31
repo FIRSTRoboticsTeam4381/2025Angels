@@ -7,7 +7,31 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Example Path"
+            "pathName": "Top Path A"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "A To T Coral Station"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "T Coral Station To A"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "A To T Coral Station"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "T Coral Station To A"
           }
         }
       ]
