@@ -4,14 +4,15 @@ import com.pathplanner.lib.auto.NamedCommands;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+
+import java.util.function.IntFunction;
+
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.GenericHID.RumbleType;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ConditionalCommand;
@@ -26,8 +27,6 @@ public class AlgaeIntake extends SubsystemBase {
     private SparkMax motor1;
     private SparkMax motor2;
     private DigitalInput sensor;
-    private XboxController controller = new XboxController(1);
-
 
     public AlgaeIntake() {
         motor1 = new SparkMax(50, MotorType.kBrushless);
@@ -62,11 +61,7 @@ public class AlgaeIntake extends SubsystemBase {
                 new WaitCommand(1.5),
                 new InstantCommand(() -> motor1.set(0), this)).withName("AlgaeIntake");
     }
-    public void vibrate(){
-        controller.setRumble(RumbleType.kLeftRumble, 1.0);
-        controller.setRumble(RumbleType.kRightRumble, 1.0);
-    }
-    
+
     public Command Outtake() {
         return new SequentialCommandGroup(
                 new InstantCommand(() -> motor1.set(1), this),
