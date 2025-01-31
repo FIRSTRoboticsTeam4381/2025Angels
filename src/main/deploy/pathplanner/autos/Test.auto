@@ -7,31 +7,25 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Top Path A"
+            "pathName": "Bottom to E "
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "A To T Coral Station"
+            "pathName": "E to BCoarl Station"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "T Coral Station To A"
+            "pathName": "BCoarl Station to D "
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "A To T Coral Station"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "T Coral Station To A"
+            "pathName": "D to BCoral station"
           }
         }
       ]

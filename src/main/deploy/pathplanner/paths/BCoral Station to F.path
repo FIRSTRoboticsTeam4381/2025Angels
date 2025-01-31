@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 1.969,
+        "y": 0.447
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.9689999999999994,
+        "y": 0.44700000000000006
+      },
+      "isLocked": false,
+      "linkedName": "Coral Bottom"
+    },
+    {
+      "anchor": {
+        "x": 5.295052083333332,
+        "y": 2.9628472222222215
+      },
+      "prevControl": {
+        "x": 4.295052083333332,
+        "y": 2.9628472222222215
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "F"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 119.74488129694215
+  },
+  "reversed": false,
+  "folder": "BCoral station to thing",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -127.30394827798341
+  },
+  "useDefaultConstraints": true
+}

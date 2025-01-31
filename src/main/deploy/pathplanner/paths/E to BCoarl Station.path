@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 5.043489583333333,
+        "y": 2.7532118055555554
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.991691638127854,
+        "y": 2.0319789288432273
+      },
+      "isLocked": false,
+      "linkedName": "E"
+    },
+    {
+      "anchor": {
+        "x": 1.969,
+        "y": 0.447
+      },
+      "prevControl": {
+        "x": 3.5917739726027413,
+        "y": 1.3034640410958895
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -127.2348339815747
+  },
+  "reversed": false,
+  "folder": "Thing to BCoral Station",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 119.35775354279124
+  },
+  "useDefaultConstraints": true
+}
