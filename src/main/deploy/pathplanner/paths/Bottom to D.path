@@ -1,0 +1,90 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+<<<<<<<< HEAD:src/main/deploy/pathplanner/paths/K To T Coral Station.path
+        "x": 3.871,
+        "y": 5.273
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.5154999999999994,
+        "y": 6.530749999999999
+      },
+      "isLocked": false,
+      "linkedName": "K"
+    },
+    {
+      "anchor": {
+        "x": 1.666,
+        "y": 7.304
+      },
+      "prevControl": {
+        "x": 3.0225,
+        "y": 6.2675
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "T Coral Station"
+========
+        "x": 7.3075520833333325,
+        "y": 0.43324652777777717
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 8.307552083333333,
+        "y": 0.4332465277777775
+      },
+      "isLocked": false,
+      "linkedName": "Bottom"
+    },
+    {
+      "anchor": {
+        "x": 3.939,
+        "y": 2.795
+      },
+      "prevControl": {
+        "x": 2.939,
+        "y": 2.795
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "D"
+>>>>>>>> origin/master:src/main/deploy/pathplanner/paths/Bottom to D.path
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+<<<<<<<< HEAD:src/main/deploy/pathplanner/paths/K To T Coral Station.path
+    "rotation": 125.53767779197446
+  },
+  "reversed": false,
+  "folder": "Reef To Coral Station",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -59.03188471711614
+========
+    "rotation": 57.26477372789241
+  },
+  "reversed": false,
+  "folder": "Bottom To",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 180.0
+>>>>>>>> origin/master:src/main/deploy/pathplanner/paths/Bottom to D.path
+  },
+  "useDefaultConstraints": true
+}

@@ -98,7 +98,7 @@ specialist.povUp().onTrue(advancedCommands.l4());
 specialist.povRight().onTrue(advancedCommands.l3());
 specialist.povDown().onTrue(advancedCommands.l2());
 specialist.povLeft().onTrue(advancedCommands.l1());
-specialist.setRumble(GenericHID.RumbleType.kRightRumble, 1);
+//specialist.setRumble(GenericHID.RumbleType.kRightRumble, 1);
 
 
 specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));
