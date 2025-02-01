@@ -11,33 +11,40 @@
           }
         },
         {
-          "type": "named",
+          "type": "sequential",
           "data": {
-            "name": "l4"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "InAndOut"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "coralinorout"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "l4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "InAndOut"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "coralinorout"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "l1"
+                }
+              }
+            ]
           }
         },
         {
           "type": "path",
           "data": {
             "pathName": "I to T Coral Station"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "l1"
           }
         },
         {
@@ -53,21 +60,34 @@
           }
         },
         {
-          "type": "named",
+          "type": "sequential",
           "data": {
-            "name": "l4"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "coralinorout"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "l1"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "l4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "InAndOut"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "coralinorout"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "l1"
+                }
+              }
+            ]
           }
         },
         {
