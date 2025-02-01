@@ -12,6 +12,7 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ConditionalCommand;
@@ -20,6 +21,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
+import frc.robot.RobotContainer;
 
 @Logged
 public class AlgaeIntake extends SubsystemBase {
@@ -57,6 +59,7 @@ public class AlgaeIntake extends SubsystemBase {
         return new SequentialCommandGroup(
                 new InstantCommand(() -> algaemotor1.set(-1), this),
                 new WaitUntilCommand(() -> !algaesensor.get()),
+                RobotContainer.getRobot().vibrateSpecialist(RumbleType.kLeftRumble, .5),
                 new WaitCommand(1.5),
                 new InstantCommand(() -> algaemotor1.set(0), this)).withName("AlgaeIntake");
     }
