@@ -48,8 +48,7 @@ public class Coralintake extends SubsystemBase {
 
   //set up the config
   SparkMaxConfig motor3Config = new SparkMaxConfig();
-  NamedCommands.registerCommand("coral in", Coralin());
-  NamedCommands.registerCommand("coral out", CoralOut());
+  NamedCommands.registerCommand("coralinorout", Coralinorout());
   //assign properties to motor
   motor3Config
   .smartCurrentLimit(30)
