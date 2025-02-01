@@ -19,8 +19,17 @@
         {
           "type": "named",
           "data": {
-            "name": "InAndOut"
+            "name": "coralinorout"
           }
+<<<<<<<< HEAD:src/main/deploy/pathplanner/autos/Random.auto
+========
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "l1"
+          }
+>>>>>>>> origin/master:src/main/deploy/pathplanner/autos/B to E to Bstation to D to Bstation.auto
         },
         {
           "type": "path",
@@ -31,7 +40,7 @@
         {
           "type": "named",
           "data": {
-            "name": "InAndOut"
+            "name": "coralinorout"
           }
         },
         {
@@ -55,7 +64,11 @@
         {
           "type": "named",
           "data": {
+<<<<<<<< HEAD:src/main/deploy/pathplanner/autos/Random.auto
             "name": "InAndOut"
+========
+            "name": "coralinorout"
+>>>>>>>> origin/master:src/main/deploy/pathplanner/autos/B to E to Bstation to D to Bstation.auto
           }
         },
         {
@@ -65,9 +78,15 @@
           }
         },
         {
+<<<<<<<< HEAD:src/main/deploy/pathplanner/autos/Random.auto
           "type": "named",
           "data": {
             "name": "InAndOut"
+========
+          "type": "path",
+          "data": {
+            "pathName": "D to BCoral station"
+>>>>>>>> origin/master:src/main/deploy/pathplanner/autos/B to E to Bstation to D to Bstation.auto
           }
         }
       ]
