@@ -14,6 +14,7 @@ import org.photonvision.EstimatedRobotPose;
 
 import com.revrobotics.spark.SparkBase.ControlType;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -23,7 +24,7 @@ import frc.robot.Constants;
 import frc.robot.subsystems.Swerve;
 
 
-public class SnaptoPose extends Command
+public class SnaptoPose extends TeleopSwerve 
 {
     public final ArrayList<Pose2d> snapPositions= new ArrayList<Pose2d>(){{
         new Pose2d(3.764, 5.242, new Rotation2d(Radians.convertFrom(-60, Degrees)));
@@ -34,20 +35,34 @@ public class SnaptoPose extends Command
         new Pose2d(3.045, 4.031, new Rotation2d(Radians.convertFrom(0, Degrees)));
     }};
     public Swerve swerve;
+    private Pose2d target;
+    public PIDController x;
+    public PIDController y;
+    public PIDController r;
     public SnaptoPose(Swerve s){
+        super(s, this::getYPower, null, null, true,()->false);
         swerve = s;
+        x = new PIDController(.001, 0, 0);
+        y = new PIDController(.001, 0, 0);
+        r = new PIDController(.001, 0, 0);
         addRequirements(swerve);
     }
     // Called when the command is initially scheduled
     @Override
     public void initialize(){
         Pose2d currentpose = swerve.getPose();
-        currentpose.nearest(snapPositions);
+        target = currentpose.nearest(snapPositions);
+        x.setSetpoint(target.getX());
+        y.setSetpoint(target.getY());
+        r.setSetpoint(target.getRotation().getDegrees());
+
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
-    public void execute(){}
+    public void execute(){
+        super.execute();
+    }
 
     // Called once the command ends or is interrupted.
     @Override
@@ -56,8 +71,19 @@ public class SnaptoPose extends Command
     // Returns true when the command should end.
     @Override
     public boolean isFinished(){
-        return Math.abs(position - feedback.get()) < error;
+        return false;
     }
 
+    public double getXPower(){
+        return x.calculate(swerve.getPose().getX());
+    }
+
+    public double getYPower(){
+        return y.calculate(swerve.getPose().getY());
+    }
+
+    public double getRPower(){
+        return r.calculate(swerve.getPose().getRotation().getDegrees());
+    }
 
 }
