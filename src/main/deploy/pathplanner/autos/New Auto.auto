@@ -7,7 +7,11 @@
         {
           "type": "path",
           "data": {
+<<<<<<< Updated upstream
             "pathName": "Top Path I"
+=======
+            "pathName": "Bottom to E "
+>>>>>>> Stashed changes
           }
         },
         {
@@ -21,6 +25,39 @@
           "data": {
             "name": "InAndOut"
           }
+<<<<<<< Updated upstream
+=======
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "l1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "E to BCoarl Station"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "InAndOut"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "BCoarl Station to D "
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": null
+          }
+>>>>>>> Stashed changes
         }
       ]
     }
