@@ -29,8 +29,8 @@ import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 public class Coralintake extends SubsystemBase {
 //**creating the variables for the motors**
 
-  private SparkMax motor3;
-  private SparkMax motor4;
+  private SparkMax coralmotor1;
+  private SparkMax coralmotor2;
 
   //creating a sensor
   private DigitalInput coralsensor;
@@ -39,31 +39,31 @@ public class Coralintake extends SubsystemBase {
   public Coralintake() {
 
   //assign cAn ID and Motor type
-  motor3 = new SparkMax(55,MotorType.kBrushless);
-  motor4 = new SparkMax(56,MotorType.kBrushless);
+  coralmotor1 = new SparkMax(55,MotorType.kBrushless);
+  coralmotor2 = new SparkMax(56,MotorType.kBrushless);
 
   //sets the can ID for a sensor
   coralsensor = new DigitalInput(1);
   coralsensor.get();
 
   //set up the config
-  SparkMaxConfig motor3Config = new SparkMaxConfig();
+  SparkMaxConfig coralmotor1Config = new SparkMaxConfig();
   NamedCommands.registerCommand("coralinorout", Coralinorout());
   //assign properties to motor
-  motor3Config
+  coralmotor1Config
   .smartCurrentLimit(30)
   .idleMode(IdleMode.kBrake);
 
   //set whether it will reset parameters when they are changed, and the persist mode
-  motor3.configure(motor3Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+  coralmotor1.configure(coralmotor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
   //making motor4 follow motor3
-  SparkMaxConfig motor4Config = new SparkMaxConfig();
-  motor4Config.apply(motor4Config);
-  motor4Config.follow(motor3//telling motor4 to be a follower of motor3
+  SparkMaxConfig coralmotor2Config = new SparkMaxConfig();
+  coralmotor2Config.apply(coralmotor2Config);
+  coralmotor2Config.follow(coralmotor1//telling motor4 to be a follower of motor3
 );
 
-motor4.configure(motor4Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+coralmotor2.configure(coralmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
 this.setDefaultCommand(
   //sets default command
@@ -71,7 +71,7 @@ this.setDefaultCommand(
   new FunctionalCommand(
     //basic functional command
 
-    ()->motor3.set(0), //oninit
+    ()->coralmotor1.set(0), //oninit
     ()->{}, //onexecute
     (killed)->{}, //on end
     ()->{return false;}, //isfinished
@@ -91,13 +91,13 @@ this.setDefaultCommand(
 {//creating a sequential command group
   return new SequentialCommandGroup(
     //seting the motor speed to 1
-    new InstantCommand(()-> motor3.set(1),this),
+    new InstantCommand(()-> coralmotor1.set(1),this),
     //checking to see if the sensor can see the coral
     new WaitUntilCommand(()->!coralsensor.get()),
     //wait time after throwing coral out
     new WaitCommand(1.5),
     //stopping the motor.
-    new InstantCommand(()->motor3.set(0),this)
+    new InstantCommand(()->coralmotor1.set(0),this)
     //giving the action a name for logging/
   ).withName("Coral Outaking");
   };
@@ -106,10 +106,10 @@ this.setDefaultCommand(
   {
     return new SequentialCommandGroup(
       //this command will run until the sensor sees the coral
-      new InstantCommand(()-> motor3.set(-1),this),
+      new InstantCommand(()-> coralmotor1.set(-1),this),
       new WaitUntilCommand(()->coralsensor.get()),
       new WaitCommand(0.5),
-      new InstantCommand(()->motor3.set(0),this)
+      new InstantCommand(()->coralmotor1.set(0),this)
       ).withName("Coral Intaking");
   }
 

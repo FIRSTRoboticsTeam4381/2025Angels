@@ -8,7 +8,6 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
-import com.revrobotics.spark.SparkBase;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
@@ -17,8 +16,6 @@ import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ConditionalCommand;
-import edu.wpi.first.wpilibj2.command.FunctionalCommand;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.commands.SparkPosition;
 
@@ -26,29 +23,29 @@ import frc.robot.commands.SparkPosition;
 @Logged
 public class Hang extends SubsystemBase {
 //**creating the variables for the motors**
-  private SparkMax motor5;
-  private SparkMax motor6;
+  private SparkMax hangmotor1;
+  private SparkMax hangmotor2;
   
 
 public Hang() {
   //assign cAn ID and Motor type
-  motor5 = new SparkMax(58,MotorType.kBrushless);
-  motor6 = new SparkMax(59,MotorType.kBrushless);
+  hangmotor1 = new SparkMax(58,MotorType.kBrushless);
+  hangmotor2 = new SparkMax(59,MotorType.kBrushless);
 
   //set up the config
-  SparkMaxConfig motor5Config = new SparkMaxConfig();
+  SparkMaxConfig hangmotor1Config = new SparkMaxConfig();
   //assign properties to motor
-  motor5Config
+  hangmotor1Config
   .smartCurrentLimit(30)
   .idleMode(IdleMode.kBrake);
-  motor5Config.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
+  hangmotor1Config.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
   //set whether it will reset parameters when they are changed, and the persist mode
-  motor5.configure(motor5Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+  hangmotor1.configure(hangmotor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
   //making motor4 follow motor3
-  SparkMaxConfig motor6Config = new SparkMaxConfig();
-  motor6Config.apply(motor6Config);
-  motor6Config.follow(motor5, true);
-  motor6.configure(motor6Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+  SparkMaxConfig hangmotor2Config = new SparkMaxConfig();
+  hangmotor2Config.apply(hangmotor2Config);
+  hangmotor2Config.follow(hangmotor1, true);
+  hangmotor2.configure(hangmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 }
 
 
@@ -59,7 +56,7 @@ public Hang() {
   }
 
 public Command Hangangle(double target, double range){
-      return new SparkPosition(motor5, target, range, this).withName("goToPose");
+      return new SparkPosition(hangmotor1, target, range, this).withName("goToPose");
     }
 
 public Command Hanging()
@@ -77,6 +74,6 @@ public Command HangControl()
     return new ConditionalCommand(
       Hanging(), // if yes
        Hangset(), //if no
-        ()->{return motor5.getAbsoluteEncoder().getPosition()<180;}).withName("Hanging"); 
+        ()->{return hangmotor1.getAbsoluteEncoder().getPosition()<180;}).withName("Hanging"); 
   }
 } 

@@ -5,7 +5,6 @@ import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
-import java.util.function.IntFunction;
 
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
@@ -24,27 +23,27 @@ import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 
 @Logged
 public class AlgaeIntake extends SubsystemBase {
-    private SparkMax motor1;
-    private SparkMax motor2;
-    private DigitalInput sensor;
+    private SparkMax algaemotor1;
+    private SparkMax algaemotor2;
+    private DigitalInput algaesensor;
 
     public AlgaeIntake() {
-        motor1 = new SparkMax(50, MotorType.kBrushless);
-        motor2 = new SparkMax(51, MotorType.kBrushless);
-        sensor = new DigitalInput(0);
+        algaemotor1 = new SparkMax(50, MotorType.kBrushless);
+        algaemotor2 = new SparkMax(51, MotorType.kBrushless);
+        algaesensor = new DigitalInput(0);
 
-        SparkMaxConfig motor1Config = new SparkMaxConfig();
-        motor1Config.smartCurrentLimit(10)
+        SparkMaxConfig algaemotor1Config = new SparkMaxConfig();
+        algaemotor1Config.smartCurrentLimit(10)
                 .idleMode(IdleMode.kCoast);
 
-        motor1.configure(motor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+        algaemotor1.configure(algaemotor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-        SparkMaxConfig motor2Config = new SparkMaxConfig();
+        SparkMaxConfig algaemotor2Config = new SparkMaxConfig();
 
-        motor2Config.apply(motor1Config);
-        motor2Config.follow(motor1, true);
+        algaemotor2Config.apply(algaemotor1Config);
+        algaemotor2Config.follow(algaemotor1, true);
 
-        motor2.configure(motor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+        algaemotor2.configure(algaemotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         NamedCommands.registerCommand("InAndOut", IntakeandOut());
     }
 
@@ -56,22 +55,22 @@ public class AlgaeIntake extends SubsystemBase {
 
     public Command Intake() {
         return new SequentialCommandGroup(
-                new InstantCommand(() -> motor1.set(-1), this),
-                new WaitUntilCommand(() -> !sensor.get()),
+                new InstantCommand(() -> algaemotor1.set(-1), this),
+                new WaitUntilCommand(() -> !algaesensor.get()),
                 new WaitCommand(1.5),
-                new InstantCommand(() -> motor1.set(0), this)).withName("AlgaeIntake");
+                new InstantCommand(() -> algaemotor1.set(0), this)).withName("AlgaeIntake");
     }
 
     public Command Outtake() {
         return new SequentialCommandGroup(
-                new InstantCommand(() -> motor1.set(1), this),
-                new WaitUntilCommand(() -> sensor.get()),
+                new InstantCommand(() -> algaemotor1.set(1), this),
+                new WaitUntilCommand(() -> algaesensor.get()),
                 new WaitCommand(1.5),
-                new InstantCommand(() -> motor1.set(0), this)).withName("AlgaeOuttake");
+                new InstantCommand(() -> algaemotor1.set(0), this)).withName("AlgaeOuttake");
     }
 
     public Command IntakeandOut() {
-        return new ConditionalCommand(Intake(), Outtake(), sensor::get).withName("AlgaeIntakeandOuttake");
+        return new ConditionalCommand(Intake(), Outtake(), algaesensor::get).withName("AlgaeIntakeandOuttake");
     }
 
 }
