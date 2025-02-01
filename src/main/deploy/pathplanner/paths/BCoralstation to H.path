@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 5.840104166666666,
-        "y": 4.178732638888889
+        "x": 6.029815573770492,
+        "y": 4.186834016393442
       },
       "prevControl": {
-        "x": 6.147569444444444,
-        "y": 3.102604166666666
+        "x": 6.337280851548269,
+        "y": 3.11070554417122
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 179.4743653935424
   },
   "reversed": false,
   "folder": "BCoral station to thing",
