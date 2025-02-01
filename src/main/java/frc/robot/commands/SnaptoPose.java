@@ -17,12 +17,11 @@ import frc.robot.Constants.Swerve;
 
 public class SnaptoPose extends Command
 {
-EstimatedRobotPose estimatedPose,
-swerveOdometry = new SwerveDrivePoseEstimator(Constants.Swerve.swerveKinematics, getYaw(), getPositions(), startPose);
-}
-private Pose2d startPose = new Pose2d(Units.inchesToMeters(177), Units.inchesToMeters(214), Rotation2d.fromDegrees(0));
+    private Pose2d startPose = new Pose2d(Units.inchesToMeters(177), Units.inchesToMeters(214), Rotation2d.fromDegrees(0)),
+    swerveOdometry = new SwerveDrivePoseEstimator(Constants.Swerve.swerveKinematics, getYaw(), getPositions(), startPose);
 
 
 public Pose2d getPose(){
     return swerveOdometry.getEstimatedPosition();
+}
 }
