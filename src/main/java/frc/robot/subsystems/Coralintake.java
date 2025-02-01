@@ -14,6 +14,7 @@ import com.revrobotics.spark.SparkBase.ResetMode;
 
 import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ConditionalCommand;
@@ -23,6 +24,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
+import frc.robot.RobotContainer;
 
 
 @Logged
@@ -108,6 +110,8 @@ this.setDefaultCommand(
       //this command will run until the sensor sees the coral
       new InstantCommand(()-> coralmotor1.set(-1),this),
       new WaitUntilCommand(()->coralsensor.get()),
+      //makes controller rumble on the right side
+      RobotContainer.getRobot().vibrateSpecialist(RumbleType.kRightRumble, .5),
       new WaitCommand(0.5),
       new InstantCommand(()->coralmotor1.set(0),this)
       ).withName("Coral Intaking");
