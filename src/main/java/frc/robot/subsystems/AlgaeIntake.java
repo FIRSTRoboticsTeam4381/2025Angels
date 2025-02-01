@@ -26,7 +26,6 @@ public class AlgaeIntake extends SubsystemBase {
     private SparkMax motor1;
     private SparkMax motor2;
     private DigitalInput sensor;
-    private XboxController controller = new XboxController(1);
 
     public AlgaeIntake() {
         motor1 = new SparkMax(50, MotorType.kBrushless);
@@ -75,15 +74,4 @@ public class AlgaeIntake extends SubsystemBase {
         return new ConditionalCommand(Intake(), Outtake(), sensor::get).withName("AlgaeIntakeandOuttake");
     }
 
-    boolean vibrate = sensor.get();
-
-    {
-        if (vibrate = true) {
-            controller.setRumble(RumbleType.kLeftRumble, 1.0);
-            controller.setRumble(RumbleType.kRightRumble, 1.0);
-        } else {
-            controller.setRumble(RumbleType.kLeftRumble, 0);
-            controller.setRumble(RumbleType.kRightRumble, 0);
-        }
-    }
 }

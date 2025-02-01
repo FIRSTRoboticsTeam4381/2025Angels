@@ -4,13 +4,10 @@
 
 package frc.robot;
 
-import static edu.wpi.first.units.Units.Newton;
-
-import java.nio.channels.Channel;
 import java.util.function.Supplier;
 
 import edu.wpi.first.epilogue.Logged;
-import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -159,9 +156,20 @@ specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance()
    * Get a reference to the RobotContainer object in use
    * @return the active RobotContainer object
    */
+  
   public static RobotContainer getRobot()
   {
     return robotReference;
+  }
+
+  public Command vibrateSpecialist(RumbleType rumbleside ,double rumblestrength )
+  {
+    return new InstantCommand(() -> specialist.setRumble(rumbleside, rumblestrength));
+  }
+
+  public Command vibrateDriver(RumbleType rumbleside ,double rumblestrength )
+  {
+    return new InstantCommand(() -> driver.setRumble(rumbleside, rumblestrength));
   }
 
 }
