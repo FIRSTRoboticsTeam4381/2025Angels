@@ -91,23 +91,23 @@ public class RobotContainer {
 
   private void configureBindings() {
     swerve.setDefaultCommand(new TeleopSwerve(swerve, 
-            driver::getLeftY,
-            driver::getLeftX,
-          //interpolateJoystick(driver::getLeftY,0.05),
-          //interpolateJoystick(driver::getLeftX,0.05), 
-          interpolateJoystick (driver::getRightX,0.05),
+            //driver::getLeftY,
+            //driver::getLeftX,
+          interpolateJoystick(driver::getLeftY,0.15),
+          interpolateJoystick(driver::getLeftX,0.15), 
+          interpolateJoystick (driver::getRightX,0.15),
              true, driver.leftBumper()::getAsBoolean));
 
 specialist.rightBumper().onTrue(coralintake.Coralinorout());
 specialist.leftBumper().onTrue(algaeintake.IntakeandOut());
-elevator.setDefaultCommand(elevator.joystickcontrol(specialist::getLeftY));
-pivot.setDefaultCommand(pivot.joystickcontrol(specialist::getRightY));
+elevator.setDefaultCommand(elevator.joystickcontrol(interpolateJoystick(specialist::getLeftY, 0.15)));
+pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(specialist::getRightY, 0.15)));
 specialist.x().onTrue(hang.HangControl());
 specialist.povUp().onTrue(advancedCommands.l4());
 specialist.povRight().onTrue(advancedCommands.l3());
 specialist.povDown().onTrue(advancedCommands.l2());
 specialist.povLeft().onTrue(advancedCommands.l1());
-//specialist.setRumble(GenericHID.RumbleType.kRightRumble, 1);
+
 
 
 specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));

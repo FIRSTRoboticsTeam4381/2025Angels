@@ -8,24 +8,24 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.991691638127854,
-        "y": 2.0319789288432273
+        "x": 3.897482638888888,
+        "y": 2.152256944444444
       },
       "isLocked": false,
       "linkedName": "E"
     },
     {
       "anchor": {
-        "x": 1.969,
-        "y": 0.447
+        "x": 1.6924405956738497,
+        "y": 0.6363691816331482
       },
       "prevControl": {
-        "x": 3.5917739726027413,
-        "y": 1.3034640410958895
+        "x": 3.21267361111111,
+        "y": 1.6072048611111107
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Coral Bottom"
     }
   ],
   "rotationTargets": [],
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -127.2348339815747
+    "rotation": -127.31310444057019
   },
   "reversed": false,
   "folder": "Thing to BCoral Station",
