@@ -43,12 +43,12 @@ public class RobotContainer {
   SendableChooser<Autos.PreviewAuto> autoChooser = new SendableChooser<>();
 
   // Subsystems
-  public final Swerve swerve = new Swerve();
-  public final Coralintake coralintake = new Coralintake();
-  public final AlgaeIntake algaeintake = new AlgaeIntake();
-  public final Elevator elevator = new Elevator();
-  public final Hang hang = new Hang();
-  public final Pivot pivot = new Pivot();
+  public final Swerve swerve;
+  public final Coralintake coralintake;
+  public final AlgaeIntake algaeintake;
+  public final Elevator elevator;
+  public final Hang hang;
+  public final Pivot pivot;
   //public final PhotonCam camA = new PhotonCam("Camera A", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(-7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/-4-Math.PI)) );
   //public final PhotonCam camB = new PhotonCam("Camera B", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/4-Math.PI)) );
   //public final PhotonCam camC = new PhotonCam("Camera C", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/4-Math.PI)) );
@@ -59,6 +59,13 @@ public class RobotContainer {
   // Constructor: set up the robot! 
   public RobotContainer() {
     robotReference = this;
+    
+    swerve = new Swerve();
+    coralintake = new Coralintake();
+    algaeintake  = new AlgaeIntake();
+    elevator = new Elevator();
+    hang = new Hang();
+    pivot = new Pivot();
 
     // Set default commands here
 
