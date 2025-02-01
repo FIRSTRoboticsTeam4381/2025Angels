@@ -7,11 +7,7 @@
         {
           "type": "path",
           "data": {
-<<<<<<< Updated upstream
-            "pathName": "Top Path I"
-=======
             "pathName": "Bottom to E "
->>>>>>> Stashed changes
           }
         },
         {
@@ -23,10 +19,8 @@
         {
           "type": "named",
           "data": {
-            "name": "InAndOut"
+            "name": "coralinorout"
           }
-<<<<<<< Updated upstream
-=======
         },
         {
           "type": "named",
@@ -43,7 +37,7 @@
         {
           "type": "named",
           "data": {
-            "name": "InAndOut"
+            "name": "coralinorout"
           }
         },
         {
@@ -55,9 +49,20 @@
         {
           "type": "named",
           "data": {
-            "name": null
+            "name": "coralinorout"
           }
->>>>>>> Stashed changes
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "l4"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "D to BCoral station"
+          }
         }
       ]
     }
