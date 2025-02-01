@@ -54,8 +54,7 @@ public class RobotContainer {
   //public final PhotonCam camC = new PhotonCam("Camera C", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/4-Math.PI)) );
   //public final PhotonCam camD = new PhotonCam("Camera D", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/4-Math.PI)) );
 
-  public final AdvancedCommands advancedCommands = new AdvancedCommands(this);
-
+  public final AdvancedCommands advancedCommands;
   // Constructor: set up the robot! 
   public RobotContainer() {
     robotReference = this;
@@ -66,6 +65,7 @@ public class RobotContainer {
     elevator = new Elevator();
     hang = new Hang();
     pivot = new Pivot();
+    advancedCommands = new AdvancedCommands(this);
 
     // Set default commands here
 
