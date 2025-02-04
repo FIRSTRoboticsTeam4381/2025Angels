@@ -3,14 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-<<<<<<<< HEAD:src/main/deploy/pathplanner/paths/T Coral Station to Reef A.path
-        "x": 1.74525,
-        "y": 7.066999999999999
+        "x": 1.7549999999965527,
+        "y": 6.920750000003912
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.922026695296637,
-        "y": 6.890223304703363
+        "x": 1.9317766952931896,
+        "y": 6.743973304707276
       },
       "isLocked": false,
       "linkedName": "Top Coral Station"
@@ -27,31 +26,6 @@
       "nextControl": null,
       "isLocked": false,
       "linkedName": "Reef A"
-========
-        "x": 3.1707465277777764,
-        "y": 3.885243055555555
-      },
-      "prevControl": null,
-      "nextControl": {
-        "x": 2.639670138888888,
-        "y": 2.64140625
-      },
-      "isLocked": false,
-      "linkedName": "B"
-    },
-    {
-      "anchor": {
-        "x": 1.969,
-        "y": 0.447
-      },
-      "prevControl": {
-        "x": 2.6396701388888886,
-        "y": 1.467447916666666
-      },
-      "nextControl": null,
-      "isLocked": false,
-      "linkedName": "Coral Bottom"
->>>>>>>> origin/master:src/main/deploy/pathplanner/paths/B to BCoralstation.path
     }
   ],
   "rotationTargets": [],
@@ -68,14 +42,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -127.30394827798341
+    "rotation": 0.0
   },
   "reversed": false,
-<<<<<<<< HEAD:src/main/deploy/pathplanner/paths/T Coral Station to Reef A.path
   "folder": "Top Paths",
-========
-  "folder": "Thing to BCoral Station",
->>>>>>>> origin/master:src/main/deploy/pathplanner/paths/B to BCoralstation.path
   "idealStartingState": {
     "velocity": 0,
     "rotation": 128.85337434035335
