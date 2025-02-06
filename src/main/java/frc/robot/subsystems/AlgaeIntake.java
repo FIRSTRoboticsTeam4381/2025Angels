@@ -4,8 +4,7 @@ import com.pathplanner.lib.auto.NamedCommands;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
-
-
+import com.revrobotics.spark.SparkLimitSwitch;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
@@ -27,16 +26,17 @@ import frc.robot.RobotContainer;
 public class AlgaeIntake extends SubsystemBase {
     private SparkMax algaemotor1;
     private SparkMax algaemotor2;
-    private DigitalInput algaesensor;
+    private SparkLimitSwitch algaesensor;
 
     public AlgaeIntake() {
         algaemotor1 = new SparkMax(50, MotorType.kBrushless);
         algaemotor2 = new SparkMax(51, MotorType.kBrushless);
-        algaesensor = new DigitalInput(0);
+        algaesensor = algaemotor1.getForwardLimitSwitch();
 
         SparkMaxConfig algaemotor1Config = new SparkMaxConfig();
         algaemotor1Config.smartCurrentLimit(10)
-                .idleMode(IdleMode.kCoast);
+                .idleMode(IdleMode.kCoast)
+                .limitSwitch.forwardLimitSwitchEnabled(false);
 
         algaemotor1.configure(algaemotor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
@@ -58,7 +58,7 @@ public class AlgaeIntake extends SubsystemBase {
     public Command Intake() {
         return new SequentialCommandGroup(
                 new InstantCommand(() -> algaemotor1.set(-1), this),
-                new WaitUntilCommand(() -> !algaesensor.get()),
+                new WaitUntilCommand(() -> !hasalgae()),
                 RobotContainer.getRobot().vibrateSpecialist(RumbleType.kLeftRumble, .5),
                 new WaitCommand(1.5),
                 new InstantCommand(() -> algaemotor1.set(0), this)).withName("AlgaeIntake");
@@ -67,13 +67,18 @@ public class AlgaeIntake extends SubsystemBase {
     public Command Outtake() {
         return new SequentialCommandGroup(
                 new InstantCommand(() -> algaemotor1.set(1), this),
-                new WaitUntilCommand(() -> algaesensor.get()),
+                new WaitUntilCommand(() -> hasalgae()),
                 new WaitCommand(1.5),
                 new InstantCommand(() -> algaemotor1.set(0), this)).withName("AlgaeOuttake");
     }
 
     public Command IntakeandOut() {
-        return new ConditionalCommand(Intake(), Outtake(), algaesensor::get).withName("AlgaeIntakeandOuttake");
+        return new ConditionalCommand(Intake(), Outtake(), this::hasalgae).withName("AlgaeIntakeandOuttake");
+    }
+
+    public boolean hasalgae()
+    {
+        return algaesensor.isPressed();
     }
 
 }

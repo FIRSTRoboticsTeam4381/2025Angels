@@ -8,6 +8,7 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.pathplanner.lib.auto.NamedCommands;
+import com.revrobotics.spark.SparkLimitSwitch;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
@@ -35,8 +36,8 @@ public class Coralintake extends SubsystemBase {
   private SparkMax coralmotor2;
 
   //creating a sensor
-  private DigitalInput coralsensor;
-
+  private SparkLimitSwitch coralsensor1;
+  private SparkLimitSwitch coralsensor2;
   // Creates a new Coralintake
   public Coralintake() {
 
@@ -45,8 +46,8 @@ public class Coralintake extends SubsystemBase {
   coralmotor2 = new SparkMax(56,MotorType.kBrushless);
 
   //sets the can ID for a sensor
-  coralsensor = new DigitalInput(1);
-  coralsensor.get();
+  coralsensor1 = coralmotor1.getForwardLimitSwitch();
+  coralsensor2 = coralmotor2.getForwardLimitSwitch();
 
   //set up the config
   SparkMaxConfig coralmotor1Config = new SparkMaxConfig();
@@ -54,7 +55,8 @@ public class Coralintake extends SubsystemBase {
   //assign properties to motor
   coralmotor1Config
   .smartCurrentLimit(10)
-  .idleMode(IdleMode.kBrake);
+  .idleMode(IdleMode.kBrake)
+  .limitSwitch.forwardLimitSwitchEnabled(false);
 
   //set whether it will reset parameters when they are changed, and the persist mode
   coralmotor1.configure(coralmotor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
@@ -95,7 +97,7 @@ this.setDefaultCommand(
     //seting the motor speed to 1
     new InstantCommand(()-> coralmotor1.set(1),this),
     //checking to see if the sensor can see the coral
-    new WaitUntilCommand(()->!coralsensor.get()),
+    new WaitUntilCommand(()->!hascoral()),
     //wait time after throwing coral out
     new WaitCommand(1.5),
     //stopping the motor.
@@ -110,7 +112,7 @@ this.setDefaultCommand(
       //this command will run until the sensor sees the coral
       RobotContainer.getRobot().vibrateSpecialist(RumbleType.kRightRumble, .5),
       new InstantCommand(()-> coralmotor1.set(-1),this),
-      new WaitUntilCommand(()->coralsensor.get()),
+      new WaitUntilCommand(()->hascoral()),
       RobotContainer.getRobot().vibrateSpecialist(RumbleType.kRightRumble, 0),
       //makes controller rumble on the right side
       new WaitCommand(0.5),
@@ -123,8 +125,15 @@ this.setDefaultCommand(
     return new ConditionalCommand(
       CoralOut(), // this will run when the sensor sees something
        Coralin(), //this will run when the sensor doesn't see anything
-        coralsensor::get).withName("Coral in or out is running"); //this tells it which sensor to use
+        this::hascoral).withName("Coral in or out is running"); //this tells it which sensor to use
   }
+
+  public boolean hascoral()
+  {
+    return coralsensor1.isPressed() || coralsensor2.isPressed();
+  }
+
+
 }
 
 
