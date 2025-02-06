@@ -34,17 +34,19 @@ public class Elevator extends SubsystemBase {
 
         SparkFlexConfig motorEL1Config = new SparkFlexConfig();
              motorEL1Config.smartCurrentLimit(25)
-             .idleMode(IdleMode.kCoast);
+             .idleMode(IdleMode.kBrake);
+
+             SparkFlexConfig motorEL2Config = new SparkFlexConfig();
+    
+             motorEL2Config.apply(motorEL1Config);
+             motorEL2Config.follow(motorEL1, true);
+     
+        motorEL2.configure(motorEL2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+
+        motorEL1Config.limitSwitch.forwardLimitSwitchEnabled(true).reverseLimitSwitchEnabled(true);
 
         motorEL1.configure(motorEL1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-        
-        
-        SparkFlexConfig motorEL2Config = new SparkFlexConfig();
-    
-        motorEL2Config.apply(motorEL1Config);
-        motorEL2Config.follow(motorEL1, true);
 
-    motorEL2.configure(motorEL2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
   }
 
   @Override
