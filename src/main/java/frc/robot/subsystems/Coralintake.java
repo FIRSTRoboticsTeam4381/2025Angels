@@ -110,11 +110,10 @@ this.setDefaultCommand(
   {
     return new SequentialCommandGroup(
       //this command will run until the sensor sees the coral
-      RobotContainer.getRobot().vibrateSpecialist(RumbleType.kRightRumble, .5),
       new InstantCommand(()-> coralmotor1.set(-1),this),
-      new WaitUntilCommand(()->hascoral()),
-      RobotContainer.getRobot().vibrateSpecialist(RumbleType.kRightRumble, 0),
-      //makes controller rumble on the right side
+      RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kRightRumble, 0.5,
+        new WaitUntilCommand(()->hascoral())),
+      RobotContainer.getRobot().vibrateDriverForTime(RumbleType.kBothRumble, 0.8, 0.5),
       new WaitCommand(0.5),
       new InstantCommand(()->coralmotor1.set(0),this)
       ).withName("Coral Intaking");
