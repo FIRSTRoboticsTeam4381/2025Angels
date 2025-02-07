@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.7647500000000003,
-        "y": 0.905
+        "x": 5.995248287671233,
+        "y": 0.6742722602739729
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.9364058832409294,
-        "y": 1.0867532881374542
+        "x": 2.47923801369863,
+        "y": 0.40380993150684963
       },
       "isLocked": false,
-      "linkedName": "Bottom Coral Station"
+      "linkedName": "Proccesser"
     },
     {
       "anchor": {
-        "x": 3.36375,
-        "y": 2.7769999999999992
+        "x": 2.0134417808219176,
+        "y": 5.843107876712329
       },
       "prevControl": {
-        "x": 3.1869733047033644,
-        "y": 2.6002233047033614
+        "x": 2.19375,
+        "y": 3.438998287671233
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Reef C"
+      "linkedName": "TB"
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 59.58891873287471
+    "rotation": 180.0
   },
   "reversed": false,
-  "folder": "Bottom Paths",
+  "folder": "Processer to Ball",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -131.0817511359326
+    "rotation": -90.0
   },
   "useDefaultConstraints": true
 }

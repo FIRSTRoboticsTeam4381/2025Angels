@@ -4,13 +4,16 @@
   "holonomicMode": true,
   "pathFolders": [
     "BCoral station to Reef",
+    "Ball to Processer",
     "Bottom Paths",
+    "Bottom to Ball",
     "Middle To Bottom",
-    "Top Paths ",
+    "Middle To Top",
+    "Processer to Ball",
     "Reef To TCoral Station",
     "Reef to BCoral Station",
     "TCoral Station To Reef",
-    "Middle To Top"
+    "Top Paths "
   ],
   "autoFolders": [],
   "defaultMaxVel": 3.0,

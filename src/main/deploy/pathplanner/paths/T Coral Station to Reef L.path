@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.7549999999965527,
-        "y": 6.920750000003912
+        "x": 1.74525,
+        "y": 7.066999999999999
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.9792499999965523,
-        "y": 6.7355000000039125
+        "x": 1.9694999999999996,
+        "y": 6.881749999999999
       },
       "isLocked": false,
       "linkedName": "Top Coral Station"
@@ -45,7 +45,7 @@
     "rotation": -59.26451229808008
   },
   "reversed": false,
-  "folder": "Top Paths",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
     "rotation": 128.85337434035335
