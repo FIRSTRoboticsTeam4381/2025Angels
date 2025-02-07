@@ -27,12 +27,12 @@ import frc.robot.subsystems.Swerve;
 public class SnaptoPose extends Command 
 {
     public final ArrayList<Pose2d> snapPositions= new ArrayList<Pose2d>(){{
-        new Pose2d(3.764, 5.242, new Rotation2d(Radians.convertFrom(-60, Degrees)));
-        new Pose2d(5.203, 5.254, new Rotation2d(Radians.convertFrom(-120, Degrees)));
-        new Pose2d(5.970, 4.007, new Rotation2d(Radians.convertFrom(180, Degrees)));
-        new Pose2d(5.203, 2.784, new Rotation2d(Radians.convertFrom(120, Degrees)));
-        new Pose2d(3.740, 2.784, new Rotation2d(Radians.convertFrom(60, Degrees)));
-        new Pose2d(3.045, 4.031, new Rotation2d(Radians.convertFrom(0, Degrees)));
+        add(new Pose2d(3.764, 5.242, new Rotation2d(Radians.convertFrom(-60, Degrees))));
+        add(new Pose2d(5.203, 5.254, new Rotation2d(Radians.convertFrom(-120, Degrees))));
+        add(new Pose2d(5.970, 4.007, new Rotation2d(Radians.convertFrom(180, Degrees))));
+        add(new Pose2d(5.203, 2.784, new Rotation2d(Radians.convertFrom(120, Degrees))));
+        add(new Pose2d(3.740, 2.784, new Rotation2d(Radians.convertFrom(60, Degrees))));
+        add(new Pose2d(3.045, 4.031, new Rotation2d(Radians.convertFrom(0, Degrees))));
     }};
     public Swerve swerve;
     private Pose2d target;
@@ -42,9 +42,9 @@ public class SnaptoPose extends Command
     public SnaptoPose(Swerve s){
 
         swerve = s;
-        x = new PIDController(.001, 0, 0);
-        y = new PIDController(.001, 0, 0);
-        r = new PIDController(.001, 0, 0);
+        x = new PIDController(.1, 0, 0);
+        y = new PIDController(.1, 0, 0);
+        r = new PIDController(.01, 0, 0);
         addRequirements(swerve);
     }
     // Called when the command is initially scheduled
@@ -62,6 +62,9 @@ public class SnaptoPose extends Command
                 bestDistance = distance;
             }
         }
+
+        swerve.field.getObject("SnapToPose Target").setPose(target);
+        
         x.setSetpoint(target.getX());
         y.setSetpoint(target.getY());
         r.setSetpoint(target.getRotation().getDegrees());
