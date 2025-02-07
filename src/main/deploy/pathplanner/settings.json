@@ -3,14 +3,14 @@
   "robotLength": 0.9,
   "holonomicMode": true,
   "pathFolders": [
+    "BCoral station to Reef",
     "Bottom Paths",
-    "Top Paths",
-    "Coral Station To Reef",
-    "Reef To Coral Station",
-    "Top To",
-    "Bottom To",
-    "BCoral station to thing",
-    "Thing to BCoral Station"
+    "Middle To Bottom",
+    "Top Paths ",
+    "Reef To TCoral Station",
+    "Reef to BCoral Station",
+    "TCoral Station To Reef",
+    "Middle To Top"
   ],
   "autoFolders": [],
   "defaultMaxVel": 3.0,
