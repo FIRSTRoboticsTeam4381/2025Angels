@@ -58,7 +58,8 @@ public class AlgaeIntake extends SubsystemBase {
     public Command Intake() {
         return new SequentialCommandGroup(
                 new InstantCommand(() -> algaemotor1.set(-1), this),
-               RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kLeftRumble,0.5, new WaitUntilCommand(() -> !hasalgae())),
+               RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kLeftRumble,0.5,
+                new WaitUntilCommand(() -> !hasalgae())),
                 RobotContainer.getRobot().vibrateDriverForTime(RumbleType.kLeftRumble,0.5,0.5),
                 new WaitCommand(1.5),
                 new InstantCommand(() -> algaemotor1.set(0), this)).withName("AlgaeIntake");
