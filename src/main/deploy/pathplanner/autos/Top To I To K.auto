@@ -44,7 +44,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "I to T Coral Station"
+            "pathName": "I to TCoral Station"
           }
         },
         {
@@ -56,7 +56,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "T Coral Station To K"
+            "pathName": "TCoral Station To K"
           }
         },
         {
@@ -93,7 +93,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "K To T Coral Station"
+            "pathName": "K To TCoral Station"
           }
         },
         {
