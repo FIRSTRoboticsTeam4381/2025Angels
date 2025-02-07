@@ -26,6 +26,7 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.AdvancedCommands;
 import frc.robot.commands.Autos;
+import frc.robot.commands.SnaptoPose;
 import frc.robot.commands.TeleopSwerve;
 import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.Coralintake;
@@ -109,7 +110,7 @@ specialist.povUp().onTrue(advancedCommands.l4());
 specialist.povRight().onTrue(advancedCommands.l3());
 specialist.povDown().onTrue(advancedCommands.l2());
 specialist.povLeft().onTrue(advancedCommands.l1());
-
+driver.rightBumper().whileTrue(new SnaptoPose(swerve));
 
 
 specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));
