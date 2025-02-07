@@ -51,7 +51,17 @@ public class SnaptoPose extends Command
     @Override
     public void initialize(){
         Pose2d currentpose = swerve.getPose();
-        target = currentpose.nearest(snapPositions);
+        // target = currentpose.nearest(snapPositions);
+
+        double bestDistance = Double.MAX_VALUE;
+
+        for(Pose2d p : snapPositions){
+            double distance = currentpose.getTranslation().getDistance(p.getTranslation());
+            if (distance < bestDistance){
+                target = p;
+                bestDistance = distance;
+            }
+        }
         x.setSetpoint(target.getX());
         y.setSetpoint(target.getY());
         r.setSetpoint(target.getRotation().getDegrees());
