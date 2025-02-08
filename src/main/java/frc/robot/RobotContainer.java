@@ -79,6 +79,8 @@ public class RobotContainer {
     // Add any autos you want to be able to select below
     autoChooser.setDefaultOption("None", Autos.none());
     autoChooser.addOption("Test", Autos.testAuto());
+    autoChooser.addOption("Bottom to E to D", Autos.BottomtoEtoD());
+    autoChooser.addOption("Bottom to F to E", Autos.BottomtoFtoE());
     SmartDashboard.putString("Choose Reef", "");
     
 
