@@ -79,6 +79,7 @@ public class RobotContainer {
     // Add any autos you want to be able to select below
     autoChooser.setDefaultOption("None", Autos.none());
     autoChooser.addOption("Test", Autos.testAuto());
+    SmartDashboard.putString("Choose Reef", "");
     
 
     // Add auto controls to the dashboard
@@ -120,6 +121,7 @@ specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance()
   }
 
   public Command getAutonomousCommand() {
+    Autos.chosenReef();
     double startDelay=SmartDashboard.getNumber("Start Delay", 0);
     return new SequentialCommandGroup( 
     new WaitCommand(startDelay), 

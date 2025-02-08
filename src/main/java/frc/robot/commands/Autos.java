@@ -4,15 +4,29 @@
 
 package frc.robot.commands;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
 
+import org.json.simple.parser.ParseException;
+
+import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import com.pathplanner.lib.path.PathPlannerPath;
+import com.pathplanner.lib.util.FileVersionException;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.ConditionalCommand;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.SelectCommand;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.RobotContainer;
 
 public final class Autos {
@@ -85,6 +99,7 @@ public final class Autos {
                 DriverStation.reportError("Failed to load autonomous from PathPlanner file!", false);
             }
         }
+    }
 
         public static PreviewAuto BottomtoEtoD() {
             return new PreviewAuto("Bottom to E to D");
@@ -94,6 +109,67 @@ public final class Autos {
             return new PreviewAuto("Bottom to F to E");
         }
 
+           public static Queue<Character> reefToGo = new LinkedList<>();
+          
+           public static Character chosenReef() {
+            return reefToGo.peek();
+        }
+          public static void pickNotes() {
+        String chooseReef = SmartDashboard.getString("Choose Reef", "");
+        reefToGo.clear(); 
+
+        for(String n : chooseReef.split(",")) {
+            try {
+                reefToGo.add(n.charAt(0));
+            }catch(Exception e){}
+        }
+    }
+    
+    
+     public static PreviewAuto ReefSelect(String autoName)
+    {
+        try {
+            return new PreviewAuto(new SequentialCommandGroup(
+                new PathPlannerAuto(autoName),
+                new ConditionalCommand( new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()),
+                new SequentialCommandGroup(
+                    new SelectCommand<Character>(
+                        Map.ofEntries(
+                            Map.entry('a', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoralstation to A"))),
+                            Map.entry('b', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoralstation to B"))),
+                            Map.entry('c', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoralstation to C"))),
+                            Map.entry('d', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoralstation to D"))),
+                            Map.entry('e', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoralstation to E")))
+                        ), Autos::chosenReef),
+                   RobotContainer.getRobot().advancedCommands.placel4(),
+                   new SelectCommand<Character>(
+                        Map.ofEntries(
+                            Map.entry('a', AutoBuilder.followPath(PathPlannerPath.fromPathFile("A to BCoralstation"))),
+                            Map.entry('b', AutoBuilder.followPath(PathPlannerPath.fromPathFile("B to BCoralstation"))),
+                            Map.entry('c', AutoBuilder.followPath(PathPlannerPath.fromPathFile("C to BCoralstation"))),
+                            Map.entry('d', AutoBuilder.followPath(PathPlannerPath.fromPathFile("D to BCoralstation"))),
+                            Map.entry('e', AutoBuilder.followPath(PathPlannerPath.fromPathFile("E to BCoralstation")))
+                        ), Autos::chosenReef),
+                        RobotContainer.getRobot().advancedCommands.autointake(),
+                        new InstantCommand(()-> reefToGo.remove())
+                ), reefToGo::isEmpty).repeatedly()
+
+
+
+            ), autoName);
+        } catch (FileVersionException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return none();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return none();
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return none();
+        }
     }
 
 }
