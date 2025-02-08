@@ -54,7 +54,6 @@ public class Robot extends TimedRobot {
           Map.entry(41, "Swerve/BL/Angle"),
           Map.entry(50, "Algaeintake/algaemotor1"),
           Map.entry(51, "Algaeintake/algaemotor2"),
-          Map.entry(52, "Pivot/pivotmotor"),
           Map.entry(55, "Coralintake/coralmotor1"),
           Map.entry(56,"Coralintake/coralmotor2"),
           Map.entry(57,"CoralIntake/coralsensor"),
