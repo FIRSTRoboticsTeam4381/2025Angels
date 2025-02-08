@@ -93,12 +93,12 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
+    driver.back()
+      .onTrue(new InstantCommand(() -> swerve.zeroGyro()));
     swerve.setDefaultCommand(new TeleopSwerve(swerve, 
-            //driver::getLeftY,
-            //driver::getLeftX,
-          interpolateJoystick(driver::getLeftY,0.15),
-          interpolateJoystick(driver::getLeftX,0.15), 
-          interpolateJoystick (driver::getRightX,0.15),
+          driver::getLeftY,
+          driver::getLeftX,
+          driver::getRightX,
              true, driver.leftBumper()::getAsBoolean));
 
 specialist.rightBumper().onTrue(coralintake.Coralinorout());
