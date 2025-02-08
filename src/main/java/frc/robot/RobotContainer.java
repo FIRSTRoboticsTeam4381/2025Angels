@@ -103,8 +103,8 @@ public class RobotContainer {
 
 specialist.rightBumper().onTrue(coralintake.Coralinorout());
 specialist.leftBumper().onTrue(algaeintake.IntakeandOut());
-elevator.setDefaultCommand(elevator.joystickcontrol(interpolateJoystick(specialist::getLeftY, 0.15)));
-pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(specialist::getRightY, 0.15)));
+elevator.setDefaultCommand(elevator.joystickcontrol(interpolateJoystick(specialist::getLeftY, Constants.stickDeadband)));
+pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(specialist::getRightY, Constants.stickDeadband)));
 specialist.x().onTrue(hang.HangControl());
 specialist.povUp().onTrue(advancedCommands.l4());
 specialist.povRight().onTrue(advancedCommands.l3());
