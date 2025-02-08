@@ -1,13 +1,17 @@
 package frc.robot.subsystems;
 
 import com.pathplanner.lib.auto.NamedCommands;
+import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
+import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkLimitSwitch;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+import com.revrobotics.spark.config.SparkFlexConfig;
 import com.revrobotics.spark.config.SparkMaxConfig;
+import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 
 import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -15,6 +19,7 @@ import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ConditionalCommand;
+import edu.wpi.first.wpilibj2.command.FunctionalCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -27,11 +32,15 @@ public class AlgaeIntake extends SubsystemBase {
     private SparkMax algaemotor1;
     private SparkMax algaemotor2;
     private SparkLimitSwitch algaesensor;
+    private SparkMax algaemotor3;
+    private SparkFlex groundIntake;
 
     public AlgaeIntake() {
         algaemotor1 = new SparkMax(50, MotorType.kBrushless);
         algaemotor2 = new SparkMax(51, MotorType.kBrushless);
         algaesensor = algaemotor1.getForwardLimitSwitch();
+        algaemotor3 = new SparkMax(54,MotorType.kBrushless);
+        groundIntake = new SparkFlex(53, MotorType.kBrushless);
 
         SparkMaxConfig algaemotor1Config = new SparkMaxConfig();
         algaemotor1Config.smartCurrentLimit(10)
@@ -46,7 +55,33 @@ public class AlgaeIntake extends SubsystemBase {
         algaemotor2Config.follow(algaemotor1, true);
 
         algaemotor2.configure(algaemotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+        algaemotor3.configure(algaemotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    
+        SparkFlexConfig groundIntakeConfig = new SparkFlexConfig();
+        groundIntakeConfig.smartCurrentLimit(30)
+        .idleMode(IdleMode.kBrake)
+        .closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
+        groundIntake.configure(groundIntakeConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+
         NamedCommands.registerCommand("InAndOut", IntakeandOut());
+
+        this.setDefaultCommand(
+        // sets default command
+
+        new FunctionalCommand(
+            // basic functional command
+
+            () -> {algaemotor1.set(0);
+            groundIntake.getClosedLoopController().setReference(.28, ControlType.kPosition);}, // oninit
+            () -> {
+            }, // onexecute
+            (killed) -> {
+            }, // on end
+            () -> {
+              return false;
+            }, // isfinished
+            this)
+        );
     }
 
     @Override
@@ -57,6 +92,7 @@ public class AlgaeIntake extends SubsystemBase {
 
     public Command Intake() {
         return new SequentialCommandGroup(
+                new InstantCommand(()-> groundIntake.getClosedLoopController().setReference(.558, ControlType.kPosition)),
                 new InstantCommand(() -> algaemotor1.set(-1), this),
                RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kLeftRumble,0.5,
                 new WaitUntilCommand(() -> !hasalgae())),
