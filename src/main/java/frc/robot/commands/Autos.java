@@ -108,6 +108,9 @@ public final class Autos {
         public static PreviewAuto BottomtoFtoE() {
             return new PreviewAuto("Bottom to F to E");
         }
+        public static PreviewAuto BottomBBtoMB() {
+            return new PreviewAuto("Bottom to BB to MB");
+        }
 
            public static Queue<Character> reefToGo = new LinkedList<>();
           
