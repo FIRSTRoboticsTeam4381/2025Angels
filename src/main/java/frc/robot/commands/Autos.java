@@ -114,7 +114,7 @@ public final class Autos {
            public static Character chosenReef() {
             return reefToGo.peek();
         }
-          public static void pickNotes() {
+          public static void pickReef() {
         String chooseReef = SmartDashboard.getString("Choose Reef", "");
         reefToGo.clear(); 
 
@@ -126,7 +126,59 @@ public final class Autos {
     }
     
     
-     public static PreviewAuto ReefSelect(String autoName)
+     public static PreviewAuto ReefSelectBottom(String autoName)
+    {
+        try {
+            return new PreviewAuto(new SequentialCommandGroup(
+                new PathPlannerAuto(autoName),
+                new ConditionalCommand( new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()),
+                new SequentialCommandGroup(
+                    new SelectCommand<Character>(
+                        Map.ofEntries(
+                            Map.entry('a', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoralstation To A"))),
+                            Map.entry('b', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoralstation To B"))),
+                            Map.entry('G', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoralstation To G"))),
+                            Map.entry('H', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoralstation To H"))),
+                            Map.entry('I', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoralstation To I"))),
+                            Map.entry('J', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoralstation To J"))),
+                            Map.entry('K', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoralstation To K"))),
+                            Map.entry('L', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoralstation To L")))
+                        ), Autos::chosenReef),
+                   RobotContainer.getRobot().advancedCommands.placel4(),
+                   new SelectCommand<Character>(
+                        Map.ofEntries(
+                            Map.entry('a', AutoBuilder.followPath(PathPlannerPath.fromPathFile("A To TCoralstation"))),
+                            Map.entry('b', AutoBuilder.followPath(PathPlannerPath.fromPathFile("B To TCoralstation"))),
+                            Map.entry('G', AutoBuilder.followPath(PathPlannerPath.fromPathFile("G To TCoralstation"))),
+                            Map.entry('H', AutoBuilder.followPath(PathPlannerPath.fromPathFile("H To TCoralstation"))),
+                            Map.entry('I', AutoBuilder.followPath(PathPlannerPath.fromPathFile("I To TCoralstation"))),
+                            Map.entry('J', AutoBuilder.followPath(PathPlannerPath.fromPathFile("J To TCoralstation"))),
+                            Map.entry('K', AutoBuilder.followPath(PathPlannerPath.fromPathFile("K To TCoralstation"))),
+                            Map.entry('L', AutoBuilder.followPath(PathPlannerPath.fromPathFile("L To TCoralstation")))
+                        ), Autos::chosenReef),
+                        RobotContainer.getRobot().advancedCommands.autointake(),
+                        new InstantCommand(()-> reefToGo.remove())
+                ), reefToGo::isEmpty).repeatedly()
+
+
+
+            ), autoName);
+        } catch (FileVersionException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return none();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return none();
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return none();
+        }
+    }
+
+    public static PreviewAuto ReefSelectTop(String autoName)
     {
         try {
             return new PreviewAuto(new SequentialCommandGroup(
@@ -171,5 +223,6 @@ public final class Autos {
             return none();
         }
     }
+    
 
 }
