@@ -104,13 +104,25 @@ public final class Autos {
         public static PreviewAuto BottomtoEtoD() {
             return new PreviewAuto("Bottom to E to D");
         }
-
         public static PreviewAuto BottomtoFtoE() {
             return new PreviewAuto("Bottom to F to E");
         }
         public static PreviewAuto BottomBBtoMB() {
             return new PreviewAuto("Bottom to BB to MB");
         }
+        public static PreviewAuto TopToIToJ() {
+            return new PreviewAuto("Top To I To J");
+        }
+        public static PreviewAuto TopToIToK() {
+            return new PreviewAuto("Top To I To K");
+        }
+        public static PreviewAuto TopToIToL() {
+            return new PreviewAuto("Top To I To L");
+        }
+
+
+
+
 
            public static Queue<Character> reefToGo = new LinkedList<>();
           
@@ -150,8 +162,8 @@ public final class Autos {
                    RobotContainer.getRobot().advancedCommands.placel4(),
                    new SelectCommand<Character>(
                         Map.ofEntries(
-                            Map.entry('a', AutoBuilder.followPath(PathPlannerPath.fromPathFile("A To TCoralstation"))),
-                            Map.entry('b', AutoBuilder.followPath(PathPlannerPath.fromPathFile("B To TCoralstation"))),
+                            Map.entry('A', AutoBuilder.followPath(PathPlannerPath.fromPathFile("A To TCoralstation"))),
+                            Map.entry('B', AutoBuilder.followPath(PathPlannerPath.fromPathFile("B To TCoralstation"))),
                             Map.entry('G', AutoBuilder.followPath(PathPlannerPath.fromPathFile("G To TCoralstation"))),
                             Map.entry('H', AutoBuilder.followPath(PathPlannerPath.fromPathFile("H To TCoralstation"))),
                             Map.entry('I', AutoBuilder.followPath(PathPlannerPath.fromPathFile("I To TCoralstation"))),

@@ -81,6 +81,9 @@ public class RobotContainer {
     autoChooser.addOption("Test", Autos.testAuto());
     autoChooser.addOption("Bottom to E to D", Autos.BottomtoEtoD());
     autoChooser.addOption("Bottom to F to E", Autos.BottomtoFtoE());
+    autoChooser.addOption("Top To I To J", Autos.TopToIToJ());
+    autoChooser.addOption("Top To I To K", Autos.TopToIToK());
+    autoChooser.addOption("Top To I To L", Autos.TopToIToL());
     SmartDashboard.putString("Choose Reef", "");
     
 
