@@ -121,7 +121,7 @@ public class Coralintake extends SubsystemBase {
         RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kRightRumble, 0.5,
             new WaitUntilCommand(() -> hascoral())),
         RobotContainer.getRobot().vibrateDriverForTime(RumbleType.kBothRumble, 0.8, 0.5),
-        new WaitCommand(0.5),
+        new WaitCommand(0.25),
         new InstantCommand(() -> coralmotor1.set(0), this)).withName("Coral Intaking");
   }
 

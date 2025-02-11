@@ -105,22 +105,22 @@ public class AlgaeIntake extends SubsystemBase {
                 new InstantCommand(()-> groundIntake.getClosedLoopController().setReference(.558, ControlType.kPosition)),
                 new InstantCommand(() -> algaemotor1.set(-1), this),
                RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kLeftRumble,0.5,
-                new WaitUntilCommand(() -> !hasalgae())),
+                new WaitUntilCommand(() -> hasalgae())),
                 RobotContainer.getRobot().vibrateDriverForTime(RumbleType.kLeftRumble,0.5,0.5),
-                new WaitCommand(1.5),
+                new WaitCommand(0.25),
                 new InstantCommand(() -> algaemotor1.set(0), this)).withName("AlgaeIntake");
     }
 
     public Command Outtake() {
         return new SequentialCommandGroup(
                 new InstantCommand(() -> algaemotor1.set(1), this),
-                new WaitUntilCommand(() -> hasalgae()),
+                new WaitUntilCommand(() -> !hasalgae()),
                 new WaitCommand(1.5),
                 new InstantCommand(() -> algaemotor1.set(0), this)).withName("AlgaeOuttake");
     }
 
     public Command IntakeandOut() {
-        return new ConditionalCommand(Intake(), Outtake(), this::hasalgae).withName("AlgaeIntakeandOuttake");
+        return new ConditionalCommand(Outtake(), Intake(), this::hasalgae).withName("AlgaeIntakeandOuttake");
     }
 
     public boolean hasalgae()
