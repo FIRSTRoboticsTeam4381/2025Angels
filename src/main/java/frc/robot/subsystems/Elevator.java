@@ -44,7 +44,7 @@ public class Elevator extends SubsystemBase {
      
         motorEL2.configure(motorEL2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-        motorEL1Config.limitSwitch.forwardLimitSwitchEnabled(false).reverseLimitSwitchEnabled(false);
+        motorEL1Config.limitSwitch.forwardLimitSwitchEnabled(true).reverseLimitSwitchEnabled(true);
 
         motorEL1.configure(motorEL1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
