@@ -33,20 +33,24 @@ public class Elevator extends SubsystemBase {
         motorEL2 = new SparkFlex(61,MotorType.kBrushless);
 
         SparkFlexConfig motorEL1Config = new SparkFlexConfig();
-             motorEL1Config.smartCurrentLimit(25)
-             .idleMode(IdleMode.kBrake);
+             motorEL1Config.smartCurrentLimit(60)
+             .idleMode(IdleMode.kBrake)
+             .inverted(true);
 
-             SparkFlexConfig motorEL2Config = new SparkFlexConfig();
-    
-             motorEL2Config.apply(motorEL1Config);
-             motorEL2Config.follow(motorEL1, true);
+        SparkFlexConfig motorEL2Config = new SparkFlexConfig();
+
+        motorEL2Config.apply(motorEL1Config);
+        motorEL2Config.follow(motorEL1, false);
      
         motorEL2.configure(motorEL2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-        motorEL1Config.limitSwitch.forwardLimitSwitchEnabled(true).reverseLimitSwitchEnabled(true);
+        motorEL1Config.limitSwitch.forwardLimitSwitchEnabled(false).reverseLimitSwitchEnabled(false);
 
         motorEL1.configure(motorEL1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
+        // Quick and dirty way to enable position logging
+        // The line is a no-op here but enables the desired packets
+        motorEL1.getEncoder().getPosition();
   }
 
   @Override
@@ -59,7 +63,7 @@ public class Elevator extends SubsystemBase {
     public Command joystickcontrol(Supplier<Double> joystickMove)
     {
       return new RepeatCommand(
-        new InstantCommand(() -> motorEL1.set(joystickMove.get()),this)
+        new InstantCommand(() -> motorEL1.set(-joystickMove.get()),this)
       );
     }
     

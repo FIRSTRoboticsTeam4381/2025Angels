@@ -63,6 +63,7 @@ public class Coralintake extends SubsystemBase {
 
     // making motor4 follow motor3
     SparkMaxConfig coralmotor2Config = new SparkMaxConfig();
+    coralmotor2Config.apply(coralmotor1Config);
     coralmotor2Config.apply(coralmotor2Config);
     coralmotor2Config.follow(coralmotor1// telling motor4 to be a follower of motor3
     );
@@ -86,6 +87,12 @@ public class Coralintake extends SubsystemBase {
             this)
 
     );
+
+    
+        // Quick and dirty way to enable position logging
+        // The line is a no-op here but enables the desired packets
+        coralmotor1.getEncoder().getVelocity();
+        coralmotor2.getEncoder().getVelocity();
 
   }
 

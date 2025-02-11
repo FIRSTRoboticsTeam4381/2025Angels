@@ -9,6 +9,9 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.SparkMax;
+
+import java.util.function.Supplier;
+
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 
@@ -16,6 +19,8 @@ import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ConditionalCommand;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.RepeatCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.commands.SparkPosition;
 
@@ -36,7 +41,7 @@ public Hang() {
   SparkMaxConfig hangmotor1Config = new SparkMaxConfig();
   //assign properties to motor
   hangmotor1Config
-  .smartCurrentLimit(30)
+  .smartCurrentLimit(40)
   .idleMode(IdleMode.kBrake);
   hangmotor1Config.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
   //set whether it will reset parameters when they are changed, and the persist mode
@@ -46,7 +51,20 @@ public Hang() {
   hangmotor2Config.apply(hangmotor2Config);
   hangmotor2Config.follow(hangmotor1, true);
   hangmotor2.configure(hangmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+
+  
+  // Quick and dirty way to enable position logging
+  // The line is a no-op here but enables the desired packets
+  hangmotor1.getEncoder().getPosition();
+  hangmotor1.getAbsoluteEncoder().getPosition();
 }
+
+  public Command joystickcontrol(Supplier<Double> joystickMove)
+    {
+      return new RepeatCommand(
+        new InstantCommand(() -> hangmotor1.set(-joystickMove.get()),this)
+      );
+    }
 
 
   @Override

@@ -38,7 +38,7 @@ public class AlgaeIntake extends SubsystemBase {
     public AlgaeIntake() {
         algaemotor1 = new SparkMax(50, MotorType.kBrushless);
         algaemotor2 = new SparkMax(51, MotorType.kBrushless);
-        algaesensor = algaemotor1.getForwardLimitSwitch();
+        algaesensor = algaemotor2.getForwardLimitSwitch();
         algaemotor3 = new SparkMax(54,MotorType.kBrushless);
         groundIntake = new SparkFlex(53, MotorType.kBrushless);
 
@@ -82,6 +82,14 @@ public class AlgaeIntake extends SubsystemBase {
             }, // isfinished
             this)
         );
+
+        
+        // Quick and dirty way to enable position logging
+        // The line is a no-op here but enables the desired packets
+        algaemotor1.getEncoder().getVelocity();
+        algaemotor2.getEncoder().getVelocity();
+        algaemotor3.getEncoder().getVelocity();
+        groundIntake.getAbsoluteEncoder().getPosition();
     }
 
     @Override

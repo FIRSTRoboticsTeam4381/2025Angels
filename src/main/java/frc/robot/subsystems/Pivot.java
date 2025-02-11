@@ -38,12 +38,17 @@ private SparkMax pivotmotor;
     SparkMaxConfig pivotmotorConfig = new SparkMaxConfig();
 
     pivotmotorConfig
-    .smartCurrentLimit(20)
+    .smartCurrentLimit(40)
     .idleMode(IdleMode.kBrake);
 
     pivotmotorConfig.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
 
     pivotmotor.configure(pivotmotorConfig,ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+
+    
+    // Quick and dirty way to enable position logging
+    // The line is a no-op here but enables the desired packets
+    pivotmotor.getAbsoluteEncoder().getPosition();
   }
 
   @Override
@@ -55,7 +60,7 @@ private SparkMax pivotmotor;
   public Command joystickcontrol(Supplier<Double> joystickMove)
   {
     return 
-      new InstantCommand(()-> pivotmotor.set(joystickMove.get()),this).repeatedly()
+      new InstantCommand(()-> pivotmotor.set(-joystickMove.get()),this).repeatedly()
     ;
   }
 
