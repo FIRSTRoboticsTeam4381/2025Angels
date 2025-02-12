@@ -10,10 +10,12 @@ import java.util.function.Supplier;
 
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
+import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+import com.revrobotics.spark.config.SparkFlexConfig;
 
 import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -28,14 +30,14 @@ import frc.robot.commands.SparkPosition;
 
 public class Pivot extends SubsystemBase {
 
-private SparkMax pivotmotor;
+private SparkFlex pivotmotor;
 
   /** Creates a new Pivot. */
   public Pivot() {
 
-    pivotmotor = new SparkMax(52, MotorType.kBrushless);
+    pivotmotor = new SparkFlex(52, MotorType.kBrushless);
 
-    SparkMaxConfig pivotmotorConfig = new SparkMaxConfig();
+    SparkFlexConfig pivotmotorConfig = new SparkFlexConfig();
 
     pivotmotorConfig
     .smartCurrentLimit(40)
