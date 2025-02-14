@@ -74,19 +74,19 @@ public class Elevator extends SubsystemBase {
     
     public Command level4()
     {
-      return goToPosition(400, 0.5);
+      return goToPosition(71.5, 0.2);
     }
     public Command level3()
     {
-      return goToPosition(300, 0.5);
+      return goToPosition(39.6, 0.2);
     }
     public Command level2()
     {
-      return goToPosition(200, 0.5);
+      return goToPosition(20.3, 0.2);
     }
     public Command level1()
     {
-      return goToPosition(100, 0.5);
+      return goToPosition(15, 0.2);
     }
     public Command net()
     {

@@ -101,8 +101,8 @@ public class RobotContainer {
           driver::getRightX,
              true, driver.leftBumper()::getAsBoolean));
 
-specialist.rightBumper().onTrue(coralintake.Coralinorout());
-specialist.leftBumper().onTrue(algaeintake.IntakeandOut());
+specialist.rightBumper().toggleOnTrue(coralintake.Coralinorout());
+specialist.leftBumper().toggleOnTrue(algaeintake.IntakeandOut());
 elevator.setDefaultCommand(elevator.joystickcontrol(interpolateJoystick(specialist::getLeftY, Constants.stickDeadband)));
 pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(specialist::getRightY, Constants.stickDeadband)));
 hang.setDefaultCommand(hang.joystickcontrol(() -> specialist.getLeftTriggerAxis() - specialist.getRightTriggerAxis()));

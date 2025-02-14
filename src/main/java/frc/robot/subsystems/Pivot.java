@@ -40,9 +40,13 @@ private SparkFlex pivotmotor;
     SparkFlexConfig pivotmotorConfig = new SparkFlexConfig();
 
     pivotmotorConfig
-    .smartCurrentLimit(40)
-    .idleMode(IdleMode.kBrake);
-
+    .smartCurrentLimit(50)
+    .idleMode(IdleMode.kBrake)
+    .inverted(true)
+    .softLimit.forwardSoftLimit(0.55)
+    .forwardSoftLimitEnabled(true)
+    .reverseSoftLimit(0.32)
+    .reverseSoftLimitEnabled(true);
     pivotmotorConfig.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
 
     pivotmotor.configure(pivotmotorConfig,ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
@@ -72,17 +76,17 @@ private SparkFlex pivotmotor;
 
   public Command coralScoring()
   {
-    return goToPosition(0, 0);
+    return goToPosition(0.4, 0.05);
   }
   
   public Command coralScoringTop()
   {
-    return goToPosition(0,0);
+    return goToPosition(0.39,0.05);
   }
 
   public Command intake()
   {
-    return goToPosition(0,0);
+    return goToPosition(0.54,0.05);
   }
 
 }

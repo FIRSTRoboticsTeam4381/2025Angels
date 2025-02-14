@@ -41,6 +41,9 @@ public class Hang extends SubsystemBase {
     hangmotor1Config
         .smartCurrentLimit(40)
         .idleMode(IdleMode.kBrake);
+        //.softLimit.reverseSoftLimit(0.17)
+        //.reverseSoftLimitEnabled(true)
+        
     hangmotor1Config.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
     // set whether it will reset parameters when they are changed, and the persist
     // mode
