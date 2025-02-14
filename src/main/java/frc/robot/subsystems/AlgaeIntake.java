@@ -45,9 +45,9 @@ public class AlgaeIntake extends SubsystemBase {
         SparkMaxConfig algaemotor1Config = new SparkMaxConfig();
         algaemotor1Config.smartCurrentLimit(15)
                 .idleMode(IdleMode.kBrake)
-                .inverted(true)
+                .inverted(false)
                 .limitSwitch.forwardLimitSwitchEnabled(false);
-                
+                algaemotor1Config.closedLoop.p(3);
 
         algaemotor1.configure(algaemotor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
