@@ -42,8 +42,8 @@ public class SnaptoPose extends Command
     public SnaptoPose(Swerve s){
 
         swerve = s;
-        x = new PIDController(.1, 0, 0);
-        y = new PIDController(.1, 0, 0);
+        x = new PIDController(.5, 0, 0);
+        y = new PIDController(.5, 0, 0);
         r = new PIDController(.01, 0, 0);
         addRequirements(swerve);
     }
