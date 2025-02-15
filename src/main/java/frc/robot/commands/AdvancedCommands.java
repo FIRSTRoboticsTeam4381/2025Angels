@@ -29,7 +29,7 @@ public class AdvancedCommands {
     return new ParallelCommandGroup(
       robot.elevator.level4(),
       robot.pivot.coralScoringTop()
-      );
+      ).withName("l4");
 
   }
 
@@ -38,7 +38,7 @@ public class AdvancedCommands {
     return new ParallelCommandGroup(
       robot.elevator.level3(),
       robot.pivot.coralScoring()
-      );
+      ).withName("l3");
   }
 
   public Command l2() {
@@ -46,7 +46,7 @@ public class AdvancedCommands {
     return new ParallelCommandGroup(
       robot.elevator.level2(),
       robot.pivot.coralScoring()
-      );
+      ).withName("l2");
   }
 
   public Command l1() {

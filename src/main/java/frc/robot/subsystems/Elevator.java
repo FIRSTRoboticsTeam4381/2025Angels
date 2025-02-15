@@ -11,6 +11,7 @@ import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+import com.revrobotics.spark.config.SoftLimitConfig;
 import com.revrobotics.spark.config.SparkFlexConfig;
 
 import edu.wpi.first.epilogue.Logged;
@@ -35,7 +36,13 @@ public class Elevator extends SubsystemBase {
         SparkFlexConfig motorEL1Config = new SparkFlexConfig();
              motorEL1Config.smartCurrentLimit(60)
              .idleMode(IdleMode.kBrake)
-             .inverted(true);
+             .inverted(true)
+             .softLimit.forwardSoftLimit(72)
+             .forwardSoftLimitEnabled(true);
+             motorEL1Config.closedLoop.p(.6);
+             motorEL1Config.closedLoop.d(1);
+             //motorEL1Config.closedLoopRampRate(.5);
+
 
         SparkFlexConfig motorEL2Config = new SparkFlexConfig();
 
@@ -74,19 +81,19 @@ public class Elevator extends SubsystemBase {
     
     public Command level4()
     {
-      return goToPosition(71.5, 0.2);
+      return goToPosition(71.5, 0.5).withName("l4");
     }
     public Command level3()
     {
-      return goToPosition(39.6, 0.2);
+      return goToPosition(39.6, 0.5).withName("l3");
     }
     public Command level2()
     {
-      return goToPosition(20.3, 0.2);
+      return goToPosition(20.3, 0.5).withName("l2");
     }
     public Command level1()
     {
-      return goToPosition(15, 0.2);
+      return goToPosition(20, 0.5).withName("l1");
     }
     public Command net()
     {
