@@ -242,10 +242,11 @@ public class Swerve extends SubsystemBase{
      */
     public void zeroGyro(){
         gyro.zeroYaw();
+        Optional<Alliance> a = DriverStation.getAlliance();
         swerveOdometry.resetPose(
             new Pose2d(
             swerveOdometry.getEstimatedPosition().getTranslation(),
-            DriverStation.getAlliance().get() == Alliance.Red ?
+            a.isPresent() && a.get() == Alliance.Red ?
                 new Rotation2d(Math.PI)
                 :
                 new Rotation2d(0)
