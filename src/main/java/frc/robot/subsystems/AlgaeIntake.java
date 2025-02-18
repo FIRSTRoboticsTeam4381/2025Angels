@@ -47,25 +47,33 @@ public class AlgaeIntake extends SubsystemBase {
                 .idleMode(IdleMode.kBrake)
                 .inverted(false)
                 .limitSwitch.forwardLimitSwitchEnabled(false);
-                algaemotor1Config.closedLoop.p(3);
 
         algaemotor1.configure(algaemotor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
         SparkMaxConfig algaemotor2Config = new SparkMaxConfig();
+        SparkMaxConfig algaemotor3Config = new SparkMaxConfig();
 
         algaemotor2Config.apply(algaemotor1Config);
         algaemotor2Config.follow(algaemotor1, true);
 
         algaemotor2.configure(algaemotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-        algaemotor3.configure(algaemotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-    
+        algaemotor3.configure(algaemotor3Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+        
         SparkFlexConfig groundIntakeConfig = new SparkFlexConfig();
         groundIntakeConfig.smartCurrentLimit(30)
         .idleMode(IdleMode.kBrake)
         .closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
+     
+        groundIntakeConfig.closedLoop.p(3);
         groundIntake.configure(groundIntakeConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
+        algaemotor3Config.smartCurrentLimit(15)
+                .idleMode(IdleMode.kBrake)
+                .inverted(true);
+
         NamedCommands.registerCommand("InAndOut", IntakeandOut());
+
+        
 
         this.setDefaultCommand(
         // sets default command
