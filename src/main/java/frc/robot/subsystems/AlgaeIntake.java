@@ -55,6 +55,8 @@ public class AlgaeIntake extends SubsystemBase {
 
         algaemotor2Config.apply(algaemotor1Config);
         algaemotor2Config.follow(algaemotor1, true);
+        algaemotor3Config.apply(algaemotor1Config);
+        algaemotor3Config.follow(algaemotor1, false);
 
         algaemotor2.configure(algaemotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         algaemotor3.configure(algaemotor3Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
@@ -64,12 +66,8 @@ public class AlgaeIntake extends SubsystemBase {
         .idleMode(IdleMode.kBrake)
         .closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
      
-        groundIntakeConfig.closedLoop.p(3);
+        groundIntakeConfig.closedLoop.p(3.5);
         groundIntake.configure(groundIntakeConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-
-        algaemotor3Config.smartCurrentLimit(15)
-                .idleMode(IdleMode.kBrake)
-                .inverted(true);
 
         NamedCommands.registerCommand("InAndOut", IntakeandOut());
 
@@ -110,7 +108,7 @@ public class AlgaeIntake extends SubsystemBase {
 
     public Command Intake() {
         return new SequentialCommandGroup(
-                new InstantCommand(()-> groundIntake.getClosedLoopController().setReference(.64, ControlType.kPosition)),
+                new InstantCommand(()-> groundIntake.getClosedLoopController().setReference(.66, ControlType.kPosition)),
                 new InstantCommand(() -> algaemotor1.set(-1), this),
                RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kLeftRumble,0.5,
                 new WaitUntilCommand(() -> hasalgae())),
