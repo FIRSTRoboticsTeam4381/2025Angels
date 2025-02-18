@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RepeatCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.commands.SparkPosition;
+import frc.robot.commands.SparkPositionProfiled;
 
 @Logged
 public class Elevator extends SubsystemBase {
@@ -39,8 +39,11 @@ public class Elevator extends SubsystemBase {
              .inverted(true)
              .softLimit.forwardSoftLimit(72)
              .forwardSoftLimitEnabled(true);
-             motorEL1Config.closedLoop.p(.6);
+             motorEL1Config.closedLoop.p(.5);
              motorEL1Config.closedLoop.d(1);
+             motorEL1Config.closedLoop.maxMotion.maxAcceleration(12000).maxVelocity(5000);
+
+
              //motorEL1Config.closedLoopRampRate(.5);
 
 
@@ -75,7 +78,7 @@ public class Elevator extends SubsystemBase {
     }
     
     public Command goToPosition(double target, double range){
-      return new SparkPosition(motorEL1, target, range, this).withName("goToPose");
+      return new SparkPositionProfiled(motorEL1, target, range, this).withName("goToPose");
     }
     
     

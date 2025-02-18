@@ -26,7 +26,8 @@ public class AdvancedCommands {
 
   public Command l4() {
 
-    return new ParallelCommandGroup(
+    return new SequentialCommandGroup(
+      robot.pivot.pivotAllUp(),
       robot.elevator.level4(),
       robot.pivot.coralScoringTop()
       ).withName("l4");
@@ -35,7 +36,8 @@ public class AdvancedCommands {
 
   public Command l3() {
 
-    return new ParallelCommandGroup(
+    return new SequentialCommandGroup(
+      robot.pivot.pivotAllUp(),
       robot.elevator.level3(),
       robot.pivot.coralScoring()
       ).withName("l3");
@@ -43,7 +45,8 @@ public class AdvancedCommands {
 
   public Command l2() {
 
-    return new ParallelCommandGroup(
+    return new SequentialCommandGroup(
+      robot.pivot.pivotAllUp(),
       robot.elevator.level2(),
       robot.pivot.coralScoring()
       ).withName("l2");
@@ -51,7 +54,8 @@ public class AdvancedCommands {
 
   public Command l1() {
 
-    return new ParallelCommandGroup(
+    return new SequentialCommandGroup(
+      robot.pivot.pivotAllUp(),
       robot.elevator.level1(),
       robot.pivot.intake()
       );

@@ -43,7 +43,7 @@ private SparkFlex pivotmotor;
     .smartCurrentLimit(50)
     .idleMode(IdleMode.kBrake)
     .inverted(true)
-    .softLimit.forwardSoftLimit(0.55)
+    .softLimit.forwardSoftLimit(0.60)
     .forwardSoftLimitEnabled(true)
     .reverseSoftLimit(0.32)
     .reverseSoftLimitEnabled(true);
@@ -83,6 +83,11 @@ private SparkFlex pivotmotor;
   public Command coralScoringTop()
   {
     return goToPosition(0.39,0.05);
+  }
+
+  public Command pivotAllUp()
+  {
+    return goToPosition(.58, .03);
   }
 
   public Command intake()
