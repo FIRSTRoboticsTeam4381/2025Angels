@@ -74,7 +74,7 @@ public class AlgaeIntake extends SubsystemBase {
             // basic functional command
 
             () -> {algaemotor1.set(0);
-            groundIntake.getClosedLoopController().setReference(.28, ControlType.kPosition);}, // oninit
+            groundIntake.getClosedLoopController().setReference(.36, ControlType.kPosition);}, // oninit
             () -> {
             }, // onexecute
             (killed) -> {
@@ -102,7 +102,7 @@ public class AlgaeIntake extends SubsystemBase {
 
     public Command Intake() {
         return new SequentialCommandGroup(
-                new InstantCommand(()-> groundIntake.getClosedLoopController().setReference(.558, ControlType.kPosition)),
+                new InstantCommand(()-> groundIntake.getClosedLoopController().setReference(.64, ControlType.kPosition)),
                 new InstantCommand(() -> algaemotor1.set(-1), this),
                RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kLeftRumble,0.5,
                 new WaitUntilCommand(() -> hasalgae())),
