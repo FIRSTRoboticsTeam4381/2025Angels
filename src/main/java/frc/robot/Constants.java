@@ -65,23 +65,23 @@ public final class Constants {
         public static final double angleKF = 0.0;
 
         /* Drive Motor PID Values */
-        public static final double driveKP = 3.1534E-05; //From SysID, may not be converted right!
+        public static final double driveKP = 0.00099353; //From SysID, may not be converted right!
         public static final double driveKI = 0.0;
         public static final double driveKD = 0.0;
         public static final double driveKF = 0.0;
 
         /* Drive Motor Characterization Values */
         // Copied from SysID results
-        public static final double driveKS = 0.018231;//(0.667 / 12); // divide by 122 to convert from volts to percent output for CTRE TODO?
-        public static final double driveKV = 1.9676;//(2.44 / 12);
-        public static final double driveKA = 0.68184;//(0.27 / 12);
+        public static final double driveKS = 0.055411;//(0.667 / 12); // divide by 122 to convert from volts to percent output for CTRE TODO?
+        public static final double driveKV = 2.4038;//(2.44 / 12);
+        public static final double driveKA = 0.49171;//(0.27 / 12);
 
         /* Swerve Profiling Values */
         // TODO The robot only seems to be making it up to about 4.5 m/s, could be a conversion issue
         // in code or a result of robot weight/friction/etc decreasing theoretical free speed
-        public static final double maxSpeed = 5.36; //meters per second
+        public static final double maxSpeed = 4.0; //meters per second
         // Spin speed omega radians per sec before it was 11.5
-        public static final double maxAngularVelocity = 10;
+        public static final double maxAngularVelocity = 8.86;
 
         /* Motor Inverts */
         public static final boolean driveMotorInvert = false;
