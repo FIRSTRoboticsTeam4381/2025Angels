@@ -68,6 +68,8 @@ public class Coralintake extends SubsystemBase {
 
     coralmotor2.configure(coralmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
+
+
     this.setDefaultCommand(
         // sets default command
 

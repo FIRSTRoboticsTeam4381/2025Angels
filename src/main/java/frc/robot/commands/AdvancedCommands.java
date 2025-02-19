@@ -70,15 +70,15 @@ public class AdvancedCommands {
   public Command placel4(){
 
     return new SequentialCommandGroup(
-      robot.advancedCommands.l4(),
+      l4(),
       robot.coralintake.Coralinorout(),
-      robot.advancedCommands.l1()
+      l1()
     );
   }
 
   public Command autointake(){
     return new SequentialCommandGroup(
-      robot.advancedCommands.l1(),
+      l1(),
       robot.coralintake.Coralinorout()
     );
   }
