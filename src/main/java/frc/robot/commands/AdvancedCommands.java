@@ -9,6 +9,7 @@ import com.pathplanner.lib.auto.NamedCommands;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.RobotContainer;
 
 public class AdvancedCommands {
@@ -28,6 +29,7 @@ public class AdvancedCommands {
 
     return new SequentialCommandGroup(
       robot.pivot.pivotAllUp(),
+      new WaitCommand(.5),
       robot.elevator.level4(),
       robot.pivot.coralScoringTop()
       ).withName("l4");
@@ -38,6 +40,7 @@ public class AdvancedCommands {
 
     return new SequentialCommandGroup(
       robot.pivot.pivotAllUp(),
+      new WaitCommand(.5),
       robot.elevator.level3(),
       robot.pivot.coralScoring()
       ).withName("l3");
@@ -47,6 +50,7 @@ public class AdvancedCommands {
 
     return new SequentialCommandGroup(
       robot.pivot.pivotAllUp(),
+      new WaitCommand(.5),
       robot.elevator.level2(),
       robot.pivot.coralScoring()
       ).withName("l2");
@@ -56,6 +60,7 @@ public class AdvancedCommands {
 
     return new SequentialCommandGroup(
       robot.pivot.pivotAllUp(),
+      new WaitCommand(.5),
       robot.elevator.level1(),
       robot.pivot.intake()
       );

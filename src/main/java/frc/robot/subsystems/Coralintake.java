@@ -64,7 +64,7 @@ public class Coralintake extends SubsystemBase {
     // making motor4 follow motor3
     SparkMaxConfig coralmotor2Config = new SparkMaxConfig();
     coralmotor2Config.apply(coralmotor1Config);
-    coralmotor2Config.follow(coralmotor1, true);// telling motor4 to be a follower of motor3
+    coralmotor2Config.follow(coralmotor1, false);// telling motor4 to be a follower of motor3
 
     coralmotor2.configure(coralmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 

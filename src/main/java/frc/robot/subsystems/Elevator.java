@@ -41,7 +41,7 @@ public class Elevator extends SubsystemBase {
              .forwardSoftLimitEnabled(true);
              motorEL1Config.closedLoop.p(.5);
              motorEL1Config.closedLoop.d(1);
-             motorEL1Config.closedLoop.maxMotion.maxAcceleration(12000).maxVelocity(5000);
+             motorEL1Config.closedLoop.maxMotion.maxAcceleration(9000).maxVelocity(5000);
 
 
              //motorEL1Config.closedLoopRampRate(.5);
@@ -73,7 +73,7 @@ public class Elevator extends SubsystemBase {
     public Command joystickcontrol(Supplier<Double> joystickMove)
     {
       return new RepeatCommand(
-        new InstantCommand(() -> motorEL1.set(-joystickMove.get()),this)
+        new InstantCommand(() -> motorEL1.set(-joystickMove.get()*.5),this)
       );
     }
     
@@ -92,11 +92,11 @@ public class Elevator extends SubsystemBase {
     }
     public Command level2()
     {
-      return goToPosition(20.3, 0.5).withName("l2");
+      return goToPosition(19.7, 0.5).withName("l2");
     }
     public Command level1()
     {
-      return goToPosition(16, 0.5).withName("l1");
+      return goToPosition(15, 0.5).withName("l1");
     }
     public Command net()
     {

@@ -48,7 +48,8 @@ private SparkFlex pivotmotor;
     .reverseSoftLimit(0.32)
     .reverseSoftLimitEnabled(true);
     pivotmotorConfig.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder)
-    .p(8);
+    .p(8)
+    .d(4);
 
     pivotmotor.configure(pivotmotorConfig,ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
@@ -77,12 +78,12 @@ private SparkFlex pivotmotor;
 
   public Command coralScoring()
   {
-    return goToPosition(0.4, 0.05);
+    return goToPosition(0.41, 0.01);
   }
   
   public Command coralScoringTop()
   {
-    return goToPosition(0.39,0.05);
+    return goToPosition(0.39,0.02);
   }
 
   public Command pivotAllUp()
