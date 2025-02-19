@@ -10,10 +10,12 @@ import java.util.function.Supplier;
 
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
+import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+import com.revrobotics.spark.config.SparkFlexConfig;
 
 import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -28,22 +30,33 @@ import frc.robot.commands.SparkPosition;
 
 public class Pivot extends SubsystemBase {
 
-private SparkMax pivotmotor;
+private SparkFlex pivotmotor;
 
   /** Creates a new Pivot. */
   public Pivot() {
 
-    pivotmotor = new SparkMax(52, MotorType.kBrushless);
+    pivotmotor = new SparkFlex(52, MotorType.kBrushless);
 
-    SparkMaxConfig pivotmotorConfig = new SparkMaxConfig();
+    SparkFlexConfig pivotmotorConfig = new SparkFlexConfig();
 
     pivotmotorConfig
-    .smartCurrentLimit(20)
-    .idleMode(IdleMode.kBrake);
-
-    pivotmotorConfig.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
+    .smartCurrentLimit(50)
+    .idleMode(IdleMode.kBrake)
+    .inverted(true)
+    .softLimit.forwardSoftLimit(0.60)
+    .forwardSoftLimitEnabled(true)
+    .reverseSoftLimit(0.32)
+    .reverseSoftLimitEnabled(true);
+    pivotmotorConfig.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder)
+    .p(8)
+    .d(4);
 
     pivotmotor.configure(pivotmotorConfig,ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+
+    
+    // Quick and dirty way to enable position logging
+    // The line is a no-op here but enables the desired packets
+    pivotmotor.getAbsoluteEncoder().getPosition();
   }
 
   @Override
@@ -55,7 +68,7 @@ private SparkMax pivotmotor;
   public Command joystickcontrol(Supplier<Double> joystickMove)
   {
     return 
-      new InstantCommand(()-> pivotmotor.set(joystickMove.get()),this).repeatedly()
+      new InstantCommand(()-> pivotmotor.set(-joystickMove.get()),this).repeatedly()
     ;
   }
 
@@ -65,17 +78,22 @@ private SparkMax pivotmotor;
 
   public Command coralScoring()
   {
-    return goToPosition(0, 0);
+    return goToPosition(0.41, 0.01);
   }
   
   public Command coralScoringTop()
   {
-    return goToPosition(0,0);
+    return goToPosition(0.39,0.02);
+  }
+
+  public Command pivotAllUp()
+  {
+    return goToPosition(.58, .03);
   }
 
   public Command intake()
   {
-    return goToPosition(0,0);
+    return goToPosition(0.54,0.05);
   }
 
 }

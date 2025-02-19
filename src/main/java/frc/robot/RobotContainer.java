@@ -32,6 +32,7 @@ import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.Coralintake;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Hang;
+import frc.robot.subsystems.PhotonCam;
 import frc.robot.subsystems.Pivot;
 import frc.robot.subsystems.Swerve;
 
@@ -52,10 +53,10 @@ public class RobotContainer {
   public final Elevator elevator;
   public final Hang hang;
   public final Pivot pivot;
-  //public final PhotonCam camA = new PhotonCam("Camera A", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(-7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/-4-Math.PI)) );
-  //public final PhotonCam camB = new PhotonCam("Camera B", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/4-Math.PI)) );
-  //public final PhotonCam camC = new PhotonCam("Camera C", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/4-Math.PI)) );
-  //public final PhotonCam camD = new PhotonCam("Camera D", new Transform3d(new Translation3d(Units.inchesToMeters(-10.375), Units.inchesToMeters(7.3125),  Units.inchesToMeters(8.5)), new Rotation3d(0,Math.PI/-6,Math.PI/4-Math.PI)) );
+  public final PhotonCam camA = new PhotonCam("FL", new Transform3d(new Translation3d(Units.inchesToMeters(13.8), Units.inchesToMeters(-5.2),  Units.inchesToMeters(4.29)), new Rotation3d(0,0.22602 + Units.degreesToRadians(10),0.69690997)) );
+  public final PhotonCam camB = new PhotonCam("FR", new Transform3d(new Translation3d(Units.inchesToMeters(13.8), Units.inchesToMeters(5.2),  Units.inchesToMeters(4.29)), new Rotation3d(0,0.22602 + Units.degreesToRadians(10),-0.69690997)) );
+  public final PhotonCam camC = new PhotonCam("BL", new Transform3d(new Translation3d(Units.inchesToMeters(-13.75), Units.inchesToMeters(10),  Units.inchesToMeters(11.5)), new Rotation3d(0,.2793,Math.PI + Math.PI/4.0)));
+  public final PhotonCam camD = new PhotonCam("BR", new Transform3d(new Translation3d(Units.inchesToMeters(-13.75), Units.inchesToMeters(-10),  Units.inchesToMeters(11.5)), new Rotation3d(0,.2793,Math.PI-Math.PI/4.0)) );
 
   public final AdvancedCommands advancedCommands;
   // Constructor: set up the robot! 
@@ -101,17 +102,18 @@ public class RobotContainer {
 
   private void configureBindings() {
     driver.back()
-      .onTrue(new InstantCommand(() -> swerve.zeroGyro()));
+      .onTrue(new InstantCommand(() -> swerve.zeroGyro()).ignoringDisable(true));
     swerve.setDefaultCommand(new TeleopSwerve(swerve, 
           driver::getLeftY,
           driver::getLeftX,
           driver::getRightX,
              true, driver.leftBumper()::getAsBoolean));
 
-specialist.rightBumper().onTrue(coralintake.Coralinorout());
-specialist.leftBumper().onTrue(algaeintake.IntakeandOut());
+specialist.rightBumper().toggleOnTrue(coralintake.Coralinorout());
+specialist.leftBumper().toggleOnTrue(algaeintake.IntakeandOut());
 elevator.setDefaultCommand(elevator.joystickcontrol(interpolateJoystick(specialist::getLeftY, Constants.stickDeadband)));
 pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(specialist::getRightY, Constants.stickDeadband)));
+hang.setDefaultCommand(hang.joystickcontrol(() -> specialist.getLeftTriggerAxis() - specialist.getRightTriggerAxis()));
 specialist.x().onTrue(hang.HangControl());
 specialist.povUp().onTrue(advancedCommands.l4());
 specialist.povRight().onTrue(advancedCommands.l3());
@@ -141,7 +143,7 @@ specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance()
    * @param deadzone Joystick deadzone
    * @return Transformed output
    */
-  /*public static Supplier<Double> interpolateJoystick(Supplier<Double> in, double deadzone)
+  public static Supplier<Double> interpolateJoystick(Supplier<Double> in, double deadzone)
   {
       return () -> interpolateNow(in.get(), deadzone);
   }
@@ -154,11 +156,11 @@ specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance()
           return Math.pow((in - deadzone)*(1.0/(1.0-deadzone)), 3);
       else 
           return -Math.pow((-in - deadzone)*(1.0/(1.0-deadzone)), 3);
-  }*/
+  }
 
-  public static Supplier<Double> interpolateJoystick(Supplier<Double> in, double deadzone)
+  /*public static Supplier<Double> interpolateJoystick(Supplier<Double> in, double deadzone)
   {
-      return () -> in.get();
+      return () -> interpolateNow(in.get(), deadzone);
   }
 
   public static double interpolateNow(double in, double deadzone)
@@ -168,7 +170,7 @@ specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance()
     else
       return in;
   }
-
+*/
     
   // Static reference to the robot class
   // Previously we used static subsystems, but this appears to break things in 2025

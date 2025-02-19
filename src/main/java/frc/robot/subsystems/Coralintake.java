@@ -54,7 +54,7 @@ public class Coralintake extends SubsystemBase {
     NamedCommands.registerCommand("coralinorout", Coralinorout());
     // assign properties to motor
     coralmotor1Config
-        .smartCurrentLimit(10)
+        .smartCurrentLimit(15)
         .idleMode(IdleMode.kBrake).limitSwitch.forwardLimitSwitchEnabled(false);
 
     // set whether it will reset parameters when they are changed, and the persist
@@ -63,9 +63,8 @@ public class Coralintake extends SubsystemBase {
 
     // making motor4 follow motor3
     SparkMaxConfig coralmotor2Config = new SparkMaxConfig();
-    coralmotor2Config.apply(coralmotor2Config);
-    coralmotor2Config.follow(coralmotor1// telling motor4 to be a follower of motor3
-    );
+    coralmotor2Config.apply(coralmotor1Config);
+    coralmotor2Config.follow(coralmotor1, false);// telling motor4 to be a follower of motor3
 
     coralmotor2.configure(coralmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
@@ -86,6 +85,12 @@ public class Coralintake extends SubsystemBase {
             this)
 
     );
+
+    
+        // Quick and dirty way to enable position logging
+        // The line is a no-op here but enables the desired packets
+        coralmotor1.getEncoder().getVelocity();
+        coralmotor2.getEncoder().getVelocity();
 
   }
 
@@ -116,7 +121,7 @@ public class Coralintake extends SubsystemBase {
         RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kRightRumble, 0.5,
             new WaitUntilCommand(() -> hascoral())),
         RobotContainer.getRobot().vibrateDriverForTime(RumbleType.kBothRumble, 0.8, 0.5),
-        new WaitCommand(0.5),
+        new WaitCommand(0.25),
         new InstantCommand(() -> coralmotor1.set(0), this)).withName("Coral Intaking");
   }
 
