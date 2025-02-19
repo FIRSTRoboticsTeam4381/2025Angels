@@ -84,7 +84,7 @@ public final class Constants {
         public static final double maxAngularVelocity = 8.86;
 
         /* Motor Inverts */
-        public static final boolean driveMotorInvert = false;
+        public static final boolean driveMotorInvert = true;
         public static final boolean angleMotorInvert = true;
 
         /* Angle Encoder Invert */
