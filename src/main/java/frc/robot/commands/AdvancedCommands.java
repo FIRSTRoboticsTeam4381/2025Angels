@@ -23,6 +23,7 @@ public class AdvancedCommands {
     NamedCommands.registerCommand("l3", l3());
     NamedCommands.registerCommand("l2", l2());
     NamedCommands.registerCommand("l1", l1());
+    NamedCommands.registerCommand("placel4", placel4());
   }
 
   public Command l4() {
