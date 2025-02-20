@@ -5,6 +5,12 @@
     "data": {
       "commands": [
         {
+          "type": "named",
+          "data": {
+            "name": "PivotAllUp"
+          }
+        },
+        {
           "type": "path",
           "data": {
             "pathName": "Top Path I"

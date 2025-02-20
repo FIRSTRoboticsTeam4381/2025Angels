@@ -8,6 +8,7 @@ import com.revrobotics.spark.SparkMax;
 
 import java.util.function.Supplier;
 
+import com.pathplanner.lib.auto.NamedCommands;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkFlex;
@@ -52,7 +53,9 @@ private SparkFlex pivotmotor;
     .d(4);
 
     pivotmotor.configure(pivotmotorConfig,ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-
+     
+    
+    NamedCommands.registerCommand("PivotAllUp", pivotAllUp());
     
     // Quick and dirty way to enable position logging
     // The line is a no-op here but enables the desired packets
