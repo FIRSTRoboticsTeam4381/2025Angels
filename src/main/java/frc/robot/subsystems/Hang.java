@@ -33,7 +33,7 @@ public class Hang extends SubsystemBase {
   public Hang() {
     // assign cAn ID and Motor type
     hangmotor1 = new SparkMax(58, MotorType.kBrushless);
-    hangmotor2 = new SparkMax(59, MotorType.kBrushless);
+    //hangmotor2 = new SparkMax(59, MotorType.kBrushless);
 
     // set up the config
     SparkMaxConfig hangmotor1Config = new SparkMaxConfig();
@@ -49,7 +49,7 @@ public class Hang extends SubsystemBase {
     // mode
     hangmotor1.configure(hangmotor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     // making motor4 follow motor3
-    SparkMaxConfig hangmotor2Config = new SparkMaxConfig();
+    /*SparkMaxConfig hangmotor2Config = new SparkMaxConfig();
     hangmotor2Config.apply(hangmotor1Config);
     hangmotor2Config.follow(hangmotor1, true);
     hangmotor2.configure(hangmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
@@ -57,7 +57,7 @@ public class Hang extends SubsystemBase {
     // Quick and dirty way to enable position logging
     // The line is a no-op here but enables the desired packets
     hangmotor1.getEncoder().getPosition();
-    hangmotor1.getAbsoluteEncoder().getPosition();
+    hangmotor1.getAbsoluteEncoder().getPosition();*/
   }
 
   public Command joystickcontrol(Supplier<Double> joystickMove) {
