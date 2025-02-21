@@ -80,6 +80,14 @@ public class RobotContainer {
     // Add any autos you want to be able to select below
     autoChooser.setDefaultOption("None", Autos.none());
     autoChooser.addOption("Test", Autos.testAuto());
+    autoChooser.addOption("Bottom to E to D", Autos.BottomtoEtoD());
+    autoChooser.addOption("Bottom to F to E", Autos.BottomtoFtoE());
+    autoChooser.addOption("Top To I To J", Autos.TopToIToJ());
+    autoChooser.addOption("Top To I To K", Autos.TopToIToK());
+    autoChooser.addOption("Top To I To L", Autos.TopToIToL());
+    autoChooser.addOption("Bottom to BB to MB", Autos.BottomBBtoMB());
+    SmartDashboard.putString("Choose Reef", "");
+    SmartDashboard.putString("ReefSelectTop", "");
     
 
     // Add auto controls to the dashboard
@@ -122,6 +130,7 @@ specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance()
   }
 
   public Command getAutonomousCommand() {
+    Autos.chosenReef();
     double startDelay=SmartDashboard.getNumber("Start Delay", 0);
     return new SequentialCommandGroup( 
     new WaitCommand(startDelay), 

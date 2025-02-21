@@ -23,6 +23,7 @@ public class AdvancedCommands {
     NamedCommands.registerCommand("l3", l3());
     NamedCommands.registerCommand("l2", l2());
     NamedCommands.registerCommand("l1", l1());
+    NamedCommands.registerCommand("placel4", placel4());
   }
 
   public Command l4() {
@@ -69,15 +70,15 @@ public class AdvancedCommands {
   public Command placel4(){
 
     return new SequentialCommandGroup(
-      robot.advancedCommands.l4(),
+      l4(),
       robot.coralintake.Coralinorout(),
-      robot.advancedCommands.l1()
+      l1()
     );
   }
 
   public Command autointake(){
     return new SequentialCommandGroup(
-      robot.advancedCommands.l1(),
+      l1(),
       robot.coralintake.Coralinorout()
     );
   }

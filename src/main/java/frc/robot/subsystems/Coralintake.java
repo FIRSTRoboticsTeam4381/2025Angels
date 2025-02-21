@@ -52,6 +52,8 @@ public class Coralintake extends SubsystemBase {
     // set up the config
     SparkMaxConfig coralmotor1Config = new SparkMaxConfig();
     NamedCommands.registerCommand("coralinorout", Coralinorout());
+    NamedCommands.registerCommand("coralin", Coralin());
+    NamedCommands.registerCommand("coralout", CoralOut());
     // assign properties to motor
     coralmotor1Config
         .smartCurrentLimit(15)
@@ -67,6 +69,8 @@ public class Coralintake extends SubsystemBase {
     coralmotor2Config.follow(coralmotor1, false);// telling motor4 to be a follower of motor3
 
     coralmotor2.configure(coralmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+
+
 
     this.setDefaultCommand(
         // sets default command
