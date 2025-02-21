@@ -23,12 +23,6 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "InAndOut"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
                   "name": "coralinorout"
                 }
               },

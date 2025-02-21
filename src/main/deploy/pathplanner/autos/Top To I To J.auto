@@ -23,7 +23,19 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "placel4"
+                  "name": "l4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "coralout"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "l1"
                 }
               }
             ]
@@ -38,7 +50,7 @@
         {
           "type": "named",
           "data": {
-            "name": "coralinorout"
+            "name": "coralin"
           }
         },
         {
@@ -54,7 +66,19 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "placel4"
+                  "name": "l4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "coralout"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "l1"
                 }
               }
             ]

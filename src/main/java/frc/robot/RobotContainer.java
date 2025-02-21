@@ -87,6 +87,7 @@ public class RobotContainer {
     autoChooser.addOption("Top To I To L", Autos.TopToIToL());
     autoChooser.addOption("Bottom to BB to MB", Autos.BottomBBtoMB());
     SmartDashboard.putString("Choose Reef", "");
+    SmartDashboard.putString("ReefSelectTop", "");
     
 
     // Add auto controls to the dashboard

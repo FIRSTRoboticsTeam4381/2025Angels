@@ -19,31 +19,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "BB to Processer"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "InAndOut"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Proceseer to MB"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "InAndOut"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "MB to Processer"
+            "pathName": "TB to Processer"
           }
         }
       ]
