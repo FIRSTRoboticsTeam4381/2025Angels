@@ -30,7 +30,7 @@ import frc.robot.commands.SparkPosition;
 public class Hang extends SubsystemBase {
   // **creating the variables for the motors**
   private SparkFlex hangmotor1;
-  private SparkMax hangmotor2;
+ // private SparkMax hangmotor2;
 
   public Hang() {
     // assign cAn ID and Motor type
