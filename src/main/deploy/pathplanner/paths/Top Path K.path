@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.574034246575342,
-        "y": 6.303087328767123
+        "x": 5.123758561643836,
+        "y": 6.278852739726027
       },
       "isLocked": false,
       "linkedName": "Top Start"
@@ -20,12 +20,12 @@
         "y": 5.392337328767123
       },
       "prevControl": {
-        "x": 6.018171232876712,
-        "y": 7.166837328767124
+        "x": 6.130479452054795,
+        "y": 7.045162671232877
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "K"
+      "linkedName": "LK"
     }
   ],
   "rotationTargets": [],

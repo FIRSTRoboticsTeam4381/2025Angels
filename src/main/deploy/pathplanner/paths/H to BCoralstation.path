@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.029815573770492,
-        "y": 4.186834016393442
+        "x": 6.040325342465753,
+        "y": 4.025
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.071742657103824,
-        "y": 1.8528930441712204
+        "x": 6.082252425799085,
+        "y": 1.6910590277777784
       },
       "isLocked": false,
-      "linkedName": "H"
+      "linkedName": "HG"
     },
     {
       "anchor": {
-        "x": 1.6924405956738497,
-        "y": 0.6363691816331482
+        "x": 1.7580051369863015,
+        "y": 0.764426369863014
       },
       "prevControl": {
-        "x": 4.4594649012294045,
-        "y": 0.7344212649664805
+        "x": 4.5250294425418565,
+        "y": 0.8624784531963464
       },
       "nextControl": null,
       "isLocked": false,
@@ -48,7 +48,7 @@
   "folder": "Reef to BCoral Station",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 179.4743653935424
+    "rotation": 180.0
   },
   "useDefaultConstraints": true
 }

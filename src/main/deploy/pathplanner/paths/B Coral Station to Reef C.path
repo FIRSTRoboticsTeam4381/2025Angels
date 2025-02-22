@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 3.36375,
-        "y": 2.7769999999999992
+        "x": 3.7413955479452055,
+        "y": 2.687714041095891
       },
       "prevControl": {
-        "x": 3.1869733047033644,
-        "y": 2.6002233047033614
+        "x": 3.56461885264857,
+        "y": 2.510937345799253
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Reef C"
+      "linkedName": "CD"
     }
   ],
   "rotationTargets": [],
@@ -42,10 +42,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 59.58891873287471
+    "rotation": 59.62087398863163
   },
   "reversed": false,
-  "folder": "Bottom Paths",
+  "folder": "BCoral station to Reef",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -131.0817511359326

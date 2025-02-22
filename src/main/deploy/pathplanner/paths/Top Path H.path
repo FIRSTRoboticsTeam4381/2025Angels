@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 6.029815573770492,
-        "y": 4.186834016393442
+        "x": 6.040325342465753,
+        "y": 4.025
       },
       "prevControl": {
-        "x": 6.677151639344262,
-        "y": 6.308657786885245
+        "x": 6.687661408039523,
+        "y": 6.146823770491803
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "H"
+      "linkedName": "HG"
     }
   ],
   "rotationTargets": [],
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 179.4743653935424
+    "rotation": 180.0
   },
   "reversed": false,
   "folder": "Top Paths ",

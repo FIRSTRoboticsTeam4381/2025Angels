@@ -119,6 +119,14 @@ public final class Autos {
         public static PreviewAuto TopToIToL() {
             return new PreviewAuto("Top To I To L");
         }
+        public static PreviewAuto JtoTCoarlstation(){
+            return ReefSelectTop("JtoTCoarlstation");
+        }
+        public static PreviewAuto EtoBCoralStation(){
+            return ReefSelectBottom("EtoBCoralStation");
+        }
+
+
 
 
 
@@ -141,11 +149,11 @@ public final class Autos {
     }
     
     
-     public static PreviewAuto ReefSelectTop(String autoName)
+     public static PreviewAuto ReefSelectTop(String JtoTCoarlstation)
     {
         try {
             return new PreviewAuto(new SequentialCommandGroup(
-                new PathPlannerAuto(autoName),
+                new PathPlannerAuto(JtoTCoarlstation),
                 new ConditionalCommand( new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()),
                 new SequentialCommandGroup(
                     new SelectCommand<Character>(
@@ -177,7 +185,7 @@ public final class Autos {
 
 
 
-            ), autoName);
+            ), JtoTCoarlstation);
         } catch (FileVersionException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -193,11 +201,11 @@ public final class Autos {
         }
     }
 
-    public static PreviewAuto ReefSelectBottom(String autoName)
+    public static PreviewAuto ReefSelectBottom(String EtoBCoralStation)
     {
         try {
             return new PreviewAuto(new SequentialCommandGroup(
-                new PathPlannerAuto(autoName),
+                new PathPlannerAuto(EtoBCoralStation),
                 new ConditionalCommand( new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()),
                 new SequentialCommandGroup(
                     new SelectCommand<Character>(
@@ -230,7 +238,7 @@ public final class Autos {
 
 
 
-            ), autoName);
+            ), EtoBCoralStation);
         } catch (FileVersionException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

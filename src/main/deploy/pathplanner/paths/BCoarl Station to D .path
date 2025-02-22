@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.6924405956738497,
-        "y": 0.6363691816331482
+        "x": 1.7580051369863015,
+        "y": 0.764426369863014
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.7265837419142027,
-        "y": 1.9220783062348619
+        "x": 2.7921482832266546,
+        "y": 2.050135494464728
       },
       "isLocked": false,
       "linkedName": "Coral Bottom"
     },
     {
       "anchor": {
-        "x": 3.939,
-        "y": 2.795
+        "x": 3.7413955479452055,
+        "y": 2.687714041095891
       },
       "prevControl": {
-        "x": 3.435869235488756,
-        "y": 2.026340578721064
+        "x": 3.2382647834339613,
+        "y": 1.9190546198169551
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "D"
+      "linkedName": "CD"
     }
   ],
   "rotationTargets": [],
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 57.26477372789241
+    "rotation": 59.62087398863163
   },
   "reversed": false,
   "folder": "BCoral station to Reef",
