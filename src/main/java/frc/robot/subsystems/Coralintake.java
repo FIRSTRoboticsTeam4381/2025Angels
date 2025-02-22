@@ -7,6 +7,9 @@ package frc.robot.subsystems;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+
+import java.security.PublicKey;
+
 import com.pathplanner.lib.auto.NamedCommands;
 import com.revrobotics.spark.SparkLimitSwitch;
 import com.revrobotics.spark.SparkMax;
@@ -139,5 +142,13 @@ public class Coralintake extends SubsystemBase {
   public boolean hascoral() {
     return coralsensor1.isPressed() || coralsensor2.isPressed();
   }
+  public Command ManualCoarlIn() 
+  {
+  return new InstantCommand(() -> coralmotor1.set(-1), this);
+  }
+  public Command ManualCoarlOut() 
+  {
+    return new InstantCommand(() -> coralmotor1.set(0), this);
+  } 
 
 }
