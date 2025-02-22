@@ -35,6 +35,15 @@ public class SnaptoPose extends Command
         add(new Pose2d(3.045, 4.031, new Rotation2d(Radians.convertFrom(0, Degrees))));
         add(new Pose2d(7.333, 7.586, new Rotation2d(Radians.convertFrom(180, Degrees))));
         add(new Pose2d(7.333, 4.025, new Rotation2d(Radians.convertFrom(180, Degrees))));
+
+        add(new Pose2d(6.5065, 7.9845, new Rotation2d(Radians.convertFrom(-60, Degrees))));
+        add(new Pose2d(7.9825, 8.0825, new Rotation2d(Radians.convertFrom(-119.120, Degrees))));
+        add(new Pose2d(8.7125, 6.7495, new Rotation2d(Radians.convertFrom(180, Degrees))));
+        add(new Pose2d(7.9455, 5.5265, new Rotation2d(Radians.convertFrom(120, Degrees))));
+        add(new Pose2d(6.4825, 5.5265, new Rotation2d(Radians.convertFrom(60, Degrees))));
+        add(new Pose2d(5.7875, 6.7735, new Rotation2d(Radians.convertFrom(0, Degrees))));
+        add(new Pose2d(10.0755, 10.3285, new Rotation2d(Radians.convertFrom(180, Degrees))));
+        add(new Pose2d(10.0755, 6.7675, new Rotation2d(Radians.convertFrom(180, Degrees))));
     }};
     public Swerve swerve;
     private Pose2d target;
