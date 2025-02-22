@@ -5,9 +5,11 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.config.SparkFlexConfig;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkMax;
 
 import java.util.function.Supplier;
@@ -27,16 +29,16 @@ import frc.robot.commands.SparkPosition;
 @Logged
 public class Hang extends SubsystemBase {
   // **creating the variables for the motors**
-  private SparkMax hangmotor1;
+  private SparkFlex hangmotor1;
   private SparkMax hangmotor2;
 
   public Hang() {
     // assign cAn ID and Motor type
-    hangmotor1 = new SparkMax(58, MotorType.kBrushless);
+    hangmotor1 = new SparkFlex(58, MotorType.kBrushless);
     //hangmotor2 = new SparkMax(59, MotorType.kBrushless);
 
     // set up the config
-    SparkMaxConfig hangmotor1Config = new SparkMaxConfig();
+    SparkFlexConfig hangmotor1Config = new SparkFlexConfig();
     // assign properties to motor
     hangmotor1Config
         .smartCurrentLimit(40)
@@ -52,12 +54,12 @@ public class Hang extends SubsystemBase {
     /*SparkMaxConfig hangmotor2Config = new SparkMaxConfig();
     hangmotor2Config.apply(hangmotor1Config);
     hangmotor2Config.follow(hangmotor1, true);
-    hangmotor2.configure(hangmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    hangmotor2.configure(hangmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);*/
 
     // Quick and dirty way to enable position logging
     // The line is a no-op here but enables the desired packets
     hangmotor1.getEncoder().getPosition();
-    hangmotor1.getAbsoluteEncoder().getPosition();*/
+    hangmotor1.getAbsoluteEncoder().getPosition();
   }
 
   public Command joystickcontrol(Supplier<Double> joystickMove) {
