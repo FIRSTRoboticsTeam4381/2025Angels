@@ -41,7 +41,7 @@ public class Hang extends SubsystemBase {
     SparkFlexConfig hangmotor1Config = new SparkFlexConfig();
     // assign properties to motor
     hangmotor1Config
-        .smartCurrentLimit(40)
+        .smartCurrentLimit(60)
         .idleMode(IdleMode.kBrake);
         //.softLimit.reverseSoftLimit(0.17)
         //.reverseSoftLimitEnabled(true)

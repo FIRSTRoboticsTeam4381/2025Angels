@@ -73,8 +73,6 @@ public class Coralintake extends SubsystemBase {
 
     coralmotor2.configure(coralmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-
-
     this.setDefaultCommand(
         // sets default command
 
@@ -93,11 +91,10 @@ public class Coralintake extends SubsystemBase {
 
     );
 
-    
-        // Quick and dirty way to enable position logging
-        // The line is a no-op here but enables the desired packets
-        coralmotor1.getEncoder().getVelocity();
-        coralmotor2.getEncoder().getVelocity();
+    // Quick and dirty way to enable position logging
+    // The line is a no-op here but enables the desired packets
+    coralmotor1.getEncoder().getVelocity();
+    coralmotor2.getEncoder().getVelocity();
 
   }
 
@@ -142,13 +139,13 @@ public class Coralintake extends SubsystemBase {
   public boolean hascoral() {
     return coralsensor1.isPressed() || coralsensor2.isPressed();
   }
-  public Command ManualCoarlIn() 
+  /* public Command ManualCoarlIn() 
   {
-  return new InstantCommand(() -> coralmotor1.set(-.3), this);
+    return new InstantCommand(() -> coralmotor1.set(-.3), this);
   }
   public Command ManualCoarlOut() 
   {
     return new InstantCommand(() -> coralmotor1.set(.5), this);
-  } 
-
+  }
+*/
 }

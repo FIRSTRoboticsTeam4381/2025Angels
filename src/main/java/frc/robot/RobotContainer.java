@@ -86,6 +86,7 @@ public class RobotContainer {
     autoChooser.addOption("Top To I To K", Autos.TopToIToK());
     autoChooser.addOption("Top To I To L", Autos.TopToIToL());
     autoChooser.addOption("Bottom to BB to MB", Autos.BottomBBtoMB());
+    autoChooser.addOption("CustomAutoTop", Autos.JtoTCoarlstation());
     SmartDashboard.putString("Choose Reef", "");
     SmartDashboard.putString("ReefSelectTop", "");
     
@@ -121,8 +122,8 @@ specialist.povRight().onTrue(advancedCommands.l3());
 specialist.povDown().onTrue(advancedCommands.l2());
 specialist.povLeft().onTrue(advancedCommands.l1());
 driver.rightBumper().whileTrue(new SnaptoPose(swerve));
-specialist.a().onTrue(coralintake.ManualCoarlIn());
-specialist.y().onTrue(coralintake.ManualCoarlOut());
+//specialist.a().onTrue(coralintake.ManualCoarlIn());
+//specialist.y().onTrue(coralintake.ManualCoarlOut());
 
 
 specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));

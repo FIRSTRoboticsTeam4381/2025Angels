@@ -34,16 +34,17 @@ public class SnaptoPose extends Command
         add(new Pose2d(3.740, 2.784, new Rotation2d(Radians.convertFrom(60, Degrees))));
         add(new Pose2d(3.045, 4.031, new Rotation2d(Radians.convertFrom(0, Degrees))));
         add(new Pose2d(7.333, 7.586, new Rotation2d(Radians.convertFrom(180, Degrees))));
+
         add(new Pose2d(7.333, 4.025, new Rotation2d(Radians.convertFrom(180, Degrees))));
 
-        add(new Pose2d(6.5065, 7.9845, new Rotation2d(Radians.convertFrom(-60, Degrees))));
-        add(new Pose2d(7.9825, 8.0825, new Rotation2d(Radians.convertFrom(-119.120, Degrees))));
-        add(new Pose2d(8.7125, 6.7495, new Rotation2d(Radians.convertFrom(180, Degrees))));
-        add(new Pose2d(7.9455, 5.5265, new Rotation2d(Radians.convertFrom(120, Degrees))));
-        add(new Pose2d(6.4825, 5.5265, new Rotation2d(Radians.convertFrom(60, Degrees))));
-        add(new Pose2d(5.7875, 6.7735, new Rotation2d(Radians.convertFrom(0, Degrees))));
-        add(new Pose2d(10.0755, 10.3285, new Rotation2d(Radians.convertFrom(180, Degrees))));
-        add(new Pose2d(10.0755, 6.7675, new Rotation2d(Radians.convertFrom(180, Degrees))));
+        add(new Pose2d(10, 0.25, new Rotation2d(Radians.convertFrom(0, Degrees))));
+        add(new Pose2d(12.32, 2.73, new Rotation2d(Radians.convertFrom(56, Degrees))));
+        add(new Pose2d(11.34, 4.03, new Rotation2d(Radians.convertFrom(-3, Degrees))));
+        add(new Pose2d(12.27, 5.34, new Rotation2d(Radians.convertFrom(-62, Degrees))));
+        add(new Pose2d(13.82, 2.78, new Rotation2d(Radians.convertFrom(119, Degrees))));
+        add(new Pose2d(14.54, 4.1, new Rotation2d(Radians.convertFrom(178, Degrees))));
+        add(new Pose2d(13.93, 5.35, new Rotation2d(Radians.convertFrom(-123, Degrees))));
+    
     }};
     public Swerve swerve;
     private Pose2d target;
@@ -53,8 +54,8 @@ public class SnaptoPose extends Command
     public SnaptoPose(Swerve s){
 
         swerve = s;
-        x = new PIDController(.53, 0, 0);
-        y = new PIDController(.53, 0, 0);
+        x = new PIDController(1.3, 0, 0);
+        y = new PIDController(1.3, 0, 0);
         r = new PIDController(.03, 0, 0);
         r.enableContinuousInput(180,-180);
         addRequirements(swerve);
@@ -87,7 +88,7 @@ public class SnaptoPose extends Command
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute(){
-       swerve.drive(new Translation2d(getXPower(),getYPower()), getRPower(), true, true);
+       swerve.drive(new Translation2d(-getXPower(),-getYPower()), getRPower(), true, true);
     }
 
     // Called once the command ends or is interrupted.
