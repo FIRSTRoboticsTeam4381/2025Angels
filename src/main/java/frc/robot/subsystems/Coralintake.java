@@ -144,11 +144,11 @@ public class Coralintake extends SubsystemBase {
   }
   public Command ManualCoarlIn() 
   {
-  return new InstantCommand(() -> coralmotor1.set(-1), this);
+  return new InstantCommand(() -> coralmotor1.set(-.3), this);
   }
   public Command ManualCoarlOut() 
   {
-    return new InstantCommand(() -> coralmotor1.set(0), this);
+    return new InstantCommand(() -> coralmotor1.set(.5), this);
   } 
 
 }
