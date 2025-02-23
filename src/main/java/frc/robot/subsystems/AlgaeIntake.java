@@ -30,17 +30,17 @@ import frc.robot.RobotContainer;
 @Logged
 public class AlgaeIntake extends SubsystemBase {
     private SparkMax algaemotor1;
-    private SparkMax algaemotor2;
+    //private SparkMax algaemotor2;
     private SparkLimitSwitch algaesensor;
-    private SparkMax algaemotor3;
+    //private SparkMax algaemotor3;
     private SparkFlex groundIntake;
 
     public AlgaeIntake() {
-        algaemotor1 = new SparkMax(50, MotorType.kBrushless);
-        algaemotor2 = new SparkMax(51, MotorType.kBrushless);
-        algaesensor = algaemotor2.getForwardLimitSwitch();
-        algaemotor3 = new SparkMax(54,MotorType.kBrushless);
-        groundIntake = new SparkFlex(53, MotorType.kBrushless);
+        algaemotor1 = new SparkMax(54, MotorType.kBrushless);
+        //algaemotor2 = new SparkMax(51, MotorType.kBrushless);
+        //algaesensor = algaemotor2.getForwardLimitSwitch();
+        //algaemotor3 = new SparkMax(50,MotorType.kBrushless);
+        groundIntake = new SparkFlex(50, MotorType.kBrushless);
 
         SparkMaxConfig algaemotor1Config = new SparkMaxConfig();
         algaemotor1Config.smartCurrentLimit(15)
@@ -50,16 +50,16 @@ public class AlgaeIntake extends SubsystemBase {
 
         algaemotor1.configure(algaemotor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-        SparkMaxConfig algaemotor2Config = new SparkMaxConfig();
-        SparkMaxConfig algaemotor3Config = new SparkMaxConfig();
+        //SparkMaxConfig algaemotor2Config = new SparkMaxConfig();
+        //SparkMaxConfig algaemotor3Config = new SparkMaxConfig();
 
-        algaemotor2Config.apply(algaemotor1Config);
+        /*algaemotor2Config.apply(algaemotor1Config);
         algaemotor2Config.follow(algaemotor1, true);
         algaemotor3Config.apply(algaemotor1Config);
-        algaemotor3Config.follow(algaemotor1, false);
+        algaemotor3Config.follow(algaemotor1, false);*/
 
-        algaemotor2.configure(algaemotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-        algaemotor3.configure(algaemotor3Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+        //algaemotor2.configure(algaemotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+        //algaemotor3.configure(algaemotor3Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         
         SparkFlexConfig groundIntakeConfig = new SparkFlexConfig();
         groundIntakeConfig.smartCurrentLimit(30)
@@ -95,8 +95,8 @@ public class AlgaeIntake extends SubsystemBase {
         // Quick and dirty way to enable position logging
         // The line is a no-op here but enables the desired packets
         algaemotor1.getEncoder().getVelocity();
-        algaemotor2.getEncoder().getVelocity();
-        algaemotor3.getEncoder().getVelocity();
+        //algaemotor2.getEncoder().getVelocity();
+        //algaemotor3.getEncoder().getVelocity();
         groundIntake.getAbsoluteEncoder().getPosition();
     }
 
