@@ -158,26 +158,26 @@ public final class Autos {
                 new SequentialCommandGroup(
                     new SelectCommand<Character>(
                         Map.ofEntries(
-                            Map.entry('A', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoralstation To A"))),
-                            Map.entry('B', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoralstation To B"))),
-                            Map.entry('G', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoralstation To G"))),
-                            Map.entry('H', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoralstation To H"))),
-                            Map.entry('I', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoralstation To I"))),
-                            Map.entry('J', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoralstation To J"))),
-                            Map.entry('K', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoralstation To K"))),
-                            Map.entry('L', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoralstation To L")))
+                            Map.entry('A', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoral station To A"))),
+                            Map.entry('B', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoral station To B"))),
+                            Map.entry('G', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoral station To G"))),
+                            Map.entry('H', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoral station To H"))),
+                            Map.entry('I', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoral station To I"))),
+                            Map.entry('J', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoral station To J"))),
+                            Map.entry('K', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoral station To K"))),
+                            Map.entry('L', AutoBuilder.followPath(PathPlannerPath.fromPathFile("TCoral station To L")))
                         ), Autos::chosenReef),
                    RobotContainer.getRobot().advancedCommands.placel4(),
                    new SelectCommand<Character>(
                         Map.ofEntries(
-                            Map.entry('A', AutoBuilder.followPath(PathPlannerPath.fromPathFile("A To TCoralstation"))),
-                            Map.entry('B', AutoBuilder.followPath(PathPlannerPath.fromPathFile("B To TCoralstation"))),
-                            Map.entry('G', AutoBuilder.followPath(PathPlannerPath.fromPathFile("G To TCoralstation"))),
-                            Map.entry('H', AutoBuilder.followPath(PathPlannerPath.fromPathFile("H To TCoralstation"))),
-                            Map.entry('I', AutoBuilder.followPath(PathPlannerPath.fromPathFile("I To TCoralstation"))),
-                            Map.entry('J', AutoBuilder.followPath(PathPlannerPath.fromPathFile("J To TCoralstation"))),
-                            Map.entry('K', AutoBuilder.followPath(PathPlannerPath.fromPathFile("K To TCoralstation"))),
-                            Map.entry('L', AutoBuilder.followPath(PathPlannerPath.fromPathFile("L To TCoralstation")))
+                            Map.entry('A', AutoBuilder.followPath(PathPlannerPath.fromPathFile("A To TCoral station"))),
+                            Map.entry('B', AutoBuilder.followPath(PathPlannerPath.fromPathFile("B To TCoral station"))),
+                            Map.entry('G', AutoBuilder.followPath(PathPlannerPath.fromPathFile("G To TCoral station"))),
+                            Map.entry('H', AutoBuilder.followPath(PathPlannerPath.fromPathFile("H To TCoral station"))),
+                            Map.entry('I', AutoBuilder.followPath(PathPlannerPath.fromPathFile("I To TCoral station"))),
+                            Map.entry('J', AutoBuilder.followPath(PathPlannerPath.fromPathFile("J To TCoral station"))),
+                            Map.entry('K', AutoBuilder.followPath(PathPlannerPath.fromPathFile("K To TCoral station"))),
+                            Map.entry('L', AutoBuilder.followPath(PathPlannerPath.fromPathFile("L To TCoral station")))
                         ), Autos::chosenReef),
                         RobotContainer.getRobot().advancedCommands.autointake(),
                         new InstantCommand(()-> reefToGo.remove())
@@ -210,26 +210,26 @@ public final class Autos {
                 new SequentialCommandGroup(
                     new SelectCommand<Character>(
                         Map.ofEntries(
-                            Map.entry('a', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoralstation to A"))),
-                            Map.entry('b', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoralstation to B"))),
-                            Map.entry('c', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoralstation to C"))),
-                            Map.entry('d', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoralstation to D"))),
-                            Map.entry('e', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoralstation to E"))),
-                            Map.entry('f', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoralstation to F"))),
-                            Map.entry('g', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoralstation to G"))),
-                            Map.entry('h', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoralstation to H")))
+                            Map.entry('a', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoral station to A"))),
+                            Map.entry('b', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoral station to B"))),
+                            Map.entry('c', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoral station to C"))),
+                            Map.entry('d', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoral station to D"))),
+                            Map.entry('e', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoral station to E"))),
+                            Map.entry('f', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoral station to F"))),
+                            Map.entry('g', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoral station to G"))),
+                            Map.entry('h', AutoBuilder.followPath(PathPlannerPath.fromPathFile("BCoral station to H")))
                         ), Autos::chosenReef),
                    RobotContainer.getRobot().advancedCommands.placel4(),
                    new SelectCommand<Character>(
                         Map.ofEntries(
-                            Map.entry('a', AutoBuilder.followPath(PathPlannerPath.fromPathFile("A to BCoralstation"))),
-                            Map.entry('b', AutoBuilder.followPath(PathPlannerPath.fromPathFile("B to BCoralstation"))),
-                            Map.entry('c', AutoBuilder.followPath(PathPlannerPath.fromPathFile("C to BCoralstation"))),
-                            Map.entry('d', AutoBuilder.followPath(PathPlannerPath.fromPathFile("D to BCoralstation"))),
-                            Map.entry('e', AutoBuilder.followPath(PathPlannerPath.fromPathFile("E to BCoralstation"))),
-                            Map.entry('f', AutoBuilder.followPath(PathPlannerPath.fromPathFile("F to BCoralstation"))),
-                            Map.entry('g', AutoBuilder.followPath(PathPlannerPath.fromPathFile("G to BCoralstation"))),
-                            Map.entry('h', AutoBuilder.followPath(PathPlannerPath.fromPathFile("H to BCoralstation")))
+                            Map.entry('a', AutoBuilder.followPath(PathPlannerPath.fromPathFile("A to BCoral station"))),
+                            Map.entry('b', AutoBuilder.followPath(PathPlannerPath.fromPathFile("B to BCoral station"))),
+                            Map.entry('c', AutoBuilder.followPath(PathPlannerPath.fromPathFile("C to BCoral station"))),
+                            Map.entry('d', AutoBuilder.followPath(PathPlannerPath.fromPathFile("D to BCoral station"))),
+                            Map.entry('e', AutoBuilder.followPath(PathPlannerPath.fromPathFile("E to BCoral station"))),
+                            Map.entry('f', AutoBuilder.followPath(PathPlannerPath.fromPathFile("F to BCoral station"))),
+                            Map.entry('g', AutoBuilder.followPath(PathPlannerPath.fromPathFile("G to BCoral station"))),
+                            Map.entry('h', AutoBuilder.followPath(PathPlannerPath.fromPathFile("H to BCoral station")))
 
                         ), Autos::chosenReef),
                         RobotContainer.getRobot().advancedCommands.autointake(),
