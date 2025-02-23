@@ -17,19 +17,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "l4"
+                  "name": "PivotAlldown"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "coralinorout"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "l1"
+                  "name": "Coralinorout"
                 }
               }
             ]

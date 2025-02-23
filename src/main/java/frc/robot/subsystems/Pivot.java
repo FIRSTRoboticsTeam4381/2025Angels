@@ -56,7 +56,7 @@ private SparkFlex pivotmotor;
      
     
     NamedCommands.registerCommand("PivotAllUp", pivotAllUp());
-    
+    NamedCommands.registerCommand("PivotAlldown", trough() );
     // Quick and dirty way to enable position logging
     // The line is a no-op here but enables the desired packets
     pivotmotor.getAbsoluteEncoder().getPosition();
@@ -97,6 +97,10 @@ private SparkFlex pivotmotor;
   public Command intake()
   {
     return goToPosition(0.54,0.05);
+  }
+  public Command trough()
+  {
+    return goToPosition(0.6,0.05);
   }
 
 }

@@ -79,7 +79,7 @@ public class AdvancedCommands {
   public Command autointake(){
     return new SequentialCommandGroup(
       l1(),
-      robot.coralintake.Coralinorout()
+      robot.coralintake.Coralin()
     );
   }
 

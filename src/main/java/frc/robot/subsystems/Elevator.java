@@ -96,7 +96,7 @@ public class Elevator extends SubsystemBase {
     }
     public Command level1()
     {
-      return goToPosition(15, 0.5).withName("l1");
+      return goToPosition(13, 0.5).withName("l1");
     }
     public Command net()
     {
