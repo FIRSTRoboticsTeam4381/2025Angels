@@ -85,7 +85,7 @@ public class RobotContainer {
     autoChooser.addOption("Top To I To J", Autos.TopToIToJ());
     autoChooser.addOption("Top To I To K", Autos.TopToIToK());
     autoChooser.addOption("Top To I To L", Autos.TopToIToL());
-    autoChooser.addOption("Bottom to BB to MB", Autos.BottomBBtoMB());
+    autoChooser.addOption("Bottom to BB to MB", Autos.BottomtoBBtoMB());
     autoChooser.addOption("CustomAutoTop", Autos.JtoTCoarlstation());
     SmartDashboard.putString("Choose Reef", "");
     SmartDashboard.putString("ReefSelectTop", "");
@@ -133,7 +133,7 @@ specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance()
   }
 
   public Command getAutonomousCommand() {
-    Autos.chosenReef();
+    Autos.pickReef();
     double startDelay=SmartDashboard.getNumber("Start Delay", 0);
     return new SequentialCommandGroup( 
     new WaitCommand(startDelay), 

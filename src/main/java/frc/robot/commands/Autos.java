@@ -36,7 +36,8 @@ public final class Autos {
 
     // Test autonomous mode
     public static PreviewAuto testAuto() {
-        return new PreviewAuto("Test");
+        //return new PreviewAuto("Test");
+        return new PreviewAuto(Commands.none());
     }
 
     /**
@@ -102,22 +103,22 @@ public final class Autos {
     }
 
         public static PreviewAuto BottomtoEtoD() {
-            return new PreviewAuto("Bottom to E to D");
+            return new PreviewAuto("BottomtoEtoD");
         }
         public static PreviewAuto BottomtoFtoE() {
-            return new PreviewAuto("Bottom to F to E");
+            return new PreviewAuto("BottomtoFtoE");
         }
-        public static PreviewAuto BottomBBtoMB() {
-            return new PreviewAuto("Bottom to BB to MB");
+        public static PreviewAuto BottomtoBBtoMB() {
+            return new PreviewAuto("BottomtoBBtoMB");
         }
         public static PreviewAuto TopToIToJ() {
-            return new PreviewAuto("Top To I To J");
+            return new PreviewAuto("TopToIToJ");
         }
         public static PreviewAuto TopToIToK() {
-            return new PreviewAuto("Top To I To K");
+            return new PreviewAuto("TopToIToK");
         }
         public static PreviewAuto TopToIToL() {
-            return new PreviewAuto("Top To I To L");
+            return new PreviewAuto("TopToIToL");
         }
         public static PreviewAuto JtoTCoarlstation(){
             return ReefSelectTop("JtoTCoarlstation");

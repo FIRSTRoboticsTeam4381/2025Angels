@@ -38,9 +38,9 @@ public class AlgaeIntake extends SubsystemBase {
     public AlgaeIntake() {
         algaemotor1 = new SparkMax(54, MotorType.kBrushless);
         //algaemotor2 = new SparkMax(51, MotorType.kBrushless);
-        //algaesensor = algaemotor2.getForwardLimitSwitch();
+        algaesensor = algaemotor1.getForwardLimitSwitch();
         //algaemotor3 = new SparkMax(50,MotorType.kBrushless);
-        groundIntake = new SparkFlex(50, MotorType.kBrushless);
+        groundIntake = new SparkFlex(53, MotorType.kBrushless);
 
         SparkMaxConfig algaemotor1Config = new SparkMaxConfig();
         algaemotor1Config.smartCurrentLimit(15)
