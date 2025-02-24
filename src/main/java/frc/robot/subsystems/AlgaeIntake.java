@@ -104,6 +104,7 @@ public class AlgaeIntake extends SubsystemBase {
     public void periodic() {
         // This method will be called once per scheduler run
         SmartDashboard.putData(this);
+        SmartDashboard.putBoolean("Algae Int Running", Math.abs(algaemotor1.getAppliedOutput()) > 0);
     }
 
     public Command Intake() {

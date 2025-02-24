@@ -102,6 +102,7 @@ public class Coralintake extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.putData(this);
+    SmartDashboard.putBoolean("Coral Int Running", Math.abs(coralmotor1.getAppliedOutput()) > 0);
   }
 
   public Command CoralOut() {// creating a sequential command group

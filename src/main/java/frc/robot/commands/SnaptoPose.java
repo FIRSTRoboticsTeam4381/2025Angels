@@ -43,7 +43,7 @@ public class SnaptoPose extends Command
         add(new Pose2d(12.27, 5.34, new Rotation2d(Radians.convertFrom(-62, Degrees))));
         add(new Pose2d(13.82, 2.78, new Rotation2d(Radians.convertFrom(119, Degrees))));
         add(new Pose2d(14.54, 4.1, new Rotation2d(Radians.convertFrom(178, Degrees))));
-        add(new Pose2d(13.93, 5.35, new Rotation2d(Radians.convertFrom(-123, Degrees))));
+        add(new Pose2d(13.8, 5.3, new Rotation2d(Radians.convertFrom(-120, Degrees))));
     
     }};
     public Swerve swerve;
@@ -54,9 +54,9 @@ public class SnaptoPose extends Command
     public SnaptoPose(Swerve s){
 
         swerve = s;
-        x = new PIDController(1.3, 0, 0);
-        y = new PIDController(1.3, 0, 0);
-        r = new PIDController(.03, 0, 0);
+        x = new PIDController(1.6, 0, 0);
+        y = new PIDController(1.6, 0, 0);
+        r = new PIDController(.04, 0, 0);
         r.enableContinuousInput(180,-180);
         addRequirements(swerve);
         

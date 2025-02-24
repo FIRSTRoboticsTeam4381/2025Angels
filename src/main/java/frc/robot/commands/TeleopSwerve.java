@@ -57,7 +57,7 @@ public class TeleopSwerve extends Command{
         double rAxis = -rotate.get();
 
         /* Slow Trigger */
-        double slowdown = (slow.get() ? .25 : 1);
+        double slowdown = (slow.get() ? .75 : 1);
         yAxis *= slowdown;
         xAxis *= slowdown;
         rAxis *= slowdown;

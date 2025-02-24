@@ -53,10 +53,21 @@ public class RobotContainer {
   public final Elevator elevator;
   public final Hang hang;
   public final Pivot pivot;
-  public final PhotonCam camA = new PhotonCam("FL", new Transform3d(new Translation3d(Units.inchesToMeters(13.8), Units.inchesToMeters(-5.2),  Units.inchesToMeters(4.29)), new Rotation3d(0,0.22602 + Units.degreesToRadians(10),0.69690997)) );
-  public final PhotonCam camB = new PhotonCam("FR", new Transform3d(new Translation3d(Units.inchesToMeters(13.8), Units.inchesToMeters(5.2),  Units.inchesToMeters(4.29)), new Rotation3d(0,0.22602 + Units.degreesToRadians(10),-0.69690997)) );
-  public final PhotonCam camC = new PhotonCam("BL", new Transform3d(new Translation3d(Units.inchesToMeters(-13.75), Units.inchesToMeters(10),  Units.inchesToMeters(11.5)), new Rotation3d(0,.2793,Math.PI + Math.PI/4.0)));
-  public final PhotonCam camD = new PhotonCam("BR", new Transform3d(new Translation3d(Units.inchesToMeters(-13.75), Units.inchesToMeters(-10),  Units.inchesToMeters(11.5)), new Rotation3d(0,.2793,Math.PI-Math.PI/4.0)) );
+  
+
+  public final PhotonCam camA = new PhotonCam("FL", new Transform3d(
+    new Translation3d(Units.inchesToMeters(14.1), Units.inchesToMeters(-3.85),  Units.inchesToMeters(5.597)), 
+    new Rotation3d(Units.degreesToRadians(0),Units.degreesToRadians(-20),Units.degreesToRadians(35.531) )));
+  public final PhotonCam camB = new PhotonCam("FR", new Transform3d(
+    new Translation3d(Units.inchesToMeters(14.1), Units.inchesToMeters(3.85),  Units.inchesToMeters(5.597)), 
+    new Rotation3d(Units.degreesToRadians(0),Units.degreesToRadians(-20),Units.degreesToRadians(-35.531))));
+
+  public final PhotonCam camC = new PhotonCam("BL", new Transform3d(
+    new Translation3d(Units.inchesToMeters(-13.75), Units.inchesToMeters(10),  Units.inchesToMeters(11.5)),
+    new Rotation3d(0,-.2793,Math.PI + Math.PI/4.0)));
+  public final PhotonCam camD = new PhotonCam("BR", new Transform3d(
+    new Translation3d(Units.inchesToMeters(-13.75), Units.inchesToMeters(-10),  Units.inchesToMeters(11.5)),
+    new Rotation3d(0,-.2793,Math.PI-Math.PI/4.0)) );
 
   public final AdvancedCommands advancedCommands;
   // Constructor: set up the robot! 

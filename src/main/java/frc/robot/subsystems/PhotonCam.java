@@ -128,12 +128,12 @@ public class PhotonCam extends SubsystemBase {
 
         double xy;
         //SmartDashboard.getNumber("Photon XY Confidence", 0);
-        //double r;
+        double r;
         //SmartDashboard.getNumber("Photon R Confidence", 0);
 
         //if (SmartDashboard.getBoolean("Photon use calculated", true)) {
           xy = calculatedConf;
-          // r = calculatedConf;
+         r = calculatedConf;
         //  r = SmartDashboard.getNumber("Photon R Confidence", 10000);
         //} else {
         //  xy = SmartDashboard.getNumber("Photon XY Confidence", 1000);
@@ -144,6 +144,7 @@ public class PhotonCam extends SubsystemBase {
         // allocations
         confidenceMatrix.set(0, 0, xy);
         confidenceMatrix.set(1, 0, xy);
+        confidenceMatrix.set(2, 0, r);
         // confidenceMatrix.set(2, 0, r);
         if (inField(e)) {
           RobotContainer.getRobot().swerve.swerveOdometry.addVisionMeasurement(
