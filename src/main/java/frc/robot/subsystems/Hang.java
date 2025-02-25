@@ -47,14 +47,27 @@ public class Hang extends SubsystemBase {
         //.reverseSoftLimitEnabled(true)
         
     hangmotor1Config.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
+
+    // Top is 0.4311
+    // Bottom is 0.596
+    // 0.7 seems like a max out the back
+    hangmotor1Config.softLimit
+      .reverseSoftLimit(0.4311)
+      .forwardSoftLimit(0.596)
+      .forwardSoftLimitEnabled(true)
+      .reverseSoftLimitEnabled(true);
     // set whether it will reset parameters when they are changed, and the persist
     // mode
     hangmotor1.configure(hangmotor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     // making motor4 follow motor3
+    
     /*SparkMaxConfig hangmotor2Config = new SparkMaxConfig();
     hangmotor2Config.apply(hangmotor1Config);
     hangmotor2Config.follow(hangmotor1, true);
     hangmotor2.configure(hangmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);*/
+
+    
+    // 
 
     // Quick and dirty way to enable position logging
     // The line is a no-op here but enables the desired packets
