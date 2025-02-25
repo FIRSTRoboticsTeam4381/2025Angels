@@ -80,7 +80,7 @@ public class AlgaeIntake extends SubsystemBase {
             // basic functional command
 
             () -> {algaemotor1.set(0);
-            groundIntake.getClosedLoopController().setReference(.36, ControlType.kPosition);}, // oninit
+           }, // oninit
             () -> {
             }, // onexecute
             (killed) -> {
@@ -115,7 +115,9 @@ public class AlgaeIntake extends SubsystemBase {
                 new WaitUntilCommand(() -> hasalgae())),
                 RobotContainer.getRobot().vibrateDriverForTime(RumbleType.kLeftRumble,0.5,0.5),
                 new WaitCommand(0.25),
-                new InstantCommand(() -> algaemotor1.set(0), this)).withName("AlgaeIntake");
+                new InstantCommand(() -> algaemotor1.set(0), this))
+                .handleInterrupt(() -> groundIntake.getClosedLoopController().setReference(.36, ControlType.kPosition))
+                .withName("AlgaeIntake");
     }
 
     public Command Outtake() {
@@ -123,7 +125,10 @@ public class AlgaeIntake extends SubsystemBase {
                 new InstantCommand(() -> algaemotor1.set(1), this),
                 new WaitUntilCommand(() -> !hasalgae()),
                 new WaitCommand(1.5),
-                new InstantCommand(() -> algaemotor1.set(0), this)).withName("AlgaeOuttake");
+                new InstantCommand(() -> algaemotor1.set(0), this),
+                new InstantCommand (() ->  groundIntake.getClosedLoopController().setReference(.36, ControlType.kPosition)))
+                .withName("AlgaeOuttake");
+
     }
 
     public Command IntakeandOut() {

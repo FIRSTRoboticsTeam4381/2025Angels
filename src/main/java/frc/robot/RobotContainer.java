@@ -123,7 +123,7 @@ public class RobotContainer {
              true, driver.leftBumper()::getAsBoolean));
 
 specialist.rightBumper().toggleOnTrue(coralintake.Coralinorout());
-//specialist.leftBumper().toggleOnTrue(algaeintake.IntakeandOut());
+specialist.leftBumper().toggleOnTrue(algaeintake.IntakeandOut());
 elevator.setDefaultCommand(elevator.joystickcontrol(interpolateJoystick(specialist::getLeftY, Constants.stickDeadband)));
 pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(specialist::getRightY, Constants.stickDeadband)));
 hang.setDefaultCommand(hang.joystickcontrol(() -> specialist.getLeftTriggerAxis() - specialist.getRightTriggerAxis()));
