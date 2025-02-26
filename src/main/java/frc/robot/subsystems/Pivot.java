@@ -50,7 +50,8 @@ private SparkFlex pivotmotor;
     .reverseSoftLimitEnabled(true);
     pivotmotorConfig.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder)
     .p(8)
-    .d(4);
+    .d(4)
+    .outputRange(-.7, .7);
 
     pivotmotor.configure(pivotmotorConfig,ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
      

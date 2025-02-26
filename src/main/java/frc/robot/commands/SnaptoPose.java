@@ -38,7 +38,7 @@ public class SnaptoPose extends Command
         add(new Pose2d(7.333, 4.025, new Rotation2d(Radians.convertFrom(180, Degrees))));
 
         add(new Pose2d(10, 0.25, new Rotation2d(Radians.convertFrom(0, Degrees))));
-        add(new Pose2d(12.32, 2.73, new Rotation2d(Radians.convertFrom(56, Degrees))));
+        add(new Pose2d(12.185, 2.795, new Rotation2d(Radians.convertFrom(56, Degrees))));
         add(new Pose2d(11.34, 4.03, new Rotation2d(Radians.convertFrom(-3, Degrees))));
         add(new Pose2d(12.27, 5.34, new Rotation2d(Radians.convertFrom(-62, Degrees))));
         add(new Pose2d(13.82, 2.78, new Rotation2d(Radians.convertFrom(119, Degrees))));

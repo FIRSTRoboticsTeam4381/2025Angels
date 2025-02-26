@@ -55,10 +55,10 @@ public class RobotContainer {
   public final Pivot pivot;
   
 
-  public final PhotonCam camA = new PhotonCam("FL", new Transform3d(
+  public final PhotonCam camA = new PhotonCam("FR", new Transform3d(
     new Translation3d(Units.inchesToMeters(14.1), Units.inchesToMeters(-3.85),  Units.inchesToMeters(5.597)), 
     new Rotation3d(Units.degreesToRadians(0),Units.degreesToRadians(-20),Units.degreesToRadians(35.531) )));
-  public final PhotonCam camB = new PhotonCam("FR", new Transform3d(
+  public final PhotonCam camB = new PhotonCam("FL", new Transform3d(
     new Translation3d(Units.inchesToMeters(14.1), Units.inchesToMeters(3.85),  Units.inchesToMeters(5.597)), 
     new Rotation3d(Units.degreesToRadians(0),Units.degreesToRadians(-20),Units.degreesToRadians(-35.531))));
 
@@ -128,13 +128,16 @@ elevator.setDefaultCommand(elevator.joystickcontrol(interpolateJoystick(speciali
 pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(specialist::getRightY, Constants.stickDeadband)));
 hang.setDefaultCommand(hang.joystickcontrol(() -> specialist.getLeftTriggerAxis() - specialist.getRightTriggerAxis()));
 specialist.x().onTrue(hang.HangControl());
-specialist.povUp().onTrue(advancedCommands.l4());
-specialist.povRight().onTrue(advancedCommands.l3());
-specialist.povDown().onTrue(advancedCommands.l2());
-specialist.povLeft().onTrue(advancedCommands.l1());
+specialist.povUp().onTrue(advancedCommands.l4().andThen(advancedCommands.hold()));
+specialist.povRight().onTrue(advancedCommands.l3().andThen(advancedCommands.hold()));
+specialist.povDown().onTrue(advancedCommands.l2().andThen(advancedCommands.hold()));
+specialist.povLeft().onTrue(advancedCommands.l1().andThen(advancedCommands.hold()));
 driver.rightBumper().whileTrue(new SnaptoPose(swerve));
 //specialist.a().onTrue(coralintake.ManualCoarlIn());
 //specialist.y().onTrue(coralintake.ManualCoarlOut());
+
+specialist.axisMagnitudeGreaterThan(1, Constants.stickDeadband).onTrue(elevator.getDefaultCommand());
+specialist.axisMagnitudeGreaterThan(5, Constants.stickDeadband).onTrue(pivot.getDefaultCommand());
 
 
 specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));
