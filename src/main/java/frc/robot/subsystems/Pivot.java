@@ -87,7 +87,7 @@ private SparkFlex pivotmotor;
   
   public Command coralScoringTop()
   {
-    return goToPosition(0.39,0.02);
+    return goToPosition(0.36,0.02);
   }
 
   public Command pivotAllUp()

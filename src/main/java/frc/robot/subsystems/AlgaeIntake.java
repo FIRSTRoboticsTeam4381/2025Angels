@@ -124,7 +124,7 @@ public class AlgaeIntake extends SubsystemBase {
         return new SequentialCommandGroup(
                 new InstantCommand(() -> algaemotor1.set(1), this),
                 new WaitUntilCommand(() -> !hasalgae()),
-                new WaitCommand(1.5),
+                new WaitCommand(2.2),
                 new InstantCommand(() -> algaemotor1.set(0), this),
                 new InstantCommand (() ->  groundIntake.getClosedLoopController().setReference(.36, ControlType.kPosition)))
                 .withName("AlgaeOuttake");

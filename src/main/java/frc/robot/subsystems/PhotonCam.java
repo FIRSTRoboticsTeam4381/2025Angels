@@ -133,7 +133,7 @@ public class PhotonCam extends SubsystemBase {
 
         //if (SmartDashboard.getBoolean("Photon use calculated", true)) {
           xy = calculatedConf;
-         r = calculatedConf;
+         r = calculatedConf * 5;
         //  r = SmartDashboard.getNumber("Photon R Confidence", 10000);
         //} else {
         //  xy = SmartDashboard.getNumber("Photon XY Confidence", 1000);

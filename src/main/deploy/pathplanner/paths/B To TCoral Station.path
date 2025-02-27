@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 1.803082191780822,
-        "y": 7.210445205479452
+        "x": 1.712928082191781,
+        "y": 7.3306506849315065
       },
       "prevControl": {
-        "x": 2.738414158993936,
-        "y": 5.351988238266337
+        "x": 2.648260049404895,
+        "y": 5.472193717718391
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 127.23483398157464
+    "rotation": 123.69006752597979
   },
   "reversed": false,
   "folder": "Reef To TCoral Station",

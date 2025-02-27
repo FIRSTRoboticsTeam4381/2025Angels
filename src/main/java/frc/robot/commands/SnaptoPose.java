@@ -34,7 +34,7 @@ public class SnaptoPose extends Command
         add(new Pose2d(3.740, 2.784, new Rotation2d(Radians.convertFrom(60, Degrees))));
         add(new Pose2d(3.045, 4.031, new Rotation2d(Radians.convertFrom(0, Degrees))));
         add(new Pose2d(7.333, 7.586, new Rotation2d(Radians.convertFrom(180, Degrees))));
-        
+
         //Blue Top Starting Pose
         add(new Pose2d(7.333, 4.025, new Rotation2d(Radians.convertFrom(180, Degrees))));
 
@@ -42,22 +42,22 @@ public class SnaptoPose extends Command
         add(new Pose2d(10, 0.25, new Rotation2d(Radians.convertFrom(0, Degrees))));
 
         //I and J
-        add(new Pose2d(12.185, 2.795, new Rotation2d(Radians.convertFrom(56, Degrees))));
+        add(new Pose2d(12.32, 2.75, new Rotation2d(Radians.convertFrom(65, Degrees))));
 
         // G and H
-        add(new Pose2d(11.34, 4.03, new Rotation2d(Radians.convertFrom(-3, Degrees))));
+        add(new Pose2d(11.49, 4, new Rotation2d(Radians.convertFrom(-4, Degrees))));
 
         // F and E
-        add(new Pose2d(12.27, 5.34, new Rotation2d(Radians.convertFrom(-62, Degrees))));
+        add(new Pose2d(12.31, 5.30, new Rotation2d(Radians.convertFrom(-58, Degrees))));
 
         //D and C
-        add(new Pose2d(13.82, 2.78, new Rotation2d(Radians.convertFrom(119, Degrees))));
+        add(new Pose2d(13.85, 5.37, new Rotation2d(Radians.convertFrom(-118, Degrees))));
 
         // A and B
-        add(new Pose2d(14.54, 4.1, new Rotation2d(Radians.convertFrom(178, Degrees))));
+        add(new Pose2d(14.63, 3.97, new Rotation2d(Radians.convertFrom(180, Degrees))));
 
         // K and L
-        add(new Pose2d(13.8, 5.3, new Rotation2d(Radians.convertFrom(-120, Degrees))));
+        add(new Pose2d(13.82, 2.66, new Rotation2d(Radians.convertFrom(120, Degrees))));
     
     }};
     public Swerve swerve;
