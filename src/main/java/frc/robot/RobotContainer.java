@@ -101,6 +101,7 @@ public class RobotContainer {
     autoChooser.addOption("Top To I To L", Autos.TopToIToL());
     autoChooser.addOption("Bottom to BB to MB", Autos.BottomtoBBtoMB());
     autoChooser.addOption("CustomAutoTop", Autos.JtoTCoarlstation());
+    autoChooser.addOption("CustomAutoBottom", Autos.EtoBCoralStation());
     SmartDashboard.putString("Choose Reef", "");
     SmartDashboard.putString("ReefSelectTop", "");
     

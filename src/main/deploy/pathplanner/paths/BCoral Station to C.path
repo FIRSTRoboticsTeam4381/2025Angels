@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.7580051369863015,
-        "y": 0.764426369863014
+        "x": 1.7647500000000003,
+        "y": 0.905
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.3869113869863012,
-        "y": 2.231874286529681
+        "x": 1.9364058832409294,
+        "y": 1.0867532881374542
       },
       "isLocked": false,
-      "linkedName": "Coral Bottom"
+      "linkedName": "Bottom Coral Station"
     },
     {
       "anchor": {
@@ -20,12 +20,12 @@
         "y": 2.687714041095891
       },
       "prevControl": {
-        "x": 3.2941733257250125,
-        "y": 1.4019501522031208
+        "x": 3.56461885264857,
+        "y": 2.510937345799253
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "C"
+      "linkedName": "CD"
     }
   ],
   "rotationTargets": [],
@@ -48,7 +48,7 @@
   "folder": "BCoral station to Reef",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -127.30394827798341
+    "rotation": -131.0817511359326
   },
   "useDefaultConstraints": true
 }
