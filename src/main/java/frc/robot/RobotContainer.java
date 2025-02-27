@@ -30,6 +30,7 @@ import frc.robot.commands.SnaptoPose;
 import frc.robot.commands.TeleopSwerve;
 import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.Coralintake;
+import frc.robot.subsystems.DriverCam;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Hang;
 import frc.robot.subsystems.PhotonCam;
@@ -68,6 +69,8 @@ public class RobotContainer {
   public final PhotonCam camD = new PhotonCam("BR", new Transform3d(
     new Translation3d(Units.inchesToMeters(-13.75), Units.inchesToMeters(-10),  Units.inchesToMeters(11.5)),
     new Rotation3d(0,-.2793,Math.PI-Math.PI/4.0)) );
+
+    public DriverCam hangCam = new DriverCam("HangCamera");
 
   public final AdvancedCommands advancedCommands;
   // Constructor: set up the robot! 
