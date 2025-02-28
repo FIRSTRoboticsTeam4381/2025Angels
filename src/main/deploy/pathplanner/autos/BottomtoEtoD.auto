@@ -38,7 +38,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "E to BCoarl Station"
+            "pathName": "E to BCoral Station"
           }
         },
         {
@@ -50,7 +50,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "BCoral Station to D "
+            "pathName": "BCoral Station to D"
           }
         },
         {
@@ -87,7 +87,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "D to BCoral station"
+            "pathName": "D to BCoral Station"
           }
         }
       ]

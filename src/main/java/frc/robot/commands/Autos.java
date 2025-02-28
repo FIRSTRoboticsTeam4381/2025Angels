@@ -226,7 +226,6 @@ public final class Autos {
                    new SelectCommand<Character>(
                         Map.ofEntries(
                             Map.entry('A', AutoBuilder.followPath(PathPlannerPath.fromPathFile("A to BCoral Station"))),
-                            Map.entry('B', AutoBuilder.followPath(PathPlannerPath.fromPathFile("B to BCoral Station"))),
                             Map.entry('C', AutoBuilder.followPath(PathPlannerPath.fromPathFile("C to BCoral Station"))),
                             Map.entry('D', AutoBuilder.followPath(PathPlannerPath.fromPathFile("D to BCoral Station"))),
                             Map.entry('E', AutoBuilder.followPath(PathPlannerPath.fromPathFile("E to BCoral Station"))),
