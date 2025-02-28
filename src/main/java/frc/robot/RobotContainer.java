@@ -29,6 +29,7 @@ import frc.robot.commands.Autos;
 import frc.robot.commands.SnaptoPose;
 import frc.robot.commands.TeleopSwerve;
 import frc.robot.subsystems.AlgaeIntake;
+import frc.robot.subsystems.ChuteLEDs;
 import frc.robot.subsystems.Coralintake;
 import frc.robot.subsystems.DriverCam;
 import frc.robot.subsystems.Elevator;
@@ -71,6 +72,7 @@ public class RobotContainer {
     new Rotation3d(0,-.2793,Math.PI-Math.PI/4.0)) );
 
     public DriverCam hangCam = new DriverCam("HangCamera");
+    public ChuteLEDs chuteLEDs;
 
   public final AdvancedCommands advancedCommands;
   // Constructor: set up the robot! 
@@ -87,6 +89,7 @@ public class RobotContainer {
 
     // Set default commands here
 
+    chuteLEDs = new ChuteLEDs();
 
 
 
@@ -145,6 +148,10 @@ specialist.axisMagnitudeGreaterThan(5, Constants.stickDeadband).onTrue(pivot.get
 
 
 specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));
+
+
+driver.leftTrigger(0.5).onTrue(chuteLEDs.setLeftChute());
+driver.rightTrigger(0.5).onTrue(chuteLEDs.setRightChute());
 
 
 

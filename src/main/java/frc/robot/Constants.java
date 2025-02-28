@@ -79,7 +79,7 @@ public final class Constants {
         /* Swerve Profiling Values */
         // TODO The robot only seems to be making it up to about 4.5 m/s, could be a conversion issue
         // in code or a result of robot weight/friction/etc decreasing theoretical free speed
-        public static final double maxSpeed = 4.0; //meters per second
+        public static final double maxSpeed = 4.7; //meters per second
         // Spin speed omega radians per sec before it was 11.5
         public static final double maxAngularVelocity = 8.86;
 

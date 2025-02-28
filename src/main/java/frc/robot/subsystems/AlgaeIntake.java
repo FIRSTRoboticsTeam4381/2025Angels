@@ -35,6 +35,9 @@ public class AlgaeIntake extends SubsystemBase {
     //private SparkMax algaemotor3;
     private SparkFlex groundIntake;
 
+    private final double UP = .36;
+    private final double DOWN = .66;
+
     public AlgaeIntake() {
         algaemotor1 = new SparkMax(54, MotorType.kBrushless);
         //algaemotor2 = new SparkMax(51, MotorType.kBrushless);
@@ -109,14 +112,14 @@ public class AlgaeIntake extends SubsystemBase {
 
     public Command Intake() {
         return new SequentialCommandGroup(
-                new InstantCommand(()-> groundIntake.getClosedLoopController().setReference(.66, ControlType.kPosition)),
+                new InstantCommand(()-> groundIntake.getClosedLoopController().setReference(DOWN, ControlType.kPosition)),
                 new InstantCommand(() -> algaemotor1.set(-1), this),
                RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kLeftRumble,0.5,
                 new WaitUntilCommand(() -> hasalgae())),
                 RobotContainer.getRobot().vibrateDriverForTime(RumbleType.kLeftRumble,0.5,0.5),
                 new WaitCommand(0.25),
                 new InstantCommand(() -> algaemotor1.set(0), this))
-                .handleInterrupt(() -> groundIntake.getClosedLoopController().setReference(.36, ControlType.kPosition))
+                .handleInterrupt(() -> groundIntake.getClosedLoopController().setReference(UP, ControlType.kPosition))
                 .withName("AlgaeIntake");
     }
 
@@ -126,7 +129,7 @@ public class AlgaeIntake extends SubsystemBase {
                 new WaitUntilCommand(() -> !hasalgae()),
                 new WaitCommand(2.2),
                 new InstantCommand(() -> algaemotor1.set(0), this),
-                new InstantCommand (() ->  groundIntake.getClosedLoopController().setReference(.36, ControlType.kPosition)))
+                new InstantCommand (() ->  groundIntake.getClosedLoopController().setReference(UP, ControlType.kPosition)))
                 .withName("AlgaeOuttake");
 
     }

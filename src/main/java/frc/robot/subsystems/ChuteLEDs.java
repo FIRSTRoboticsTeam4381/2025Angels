@@ -35,14 +35,14 @@ public class ChuteLEDs extends SubsystemBase {
 
   public Command setLeftChute()
   {
-    return new InstantCommand(() -> ledController.set(1), this)
+    return new InstantCommand(() -> ledController.set(-1), this)
       .ignoringDisable(true)
       .withName("Left");
   }
 
   public Command setRightChute()
   {
-    return new InstantCommand(() -> ledController.set(-1), this)
+    return new InstantCommand(() -> ledController.set(1), this)
       .ignoringDisable(true)
       .withName("Right");
   }

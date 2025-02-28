@@ -73,6 +73,13 @@ public class Hang extends SubsystemBase {
     // The line is a no-op here but enables the desired packets
     hangmotor1.getEncoder().getPosition();
     hangmotor1.getAbsoluteEncoder().getPosition();
+
+
+    SmartDashboard.putData("Disable Hang Limits", new InstantCommand(() -> {
+      SparkFlexConfig c = new SparkFlexConfig();
+      c.softLimit.forwardSoftLimitEnabled(false).reverseSoftLimitEnabled(false);
+      hangmotor1.configure(c, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
+    }).ignoringDisable(true));
   }
 
   public Command joystickcontrol(Supplier<Double> joystickMove) {
