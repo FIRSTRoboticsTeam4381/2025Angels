@@ -30,43 +30,63 @@ public class AdvancedCommands {
 
   public Command l4() {
 
-    return new SequentialCommandGroup(
+    /*return new SequentialCommandGroup(
       robot.pivot.pivotAllUp(),
       new WaitCommand(.5),
       robot.elevator.level4(),
       robot.pivot.coralScoringTop()
-      ).withName("l4");
+      ).withName("l4");*/
+
+      return new ParallelCommandGroup(
+        robot.elevator.level4(),
+        robot.pivot.coralScoringTop()
+      );
 
   }
 
   public Command l3() {
 
-    return new SequentialCommandGroup(
+    /*return new SequentialCommandGroup(
       robot.pivot.pivotAllUp(),
       new WaitCommand(.5),
       robot.elevator.level3(),
       robot.pivot.coralScoring()
-      ).withName("l3");
+      ).withName("l3");*/
+
+      return new ParallelCommandGroup(
+        robot.elevator.level3(),
+        robot.pivot.coralScoring()
+      );
   }
 
   public Command l2() {
 
-    return new SequentialCommandGroup(
+    /*return new SequentialCommandGroup(
       robot.pivot.pivotAllUp(),
       new WaitCommand(.5),
       robot.elevator.level2(),
       robot.pivot.coralScoring()
-      ).withName("l2");
+      ).withName("l2");*/
+
+      return new ParallelCommandGroup(
+        robot.elevator.level2(),
+        robot.pivot.coralScoring()
+      );
   }
 
   public Command l1() {
 
     return new SequentialCommandGroup(
-      robot.pivot.pivotAllUp(),
+      //robot.pivot.pivotAllUp(),
       new WaitCommand(.5),
       robot.elevator.level1(),
       robot.pivot.intake()
       );
+
+      /*return new ParallelCommandGroup(
+        robot.pivot.intake(),
+        robot.elevator.level1()
+      );*/
   }
 
   public Command placel4(){
