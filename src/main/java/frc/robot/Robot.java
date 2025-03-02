@@ -79,6 +79,9 @@ public class Robot extends TimedRobot {
     CommandScheduler.getInstance().run();
 
     logRioData();
+
+    SmartDashboard.putNumber("MatchTime", DriverStation.getMatchTime());
+
   }
 
   @Override
