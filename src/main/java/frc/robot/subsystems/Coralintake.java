@@ -35,22 +35,22 @@ public class Coralintake extends SubsystemBase {
   // **creating the variables for the motors**
 
   private SparkMax coralmotor1;
-  private SparkMax coralmotor2;
+  //private SparkMax coralmotor2;
 
   // creating a sensor
   private SparkLimitSwitch coralsensor1;
-  private SparkLimitSwitch coralsensor2;
+  //private SparkLimitSwitch coralsensor2;
 
   // Creates a new Coralintake
   public Coralintake() {
 
     // assign cAn ID and Motor type
     coralmotor1 = new SparkMax(55, MotorType.kBrushless);
-    coralmotor2 = new SparkMax(56, MotorType.kBrushless);
+    //coralmotor2 = new SparkMax(56, MotorType.kBrushless);
 
     // sets the can ID for a sensor
     coralsensor1 = coralmotor1.getForwardLimitSwitch();
-    coralsensor2 = coralmotor2.getForwardLimitSwitch();
+    //coralsensor2 = coralmotor2.getForwardLimitSwitch();
 
     // set up the config
     SparkMaxConfig coralmotor1Config = new SparkMaxConfig();
@@ -67,11 +67,11 @@ public class Coralintake extends SubsystemBase {
     coralmotor1.configure(coralmotor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
     // making motor4 follow motor3
-    SparkMaxConfig coralmotor2Config = new SparkMaxConfig();
-    coralmotor2Config.apply(coralmotor1Config);
-    coralmotor2Config.follow(coralmotor1, false);// telling motor4 to be a follower of motor3
+    //SparkMaxConfig coralmotor2Config = new SparkMaxConfig();
+    //coralmotor2Config.apply(coralmotor1Config);
+    //coralmotor2Config.follow(coralmotor1, false);// telling motor4 to be a follower of motor3
 
-    coralmotor2.configure(coralmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    //coralmotor2.configure(coralmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
     this.setDefaultCommand(
         // sets default command
@@ -94,7 +94,7 @@ public class Coralintake extends SubsystemBase {
     // Quick and dirty way to enable position logging
     // The line is a no-op here but enables the desired packets
     coralmotor1.getEncoder().getVelocity();
-    coralmotor2.getEncoder().getVelocity();
+    //coralmotor2.getEncoder().getVelocity();
 
   }
 
@@ -138,7 +138,7 @@ public class Coralintake extends SubsystemBase {
   }
 
   public boolean hascoral() {
-    return coralsensor1.isPressed() || coralsensor2.isPressed();
+    return coralsensor1.isPressed(); //|| coralsensor2.isPressed();
   }
   /* public Command ManualCoarlIn() 
   {
