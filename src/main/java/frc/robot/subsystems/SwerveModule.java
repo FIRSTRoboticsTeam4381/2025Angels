@@ -207,5 +207,11 @@ public class SwerveModule {
             return 1;
     }
 
+    public void setDriveIdleMode(IdleMode kcoast) {
+        mDriveMotor.configure(new SparkFlexConfig().idleMode(kcoast), ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
+
+    }
+    
+
     
 }

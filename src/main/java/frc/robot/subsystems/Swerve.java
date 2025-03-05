@@ -5,6 +5,7 @@ import java.util.Optional;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.util.PathPlannerLogging;
+import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.studica.frc.AHRS;
 import com.studica.frc.AHRS.NavXComType;
 
@@ -27,6 +28,7 @@ import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
+import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
@@ -216,7 +218,19 @@ public class Swerve extends SubsystemBase{
     public void resetOdometry(Pose2d pose, Rotation2d yaw){
         swerveOdometry.resetPosition(yaw, getPositions(), pose);
     }
+  
+    public Command setCoast() {
+        return new StartEndCommand(() -> {
+            for(SwerveModule mod : mSwerveMods){
+                mod.setDriveIdleMode(IdleMode.kCoast);
+        }
+        },() -> {for(SwerveModule mod : mSwerveMods){
+                mod.setDriveIdleMode(IdleMode.kBrake);
+        }
+    }).ignoringDisable(true);         
+    }
 
+    
     public SwerveModuleState[] getStates(){
         SwerveModuleState[] states = new SwerveModuleState[4];
         for(SwerveModule mod : mSwerveMods){
