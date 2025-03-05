@@ -10,6 +10,8 @@ import org.photonvision.PhotonPoseEstimator.PoseStrategy;
 import org.photonvision.targeting.PhotonPipelineResult;
 import org.photonvision.targeting.PhotonTrackedTarget;
 
+import edu.wpi.first.apriltag.AprilTagDetection;
+import edu.wpi.first.apriltag.AprilTagDetector;
 import edu.wpi.first.apriltag.AprilTagFieldLayout;
 import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.epilogue.Logged;
@@ -17,6 +19,8 @@ import edu.wpi.first.epilogue.NotLogged;
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Transform3d;
+import edu.wpi.first.math.kinematics.Odometry;
+import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -31,7 +35,6 @@ import frc.robot.RobotContainer;
 public class PhotonCam extends SubsystemBase {
   private PhotonCamera cam;
   private StructPublisher<Pose3d> publisher;
-
   // The field from AprilTagFields will be different depending on the game.
   private AprilTagFieldLayout aprilTagFieldLayout = AprilTagFieldLayout.loadField(AprilTagFields.k2025ReefscapeWelded);
 
@@ -48,6 +51,10 @@ public class PhotonCam extends SubsystemBase {
     cam = new PhotonCamera(camera);
     photonPoseEstimator = new PhotonPoseEstimator(aprilTagFieldLayout, PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR,
         robotToCam);
+    photonPoseEstimator.setMultiTagFallbackStrategy(PoseStrategy.CLOSEST_TO_REFERENCE_POSE);
+
+
+
 
     cameraOffline = new Alert("Camera "+camera+" is offline!", AlertType.kError);
 
@@ -61,7 +68,7 @@ public class PhotonCam extends SubsystemBase {
   public void periodic() {
     // Alert if camera is offline
     cameraOffline.set(!cam.isConnected());
-
+    photonPoseEstimator.setReferencePose(RobotContainer.getRobot().swerve.swerveOdometry.getEstimatedPosition());
     // Process results detected since last run
     for (PhotonPipelineResult result : cam.getAllUnreadResults()) {
       Optional<EstimatedRobotPose> o = photonPoseEstimator.update(result);
@@ -152,6 +159,7 @@ public class PhotonCam extends SubsystemBase {
               e.timestampSeconds,
               confidenceMatrix);
         }
+        
       }
     }
   }
