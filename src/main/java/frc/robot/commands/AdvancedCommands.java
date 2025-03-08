@@ -95,7 +95,7 @@ public class AdvancedCommands {
 
     return new SequentialCommandGroup(
       l4(),
-      robot.coralintake.Coralinorout(),
+      robot.coralintake.CoralOut(),
       l1()
     );
   }
