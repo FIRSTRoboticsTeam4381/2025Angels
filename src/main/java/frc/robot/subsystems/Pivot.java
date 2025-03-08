@@ -11,19 +11,13 @@ import java.util.function.Supplier;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
-import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
-import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
-import com.revrobotics.spark.config.SparkFlexConfig;
-
 import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.FunctionalCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.commands.SparkPosition;
 
@@ -31,27 +25,30 @@ import frc.robot.commands.SparkPosition;
 
 public class Pivot extends SubsystemBase {
 
-private SparkFlex pivotmotor;
+private SparkMax pivotmotor;
 
   /** Creates a new Pivot. */
   public Pivot() {
 
-    pivotmotor = new SparkFlex(52, MotorType.kBrushless);
+    pivotmotor = new SparkMax(52, MotorType.kBrushless);
 
-    SparkFlexConfig pivotmotorConfig = new SparkFlexConfig();
+    SparkMaxConfig pivotmotorConfig = new SparkMaxConfig();
 
-    pivotmotorConfig
-    .smartCurrentLimit(50)
-    .idleMode(IdleMode.kBrake)
-    .inverted(true)
-    .softLimit.forwardSoftLimit(0.60)
-    .forwardSoftLimitEnabled(true)
-    .reverseSoftLimit(0.32)
-    .reverseSoftLimitEnabled(true);
-    pivotmotorConfig.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder)
-    .p(8)
-    .d(4)
-    .outputRange(-.7, .7);
+
+    pivotmotorConfig = new SparkMaxConfig(){{
+      smartCurrentLimit(50);
+      idleMode(IdleMode.kBrake);
+      inverted(false);
+
+      softLimit.forwardSoftLimit(0.74);
+      softLimit.forwardSoftLimitEnabled(true);
+      softLimit.reverseSoftLimit(0.425);
+      softLimit.reverseSoftLimitEnabled(true);
+
+      closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
+      //closedLoop.pid(8, 0, 4);
+      closedLoop.outputRange(-1,1);
+    }};
 
     pivotmotor.configure(pivotmotorConfig,ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
      
@@ -82,17 +79,17 @@ private SparkFlex pivotmotor;
 
   public Command coralScoring()
   {
-    return goToPosition(0.41, 0.01);
+    return goToPosition(0.5, 0.01);
   }
   
   public Command coralScoringTop()
   {
-    return goToPosition(0.36,0.02);
+    return goToPosition(0.6,0.02);
   }
 
   public Command pivotAllUp()
   {
-    return goToPosition(.58, .03);
+    return goToPosition(.74, .03);
   }
 
   public Command intake()
@@ -101,7 +98,7 @@ private SparkFlex pivotmotor;
   }
   public Command trough()
   {
-    return goToPosition(0.6,0.05);
+    return goToPosition(0.45,0.05);
   }
 
 }

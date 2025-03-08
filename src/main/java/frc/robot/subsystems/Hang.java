@@ -47,13 +47,14 @@ public class Hang extends SubsystemBase {
         //.reverseSoftLimitEnabled(true)
         
     hangmotor1Config.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
+    hangmotor1Config.absoluteEncoder.inverted(true);
 
     // Top is 0.4311
     // Bottom is 0.596
     // 0.7 seems like a max out the back
     hangmotor1Config.softLimit
-      .reverseSoftLimit(0.4311)
-      .forwardSoftLimit(0.596)
+      .reverseSoftLimit(0.3)
+      .forwardSoftLimit(0.53)
       .forwardSoftLimitEnabled(true)
       .reverseSoftLimitEnabled(true);
     // set whether it will reset parameters when they are changed, and the persist

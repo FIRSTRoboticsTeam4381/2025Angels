@@ -8,16 +8,13 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
-import java.security.PublicKey;
-
 import com.pathplanner.lib.auto.NamedCommands;
 import com.revrobotics.spark.SparkLimitSwitch;
-import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
+import com.revrobotics.spark.SparkFlex;
 
 import edu.wpi.first.epilogue.Logged;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -34,8 +31,8 @@ import frc.robot.RobotContainer;
 public class Coralintake extends SubsystemBase {
   // **creating the variables for the motors**
 
-  private SparkMax coralmotor1;
-  //private SparkMax coralmotor2;
+  private SparkFlex coralmotor1;
+  private SparkFlex coralmotor2;
 
   // creating a sensor
   private SparkLimitSwitch coralsensor1;
@@ -45,8 +42,8 @@ public class Coralintake extends SubsystemBase {
   public Coralintake() {
 
     // assign cAn ID and Motor type
-    coralmotor1 = new SparkMax(55, MotorType.kBrushless);
-    //coralmotor2 = new SparkMax(56, MotorType.kBrushless);
+    coralmotor1 = new SparkFlex(55, MotorType.kBrushless);
+    coralmotor2 = new SparkFlex(56, MotorType.kBrushless);
 
     // sets the can ID for a sensor
     coralsensor1 = coralmotor1.getForwardLimitSwitch();
@@ -59,7 +56,7 @@ public class Coralintake extends SubsystemBase {
     NamedCommands.registerCommand("coralout", CoralOut());
     // assign properties to motor
     coralmotor1Config
-        .smartCurrentLimit(15)
+        .smartCurrentLimit(30)
         .idleMode(IdleMode.kBrake).limitSwitch.forwardLimitSwitchEnabled(false);
 
     // set whether it will reset parameters when they are changed, and the persist
@@ -67,11 +64,11 @@ public class Coralintake extends SubsystemBase {
     coralmotor1.configure(coralmotor1Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
     // making motor4 follow motor3
-    //SparkMaxConfig coralmotor2Config = new SparkMaxConfig();
-    //coralmotor2Config.apply(coralmotor1Config);
-    //coralmotor2Config.follow(coralmotor1, false);// telling motor4 to be a follower of motor3
+    SparkMaxConfig coralmotor2Config = new SparkMaxConfig();
+    coralmotor2Config.apply(coralmotor1Config);
+    coralmotor2Config.follow(coralmotor1, true);// telling motor4 to be a follower of motor3
 
-    //coralmotor2.configure(coralmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    coralmotor2.configure(coralmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
     this.setDefaultCommand(
         // sets default command
@@ -110,7 +107,7 @@ public class Coralintake extends SubsystemBase {
         // seting the motor speed to 1
         new InstantCommand(() -> coralmotor1.set(1), this),
         // checking to see if the sensor can see the coral
-        new WaitUntilCommand(() -> !hascoral()),
+        new WaitUntilCommand(() -> false),//!hascoral()),
         // wait time after throwing coral out
         new WaitCommand(1.5),
         // stopping the motor.
@@ -124,7 +121,7 @@ public class Coralintake extends SubsystemBase {
         // this command will run until the sensor sees the coral
         new InstantCommand(() -> coralmotor1.set(-1), this),
         RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kRightRumble, 0.5,
-            new WaitUntilCommand(() -> hascoral())),
+            new WaitUntilCommand(() -> false)),//hascoral())),
         RobotContainer.getRobot().vibrateDriverForTime(RumbleType.kBothRumble, 0.8, 0.5),
         new WaitCommand(0.25),
         new InstantCommand(() -> coralmotor1.set(0), this)).withName("Coral Intaking");

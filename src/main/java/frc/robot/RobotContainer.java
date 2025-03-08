@@ -7,7 +7,6 @@ package frc.robot;
 import java.util.function.Supplier;
 
 import edu.wpi.first.epilogue.Logged;
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Translation3d;
@@ -28,7 +27,6 @@ import frc.robot.commands.AdvancedCommands;
 import frc.robot.commands.Autos;
 import frc.robot.commands.SnaptoPose;
 import frc.robot.commands.TeleopSwerve;
-import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.ChuteLEDs;
 import frc.robot.subsystems.Coralintake;
 import frc.robot.subsystems.DriverCam;
@@ -51,25 +49,25 @@ public class RobotContainer {
   // Subsystems
   public final Swerve swerve;
   public final Coralintake coralintake;
-  public final AlgaeIntake algaeintake;
+ // public final AlgaeIntake algaeintake;
   public final Elevator elevator;
   public final Hang hang;
   public final Pivot pivot;
   
 
   public final PhotonCam camA = new PhotonCam("FR", new Transform3d(
-    new Translation3d(Units.inchesToMeters(14.1), Units.inchesToMeters(-3.85),  Units.inchesToMeters(5.597)), 
-    new Rotation3d(Units.degreesToRadians(0),Units.degreesToRadians(-20),Units.degreesToRadians(35.531) )));
+    new Translation3d(Units.inchesToMeters(9.6), Units.inchesToMeters(-10.43),  Units.inchesToMeters(14.125+0.17)), 
+    new Rotation3d(Units.degreesToRadians(0),Units.degreesToRadians(-3.06),Units.degreesToRadians(17.11) )));
   public final PhotonCam camB = new PhotonCam("FL", new Transform3d(
-    new Translation3d(Units.inchesToMeters(14.1), Units.inchesToMeters(3.85),  Units.inchesToMeters(5.597)), 
-    new Rotation3d(Units.degreesToRadians(0),Units.degreesToRadians(-20),Units.degreesToRadians(-35.531))));
+    new Translation3d(Units.inchesToMeters(9.6), Units.inchesToMeters(10.43),  Units.inchesToMeters(14.125+0.17)), 
+    new Rotation3d(Units.degreesToRadians(0),Units.degreesToRadians(-3.06),Units.degreesToRadians(-17.11))));
 
   public final PhotonCam camC = new PhotonCam("BL", new Transform3d(
-    new Translation3d(Units.inchesToMeters(-13.75), Units.inchesToMeters(10),  Units.inchesToMeters(11.5)),
-    new Rotation3d(0,-.2793,Math.PI + Math.PI/4.0)));
+    new Translation3d(Units.inchesToMeters(0.13), Units.inchesToMeters(9.44),  Units.inchesToMeters(12.76)),
+    new Rotation3d(0,Units.degreesToRadians(-16.5), Units.degreesToRadians(47.52+180))));
   public final PhotonCam camD = new PhotonCam("BR", new Transform3d(
-    new Translation3d(Units.inchesToMeters(-13.75), Units.inchesToMeters(-10),  Units.inchesToMeters(11.5)),
-    new Rotation3d(0,-.2793,Math.PI-Math.PI/4.0)) );
+    new Translation3d(Units.inchesToMeters(0.13), Units.inchesToMeters(-9.44),  Units.inchesToMeters(12.76)),
+    new Rotation3d(0,Units.degreesToRadians(-16.5),  Units.degreesToRadians(-47.52-180))) );
 
     public DriverCam hangCam = new DriverCam("HangCamera");
     public ChuteLEDs chuteLEDs;
@@ -81,7 +79,7 @@ public class RobotContainer {
     
     swerve = new Swerve();
     coralintake = new Coralintake();
-    algaeintake  = new AlgaeIntake();
+    //algaeintake  = new AlgaeIntake();
     elevator = new Elevator();
     hang = new Hang();
     pivot = new Pivot();
@@ -129,16 +127,17 @@ public class RobotContainer {
           driver::getRightX,
              true, driver.leftBumper()::getAsBoolean));
 
-specialist.rightBumper().toggleOnTrue(coralintake.Coralinorout());
-specialist.leftBumper().toggleOnTrue(algaeintake.IntakeandOut());
+specialist.rightBumper().toggleOnTrue(coralintake.Coralin());
+specialist.leftBumper().toggleOnTrue(coralintake.CoralOut());
+//specialist.leftBumper().toggleOnTrue(algaeintake.IntakeandOut());
 elevator.setDefaultCommand(elevator.joystickcontrol(interpolateJoystick(specialist::getLeftY, Constants.stickDeadband)));
 pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(specialist::getRightY, Constants.stickDeadband)));
 hang.setDefaultCommand(hang.joystickcontrol(() -> specialist.getLeftTriggerAxis() - specialist.getRightTriggerAxis()));
-specialist.x().onTrue(hang.HangControl());
-specialist.povUp().onTrue(advancedCommands.l4().andThen(advancedCommands.hold()));
-specialist.povRight().onTrue(advancedCommands.l3().andThen(advancedCommands.hold()));
-specialist.povDown().onTrue(advancedCommands.l2().andThen(advancedCommands.hold()));
-specialist.povLeft().onTrue(advancedCommands.l1().andThen(advancedCommands.hold()));
+//specialist.x().onTrue(hang.HangControl());
+//specialist.povUp().onTrue(advancedCommands.l4().andThen(advancedCommands.hold()));
+//specialist.povRight().onTrue(advancedCommands.l3().andThen(advancedCommands.hold()));
+//specialist.povDown().onTrue(advancedCommands.l2().andThen(advancedCommands.hold()));
+//specialist.povLeft().onTrue(advancedCommands.l1().andThen(advancedCommands.hold()));
 driver.rightBumper().whileTrue(new SnaptoPose(swerve));
 driver.leftBumper().whileTrue(swerve.setCoast());
 //specialist.a().onTrue(coralintake.ManualCoarlIn());
