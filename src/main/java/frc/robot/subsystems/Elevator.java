@@ -99,7 +99,11 @@ public class Elevator extends SubsystemBase {
     }
     public Command net()
     {
-      return goToPosition(600, 0.5);
+      return goToPosition(71.5, 0.5);
+    }
+    public Command Algaereef()
+    {
+      return goToPosition(56, 0.5);
     }
 
 }

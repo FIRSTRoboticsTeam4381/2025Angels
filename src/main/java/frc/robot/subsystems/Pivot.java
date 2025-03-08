@@ -111,4 +111,16 @@ private SparkFlex pivotmotor;
   {
     return goToPosition(.6906,0.05);
   }
+  public Command algaepickup()
+  {
+    return goToPosition(0.43,0.05);
+  }
+  public Command Proccesor()
+  {
+    return goToPosition(0.52, 0.05);
+  }
+  public Command Algaereef()
+  {
+    return goToPosition(0.26, 0.05);
+  }
 }

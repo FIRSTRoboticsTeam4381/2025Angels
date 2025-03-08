@@ -26,7 +26,7 @@ public class AdvancedCommands {
     NamedCommands.registerCommand("l2", l2());
     NamedCommands.registerCommand("l1", l1());
     NamedCommands.registerCommand("placel4", placel4());
-    NamedCommands.registerCommand("autointake", autointake());
+    NamedCommands.registerCommand("w", autointake());
   }
 
   public Command l4() {
@@ -110,6 +110,16 @@ public class AdvancedCommands {
       l1(),
       robot.coralintake.Coralin()
     );
+  }
+
+  public Command NetAlgae(){
+    return new ParallelCommandGroup(robot.pivot.net(),
+    robot.elevator.net());
+  }
+
+  public Command AlgaeReef(){
+    return new ParallelCommandGroup(robot.pivot.Algaereef(),
+    robot.elevator.Algaereef());
   }
 
 }

@@ -139,6 +139,10 @@ specialist.povDown().onTrue(advancedCommands.l2().andThen(advancedCommands.hold(
 specialist.povLeft().onTrue(advancedCommands.l1().andThen(advancedCommands.hold()));
 driver.rightBumper().whileTrue(new SnaptoPose(swerve));
 driver.leftBumper().whileTrue(swerve.setCoast());
+specialist.y().onTrue(advancedCommands.NetAlgae());
+specialist.x().onTrue(pivot.algaepickup());
+specialist.a().onTrue(pivot.Proccesor());
+specialist.b().onTrue(advancedCommands.AlgaeReef());
 //specialist.a().onTrue(coralintake.ManualCoarlIn());
 //specialist.y().onTrue(coralintake.ManualCoarlOut());
 
