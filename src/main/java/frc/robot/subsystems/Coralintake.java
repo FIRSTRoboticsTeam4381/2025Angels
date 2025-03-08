@@ -107,7 +107,7 @@ public class Coralintake extends SubsystemBase {
         // seting the motor speed to 1
         new InstantCommand(() -> coralmotor1.set(1), this),
         // checking to see if the sensor can see the coral
-        new WaitUntilCommand(() -> false),//!hascoral()),
+        new WaitUntilCommand(() -> !hascoral()),//!hascoral()),
         // wait time after throwing coral out
         new WaitCommand(1.5),
         // stopping the motor.
@@ -121,9 +121,9 @@ public class Coralintake extends SubsystemBase {
         // this command will run until the sensor sees the coral
         new InstantCommand(() -> coralmotor1.set(-1), this),
         RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kRightRumble, 0.5,
-            new WaitUntilCommand(() -> false)),//hascoral())),
+            new WaitUntilCommand(() -> hascoral())),//hascoral())),
         RobotContainer.getRobot().vibrateDriverForTime(RumbleType.kBothRumble, 0.8, 0.5),
-        new WaitCommand(0.25),
+        new WaitCommand(0.5),
         new InstantCommand(() -> coralmotor1.set(0), this)).withName("Coral Intaking");
   }
 

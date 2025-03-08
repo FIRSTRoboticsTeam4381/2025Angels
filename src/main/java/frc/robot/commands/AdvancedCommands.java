@@ -37,7 +37,8 @@ public class AdvancedCommands {
       robot.pivot.coralScoringTop()
       ).withName("l4");*/
 
-      return new ParallelCommandGroup(
+      return new SequentialCommandGroup(
+        robot.pivot.intake(),
         robot.elevator.level4(),
         robot.pivot.coralScoringTop()
       );
@@ -53,7 +54,8 @@ public class AdvancedCommands {
       robot.pivot.coralScoring()
       ).withName("l3");*/
 
-      return new ParallelCommandGroup(
+      return new SequentialCommandGroup(
+        robot.pivot.intake(),
         robot.elevator.level3(),
         robot.pivot.coralScoring()
       );
@@ -68,7 +70,8 @@ public class AdvancedCommands {
       robot.pivot.coralScoring()
       ).withName("l2");*/
 
-      return new ParallelCommandGroup(
+      return new SequentialCommandGroup(
+        robot.pivot.intake(),
         robot.elevator.level2(),
         robot.pivot.coralScoring()
       );
@@ -78,9 +81,8 @@ public class AdvancedCommands {
 
     return new SequentialCommandGroup(
       //robot.pivot.pivotAllUp(),
-      new WaitCommand(.5),
-      robot.elevator.level1(),
-      robot.pivot.intake()
+      robot.pivot.intake(),
+      robot.elevator.level1()
       );
 
       /*return new ParallelCommandGroup(

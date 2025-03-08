@@ -11,9 +11,12 @@ import java.util.function.Supplier;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
+import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
+import com.revrobotics.spark.config.SparkFlexConfig;
+
 import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -25,19 +28,19 @@ import frc.robot.commands.SparkPosition;
 
 public class Pivot extends SubsystemBase {
 
-private SparkMax pivotmotor;
+private SparkFlex pivotmotor;
 
 //private final double GEAR_RATIO = 9. * 5. * (80.0/24.0); //About 150
 
   /** Creates a new Pivot. */
   public Pivot() {
 
-    pivotmotor = new SparkMax(52, MotorType.kBrushless);
+    pivotmotor = new SparkFlex(52, MotorType.kBrushless);
 
-    SparkMaxConfig pivotmotorConfig = new SparkMaxConfig();
+    SparkFlexConfig pivotmotorConfig = new SparkFlexConfig();
 
 
-    pivotmotorConfig = new SparkMaxConfig(){{
+    pivotmotorConfig = new SparkFlexConfig(){{
       smartCurrentLimit(50);
       idleMode(IdleMode.kBrake);
       inverted(false);
@@ -48,7 +51,7 @@ private SparkMax pivotmotor;
       softLimit.reverseSoftLimitEnabled(true);
 
       closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
-      closedLoop.pid(4, 0, 1);
+      closedLoop.pid(8, 0, 1);
       closedLoop.outputRange(-1,1);
     }};
 
@@ -81,12 +84,12 @@ private SparkMax pivotmotor;
 
   public Command coralScoring()
   {
-    return goToPosition(0.5, 0.01);
+    return goToPosition(0.62, 0.01);
   }
   
   public Command coralScoringTop()
   {
-    return goToPosition(0.6,0.02);
+    return goToPosition(0.53,0.02);
   }
 
   public Command pivotAllUp()
@@ -96,7 +99,7 @@ private SparkMax pivotmotor;
 
   public Command intake()
   {
-    return goToPosition(0.54,0.05);
+    return goToPosition(0.75,0.05);
   }
   public Command trough()
   {

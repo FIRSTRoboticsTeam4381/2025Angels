@@ -83,19 +83,19 @@ public class Elevator extends SubsystemBase {
     
     public Command level4()
     {
-      return goToPosition(71.5, 0.2).withName("l4");
+      return goToPosition(69.3, 0.2).withName("l4");
     }
     public Command level3()
     {
-      return goToPosition(36.69, 0.2).withName("l3");
+      return goToPosition(36.6, 0.2).withName("l3");
     }
     public Command level2()
     {
-      return goToPosition(17.7, 0.2).withName("l2");
+      return goToPosition(15.52, 0.2).withName("l2");
     }
     public Command level1()
     {
-      return goToPosition(13, 0.5).withName("l1");
+      return goToPosition(0.74, 0.5).withName("l1");
     }
     public Command net()
     {
