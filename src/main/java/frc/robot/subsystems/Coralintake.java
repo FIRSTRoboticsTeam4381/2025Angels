@@ -109,7 +109,7 @@ public class Coralintake extends SubsystemBase {
         // checking to see if the sensor can see the coral
         new WaitUntilCommand(() -> !hascoral()),//!hascoral()),
         // wait time after throwing coral out
-        new WaitCommand(1.5),
+        new WaitCommand(1),
         // stopping the motor.
         new InstantCommand(() -> coralmotor1.set(0), this)
     // giving the action a name for logging/

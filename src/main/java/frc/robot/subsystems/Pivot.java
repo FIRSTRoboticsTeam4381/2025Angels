@@ -45,13 +45,13 @@ private SparkFlex pivotmotor;
       idleMode(IdleMode.kBrake);
       inverted(false);
 
-      softLimit.forwardSoftLimit(0.74);
+      softLimit.forwardSoftLimit(0.756);
       softLimit.forwardSoftLimitEnabled(true);
       softLimit.reverseSoftLimit(0.425);
       softLimit.reverseSoftLimitEnabled(true);
 
       closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
-      closedLoop.pid(8, 0, 1);
+      closedLoop.pid(7.5, 0, 2);
       closedLoop.outputRange(-1,1);
     }};
 

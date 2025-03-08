@@ -23,19 +23,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "l2"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "coralout"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "l1"
+                  "name": "placel4"
                 }
               }
             ]
@@ -50,13 +38,13 @@
         {
           "type": "named",
           "data": {
-            "name": "coralin"
+            "name": "autointake"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "TCoral Station To J"
+            "pathName": "TCoral Station To K"
           }
         },
         {
@@ -66,19 +54,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "l4"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "coralout"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "l1"
+                  "name": "placel4"
                 }
               }
             ]

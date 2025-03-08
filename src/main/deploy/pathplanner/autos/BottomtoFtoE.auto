@@ -17,19 +17,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "l2"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "coralout"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "l1"
+                  "name": "placel4"
                 }
               }
             ]
@@ -44,13 +32,13 @@
         {
           "type": "named",
           "data": {
-            "name": "coralin"
+            "name": "autointake"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "BCoral Station to E"
+            "pathName": "BCoral Station to C"
           }
         },
         {
@@ -60,19 +48,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "l4"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "coralinorout"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "l1"
+                  "name": "placel4"
                 }
               }
             ]
