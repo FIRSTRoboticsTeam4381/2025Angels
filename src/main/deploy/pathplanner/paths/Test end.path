@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 5.358504098360656,
+        "y": 5.2897028688524586
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.8600089067081482,
+        "y": 6.281472847477724
+      },
+      "isLocked": false,
+      "linkedName": "IJ"
+    },
+    {
+      "anchor": {
+        "x": 1.8525,
+        "y": 7.2035
+      },
+      "prevControl": {
+        "x": 4.623088392471694,
+        "y": 5.664458254845901
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "T Coral Station"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 123.69006752597979
+  },
+  "reversed": false,
+  "folder": null,
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -119.11999999999999
+  },
+  "useDefaultConstraints": true
+}
