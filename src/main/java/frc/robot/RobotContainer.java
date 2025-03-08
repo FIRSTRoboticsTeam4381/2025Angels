@@ -127,17 +127,16 @@ public class RobotContainer {
           driver::getRightX,
              true, driver.leftBumper()::getAsBoolean));
 
-specialist.rightBumper().toggleOnTrue(coralintake.Coralin());
-specialist.leftBumper().toggleOnTrue(coralintake.CoralOut());
+specialist.rightBumper().toggleOnTrue(coralintake.Coralinorout());
 //specialist.leftBumper().toggleOnTrue(algaeintake.IntakeandOut());
 elevator.setDefaultCommand(elevator.joystickcontrol(interpolateJoystick(specialist::getLeftY, Constants.stickDeadband)));
 pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(specialist::getRightY, Constants.stickDeadband)));
 hang.setDefaultCommand(hang.joystickcontrol(() -> specialist.getLeftTriggerAxis() - specialist.getRightTriggerAxis()));
 //specialist.x().onTrue(hang.HangControl());
-//specialist.povUp().onTrue(advancedCommands.l4().andThen(advancedCommands.hold()));
-//specialist.povRight().onTrue(advancedCommands.l3().andThen(advancedCommands.hold()));
-//specialist.povDown().onTrue(advancedCommands.l2().andThen(advancedCommands.hold()));
-//specialist.povLeft().onTrue(advancedCommands.l1().andThen(advancedCommands.hold()));
+specialist.povUp().onTrue(advancedCommands.l4().andThen(advancedCommands.hold()));
+specialist.povRight().onTrue(advancedCommands.l3().andThen(advancedCommands.hold()));
+specialist.povDown().onTrue(advancedCommands.l2().andThen(advancedCommands.hold()));
+specialist.povLeft().onTrue(advancedCommands.l1().andThen(advancedCommands.hold()));
 driver.rightBumper().whileTrue(new SnaptoPose(swerve));
 driver.leftBumper().whileTrue(swerve.setCoast());
 //specialist.a().onTrue(coralintake.ManualCoarlIn());

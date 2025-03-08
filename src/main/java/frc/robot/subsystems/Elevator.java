@@ -36,9 +36,10 @@ public class Elevator extends SubsystemBase {
              motorEL1Config.smartCurrentLimit(60)
              .idleMode(IdleMode.kBrake)
              .inverted(true)
-             .softLimit.forwardSoftLimit(54.5)
+             .softLimit.forwardSoftLimit(72)
              .forwardSoftLimitEnabled(true);
-             motorEL1Config.closedLoop.pid(.3,0,3);
+             motorEL1Config.closedLoop.p(.3);
+             motorEL1Config.closedLoop.d(3);
              motorEL1Config.closedLoop.maxMotion.maxAcceleration(9000).maxVelocity(5000);
 
 
@@ -82,7 +83,7 @@ public class Elevator extends SubsystemBase {
     
     public Command level4()
     {
-      return goToPosition(50, 0.2).withName("l4");
+      return goToPosition(71.5, 0.2).withName("l4");
     }
     public Command level3()
     {
@@ -98,7 +99,7 @@ public class Elevator extends SubsystemBase {
     }
     public Command net()
     {
-      return goToPosition(50, 0.5);
+      return goToPosition(600, 0.5);
     }
 
 }

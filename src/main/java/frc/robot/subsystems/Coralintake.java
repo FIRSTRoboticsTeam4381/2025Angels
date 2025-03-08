@@ -56,7 +56,7 @@ public class Coralintake extends SubsystemBase {
     NamedCommands.registerCommand("coralout", CoralOut());
     // assign properties to motor
     coralmotor1Config
-        .smartCurrentLimit(30)
+        .smartCurrentLimit(80)
         .idleMode(IdleMode.kBrake).limitSwitch.forwardLimitSwitchEnabled(false);
 
     // set whether it will reset parameters when they are changed, and the persist

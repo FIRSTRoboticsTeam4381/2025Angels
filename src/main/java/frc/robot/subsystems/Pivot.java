@@ -27,6 +27,8 @@ public class Pivot extends SubsystemBase {
 
 private SparkMax pivotmotor;
 
+//private final double GEAR_RATIO = 9. * 5. * (80.0/24.0); //About 150
+
   /** Creates a new Pivot. */
   public Pivot() {
 
@@ -46,7 +48,7 @@ private SparkMax pivotmotor;
       softLimit.reverseSoftLimitEnabled(true);
 
       closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
-      //closedLoop.pid(8, 0, 4);
+      closedLoop.pid(4, 0, 1);
       closedLoop.outputRange(-1,1);
     }};
 
@@ -101,4 +103,9 @@ private SparkMax pivotmotor;
     return goToPosition(0.45,0.05);
   }
 
+
+  public Command net()
+  {
+    return goToPosition(.6906,0.05);
+  }
 }
