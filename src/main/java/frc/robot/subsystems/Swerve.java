@@ -18,7 +18,6 @@ import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-import edu.wpi.first.math.util.Units;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.StructArrayPublisher;
 import edu.wpi.first.networktables.StructPublisher;
@@ -57,7 +56,7 @@ public class Swerve extends SubsystemBase{
         .getStructTopic("Swerve/ChassisTarget", ChassisSpeeds.struct).publish();
 
     public final Field2d field = new Field2d();
-    private Pose2d startPose = new Pose2d(Units.inchesToMeters(177), Units.inchesToMeters(214), Rotation2d.fromDegrees(0));
+    private Pose2d startPose = new Pose2d(8.5, 4, Rotation2d.fromDegrees(90));
 
 
     public Swerve(){
@@ -78,7 +77,7 @@ public class Swerve extends SubsystemBase{
         BL = mSwerveMods[2];
         BR = mSwerveMods[3];
 
-        swerveOdometry = new SwerveDrivePoseEstimator(Constants.Swerve.swerveKinematics, getYaw(), getPositions(), startPose);
+        swerveOdometry = new SwerveDrivePoseEstimator(Constants.Swerve.swerveKinematics, getGyroYaw(), getPositions(), startPose);
 
         try {
 
@@ -129,19 +128,23 @@ public class Swerve extends SubsystemBase{
 
 
           setupSysIDTests();
-
-          zeroGyro();
     }
 
     public void drive(Translation2d translation, double rotation, boolean fieldRelative, boolean isOpenLoop){
         
+        Optional<Alliance> a = DriverStation.getAlliance();
+
         ChassisSpeeds targetSpeeds = ChassisSpeeds.discretize(
             fieldRelative ? ChassisSpeeds.fromFieldRelativeSpeeds(
                 translation.getX(),
                 translation.getY(),
                 rotation,
-                getYaw()
-            )
+                getOdometryYaw().plus(
+                    a.isPresent() && a.get() == Alliance.Red ?
+                    Rotation2d.k180deg
+                    :
+                    Rotation2d.kZero
+                ))
             : new ChassisSpeeds(
                 translation.getX(),
                 translation.getY(),
@@ -212,12 +215,12 @@ public class Swerve extends SubsystemBase{
      * @param pose Desired new pose
      */
     public void resetOdometry(Pose2d pose){
-        swerveOdometry.resetPosition(getYaw(), getPositions(), pose);
+        swerveOdometry.resetPosition(getGyroYaw(), getPositions(), pose);
     }
 
-    public void resetOdometry(Pose2d pose, Rotation2d yaw){
+    /*public void resetOdometry(Pose2d pose, Rotation2d yaw){
         swerveOdometry.resetPosition(yaw, getPositions(), pose);
-    }
+    }*/
   
     public Command setCoast() {
         return new StartEndCommand(() -> {
@@ -254,30 +257,33 @@ public class Swerve extends SubsystemBase{
      * Use to reset angle to certain known angle or to zero
      * @param angle Desired new angle
      */
-    public void zeroGyro(){
-        gyro.zeroYaw();
+    public void zeroYaw(){
+        //gyro.zeroYaw();
         Optional<Alliance> a = DriverStation.getAlliance();
-        swerveOdometry.resetPose(
-            new Pose2d(
-            swerveOdometry.getEstimatedPosition().getTranslation(),
+        swerveOdometry.resetRotation(
             a.isPresent() && a.get() == Alliance.Red ?
-                new Rotation2d(Math.PI)
-                :
-                new Rotation2d(0)
-        ));
+            Rotation2d.k180deg
+            :
+            Rotation2d.kZero
+        );
     }
 
-    public Rotation2d getYaw(){
+    public Rotation2d getGyroYaw(){
         return (Constants.Swerve.invertGyro) ? Rotation2d.fromDegrees(360 - gyro.getYaw()) : Rotation2d.fromDegrees(gyro.getYaw());
+    }
+
+    public Rotation2d getOdometryYaw() {
+        return swerveOdometry.getEstimatedPosition().getRotation();
     }
 
     @Override
     public void periodic(){
-        swerveOdometry.update(getYaw(), getPositions());
+        swerveOdometry.update(getGyroYaw(), getPositions());
         
         resetToEdge();
 
-        SmartDashboard.putNumber("Gyro Angle", getYaw().getDegrees());
+        SmartDashboard.putNumber("Gyro Angle", getGyroYaw().getDegrees());
+        SmartDashboard.putNumber("Odo Angle", getOdometryYaw().getDegrees());
 
         SwerveModuleState[] currentStatus = new SwerveModuleState[4];
         
@@ -288,13 +294,6 @@ public class Swerve extends SubsystemBase{
 
         modStatusPublisher.set(currentStatus);
         chasStatusPublisher.set(getRobotRelativeSpeeds());
-
-
-        SmartDashboard.putNumber("Gyro Pitch", gyro.getPitch());
-        SmartDashboard.putNumber("Gyro Roll", gyro.getRoll());
-        SmartDashboard.putNumber("Gyro Yaw", gyro.getYaw());
-        
-        SmartDashboard.putNumber("Gyro Yaw Velocity", gyro.getRate());
 
         field.setRobotPose(getPose());
     }
@@ -330,13 +329,13 @@ public class Swerve extends SubsystemBase{
 
     public void resetToEdge() {
         if (getPose().getY() > 8.1) {
-            swerveOdometry.resetPosition(getYaw(), getPositions(), new Pose2d(getPose().getX(), 8.1, getYaw()));        // Need to replace getPose(), getPost gets the current position, we need the desired position in the field
+            swerveOdometry.resetPosition(getGyroYaw(), getPositions(), new Pose2d(getPose().getX(), 8.1, getOdometryYaw()));        // Need to replace getPose(), getPost gets the current position, we need the desired position in the field
           } else if (getPose().getY() < -0.1) {
-            swerveOdometry.resetPosition(getYaw(), getPositions(), new Pose2d(getPose().getX(), -0.1, getYaw()));      
+            swerveOdometry.resetPosition(getGyroYaw(), getPositions(), new Pose2d(getPose().getX(), -0.1, getOdometryYaw()));      
           } if (getPose().getX() > 17.6) {
-            swerveOdometry.resetPosition(getYaw(), getPositions(), new Pose2d(17.6, getPose().getY(), getYaw())); 
+            swerveOdometry.resetPosition(getGyroYaw(), getPositions(), new Pose2d(17.6, getPose().getY(), getOdometryYaw())); 
           } else if (getPose().getX() < -0.1) {
-            swerveOdometry.resetPosition(getYaw(), getPositions(), new Pose2d(-0.1, getPose().getY(), getYaw())); 
+            swerveOdometry.resetPosition(getGyroYaw(), getPositions(), new Pose2d(-0.1, getPose().getY(), getOdometryYaw())); 
           }
     }
 
