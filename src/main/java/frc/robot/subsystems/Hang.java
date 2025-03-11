@@ -53,7 +53,7 @@ public class Hang extends SubsystemBase {
     // Bottom is 0.596
     // 0.7 seems like a max out the back
     hangmotor1Config.softLimit
-      .reverseSoftLimit(0.3)
+      .reverseSoftLimit(0.34)
       .forwardSoftLimit(0.53)
       .forwardSoftLimitEnabled(true)
       .reverseSoftLimitEnabled(true);
@@ -81,6 +81,8 @@ public class Hang extends SubsystemBase {
       c.softLimit.forwardSoftLimitEnabled(false).reverseSoftLimitEnabled(false);
       hangmotor1.configure(c, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
     }).ignoringDisable(true));
+
+    SmartDashboard.putData(this);
   }
 
   public Command joystickcontrol(Supplier<Double> joystickMove) {
@@ -91,7 +93,9 @@ public class Hang extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putData(this);
+    
+    SmartDashboard.putNumber("Hang/Power", hangmotor1.getAppliedOutput());
+
   }
 
   public Command Hangangle(double target, double range) {

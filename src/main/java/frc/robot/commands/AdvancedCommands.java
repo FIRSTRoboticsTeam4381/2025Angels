@@ -46,6 +46,19 @@ public class AdvancedCommands {
 
   }
 
+  /**
+   * Version of l4 that doesn't pivot all the way so drivers can line up
+   * @return Command
+   */
+  public Command l4Teleop() {
+      return new SequentialCommandGroup(
+        robot.pivot.intake(),
+        robot.elevator.level4(),
+        robot.pivot.coralScoring()
+      );
+
+  }
+
   public Command l3() {
 
     /*return new SequentialCommandGroup(
@@ -78,6 +91,25 @@ public class AdvancedCommands {
       );
   }
 
+  public Command l3Teleop() {
+
+      return new SequentialCommandGroup(
+        robot.pivot.intake(),
+        robot.elevator.level3(),
+        robot.pivot.coralScoringTeleop()
+      );
+  }
+
+  public Command l2Teleop() {
+
+      return new SequentialCommandGroup(
+        robot.pivot.intake(),
+        robot.elevator.level2(),
+        robot.pivot.coralScoringTeleop()
+      );
+  }
+
+
   public Command l1() {
 
     return new SequentialCommandGroup(
@@ -96,7 +128,7 @@ public class AdvancedCommands {
 
     return new SequentialCommandGroup(
       l4(),
-      robot.coralintake.CoralOut(),
+      robot.coralintake.out(),
       l1()
     );
   }
@@ -108,7 +140,7 @@ public class AdvancedCommands {
   public Command autointake(){
     return new SequentialCommandGroup(
       l1(),
-      robot.coralintake.Coralin()
+      robot.coralintake.coralIn()
     );
   }
 
@@ -121,5 +153,17 @@ public class AdvancedCommands {
     return new ParallelCommandGroup(robot.pivot.Algaereef(),
     robot.elevator.Algaereef());
   }
+
+  public Command processor(){
+    return new ParallelCommandGroup(robot.pivot.Proccesor(),
+    robot.elevator.level1());
+  }
+
+  public Command algaeGround(){
+    return new ParallelCommandGroup(robot.pivot.algaepickup(),
+    robot.elevator.level1());
+  }
+
+
 
 }

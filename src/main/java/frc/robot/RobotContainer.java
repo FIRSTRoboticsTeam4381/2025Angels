@@ -125,26 +125,28 @@ public class RobotContainer {
           driver::getLeftY,
           driver::getLeftX,
           driver::getRightX,
-             true, driver.leftBumper()::getAsBoolean));
+             true, () -> false));
 
-specialist.rightBumper().toggleOnTrue(coralintake.Coralinorout());
-//specialist.leftBumper().toggleOnTrue(algaeintake.IntakeandOut());
+specialist.rightBumper().and(
+    specialist.start().negate()
+  ).toggleOnTrue(coralintake.coralInOrOut());
+specialist.leftBumper().and(
+  specialist.start().negate()
+).toggleOnTrue(coralintake.algaeInOrOut());
 elevator.setDefaultCommand(elevator.joystickcontrol(interpolateJoystick(specialist::getLeftY, Constants.stickDeadband)));
 pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(specialist::getRightY, Constants.stickDeadband)));
 hang.setDefaultCommand(hang.joystickcontrol(() -> specialist.getLeftTriggerAxis() - specialist.getRightTriggerAxis()));
 //specialist.x().onTrue(hang.HangControl());
-specialist.povUp().onTrue(advancedCommands.l4().andThen(advancedCommands.hold()));
+specialist.povUp().onTrue(advancedCommands.l4Teleop().andThen(advancedCommands.hold()));
 specialist.povRight().onTrue(advancedCommands.l3().andThen(advancedCommands.hold()));
 specialist.povDown().onTrue(advancedCommands.l2().andThen(advancedCommands.hold()));
 specialist.povLeft().onTrue(advancedCommands.l1().andThen(advancedCommands.hold()));
 driver.rightBumper().whileTrue(new SnaptoPose(swerve));
 driver.leftBumper().whileTrue(swerve.setCoast());
 specialist.y().onTrue(advancedCommands.NetAlgae());
-specialist.x().onTrue(pivot.algaepickup());
-specialist.a().onTrue(pivot.Proccesor());
+specialist.x().onTrue(advancedCommands.algaeGround());
+specialist.a().onTrue(advancedCommands.processor());
 specialist.b().onTrue(advancedCommands.AlgaeReef());
-//specialist.a().onTrue(coralintake.ManualCoarlIn());
-//specialist.y().onTrue(coralintake.ManualCoarlOut());
 
 specialist.axisMagnitudeGreaterThan(1, Constants.stickDeadband).onTrue(elevator.getDefaultCommand());
 specialist.axisMagnitudeGreaterThan(5, Constants.stickDeadband).onTrue(pivot.getDefaultCommand());
@@ -156,6 +158,9 @@ specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance()
 driver.leftTrigger(0.5).onTrue(chuteLEDs.setLeftChute());
 driver.rightTrigger(0.5).onTrue(chuteLEDs.setRightChute());
 
+
+specialist.leftBumper().and(specialist.start()).whileTrue(coralintake.ManualCoarlIn());
+specialist.rightBumper().and(specialist.start()).whileTrue(coralintake.ManualCoarlOut());
 
 
   }

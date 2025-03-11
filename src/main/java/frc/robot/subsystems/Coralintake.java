@@ -51,9 +51,9 @@ public class Coralintake extends SubsystemBase {
 
     // set up the config
     SparkMaxConfig coralmotor1Config = new SparkMaxConfig();
-    NamedCommands.registerCommand("coralinorout", Coralinorout());
-    NamedCommands.registerCommand("coralin", Coralin());
-    NamedCommands.registerCommand("coralout", CoralOut());
+    NamedCommands.registerCommand("coralinorout", coralInOrOut());
+    NamedCommands.registerCommand("coralin", coralIn());
+    NamedCommands.registerCommand("coralout", out());
     // assign properties to motor
     coralmotor1Config
         .smartCurrentLimit(80)
@@ -93,6 +93,9 @@ public class Coralintake extends SubsystemBase {
     coralmotor1.getEncoder().getVelocity();
     //coralmotor2.getEncoder().getVelocity();
 
+    SmartDashboard.putData(ManualCoarlIn());
+    SmartDashboard.putData(ManualCoarlOut());
+
   }
 
   @Override
@@ -102,7 +105,7 @@ public class Coralintake extends SubsystemBase {
     SmartDashboard.putBoolean("Coral Int Running", Math.abs(coralmotor1.getAppliedOutput()) > 0);
   }
 
-  public Command CoralOut() {// creating a sequential command group
+  public Command out() {// creating a sequential command group
     return new SequentialCommandGroup(
         // seting the motor speed to 1
         new InstantCommand(() -> coralmotor1.set(1), this),
@@ -116,34 +119,57 @@ public class Coralintake extends SubsystemBase {
     ).withName("Coral Outaking");
   };
 
-  public Command Coralin() {
+  public Command coralIn() {
+    return new SequentialCommandGroup(
+        // this command will run until the sensor sees the coral
+        new InstantCommand(() -> coralmotor1.set(-1), this),
+        RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kRightRumble, 0.5,
+            new WaitUntilCommand(() -> hascoral())),
+        RobotContainer.getRobot().vibrateDriverForTime(RumbleType.kBothRumble, 0.8, 0.5),
+        new WaitCommand(0.5),
+        new InstantCommand(() -> coralmotor1.set(0), this)//,
+        //new WaitCommand(1),
+        //new InstantCommand(() -> coralmotor1.set(-1), this),
+        //new WaitCommand(0.75),
+        //new InstantCommand(() -> coralmotor1.set(0), this)
+        )
+        .withName("Coral Intaking");
+  }
+
+  public Command algaeIn() {
     return new SequentialCommandGroup(
         // this command will run until the sensor sees the coral
         new InstantCommand(() -> coralmotor1.set(-1), this),
         RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kRightRumble, 0.5,
             new WaitUntilCommand(() -> hascoral())),//hascoral())),
         RobotContainer.getRobot().vibrateDriverForTime(RumbleType.kBothRumble, 0.8, 0.5),
-        new WaitCommand(0.5),
         new InstantCommand(() -> coralmotor1.set(0), this)).withName("Coral Intaking");
   }
 
-  public Command Coralinorout() {
+  public Command coralInOrOut() {
     return new ConditionalCommand(
-        CoralOut(), // this will run when the sensor sees something
-        Coralin(), // this will run when the sensor doesn't see anything
+        out(), // this will run when the sensor sees something
+        coralIn(), // this will run when the sensor doesn't see anything
         this::hascoral).withName("Coral in or out is running"); // this tells it which sensor to use
+  }
+
+  public Command algaeInOrOut() {
+    return new ConditionalCommand(
+        out(), // this will run when the sensor sees something
+        algaeIn(), // this will run when the sensor doesn't see anything
+        this::hascoral).withName("Algae in or out is running"); // this tells it which sensor to use
   }
 
   public boolean hascoral() {
     return coralsensor1.isPressed(); //|| coralsensor2.isPressed();
   }
-  /* public Command ManualCoarlIn() 
+   public Command ManualCoarlIn() 
   {
-    return new InstantCommand(() -> coralmotor1.set(-.3), this);
+    return new InstantCommand(() -> coralmotor1.set(-.3), this).repeatedly();
   }
   public Command ManualCoarlOut() 
   {
-    return new InstantCommand(() -> coralmotor1.set(.5), this);
+    return new InstantCommand(() -> coralmotor1.set(.5), this).repeatedly();
   }
-*/
+
 }

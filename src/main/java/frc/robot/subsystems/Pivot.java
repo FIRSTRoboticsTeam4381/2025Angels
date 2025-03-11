@@ -45,7 +45,7 @@ private SparkFlex pivotmotor;
       idleMode(IdleMode.kBrake);
       inverted(false);
 
-      softLimit.forwardSoftLimit(0.756);
+      softLimit.forwardSoftLimit(0.752);
       softLimit.forwardSoftLimitEnabled(true);
       softLimit.reverseSoftLimit(0.425);
       softLimit.reverseSoftLimitEnabled(true);
@@ -86,6 +86,11 @@ private SparkFlex pivotmotor;
   {
     return goToPosition(0.62, 0.01);
   }
+
+  public Command coralScoringTeleop()
+  {
+    return goToPosition(0.689, 0.01);
+  }
   
   public Command coralScoringTop()
   {
@@ -121,6 +126,6 @@ private SparkFlex pivotmotor;
   }
   public Command Algaereef()
   {
-    return goToPosition(0.26, 0.05);
+    return goToPosition(0.475, 0.05);
   }
 }

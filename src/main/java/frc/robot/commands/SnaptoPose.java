@@ -58,6 +58,11 @@ public class SnaptoPose extends Command
 
         // K and L
         add(new Pose2d(13.82, 2.66, new Rotation2d(Radians.convertFrom(120, Degrees))));
+
+        // Coral pickups
+        // Red left
+        add(new Pose2d(16.77, 1.38, new Rotation2d(Radians.convertFrom(-53.95, Degrees))));
+        add(new Pose2d(15.71, 0.74, new Rotation2d(Radians.convertFrom(-54.29, Degrees))));
     
     }};
     public Swerve swerve;
