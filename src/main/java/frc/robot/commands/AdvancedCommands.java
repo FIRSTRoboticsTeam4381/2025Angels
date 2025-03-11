@@ -26,7 +26,7 @@ public class AdvancedCommands {
     NamedCommands.registerCommand("l2", l2());
     NamedCommands.registerCommand("l1", l1());
     NamedCommands.registerCommand("placel4", placel4());
-    NamedCommands.registerCommand("w", autointake());
+    NamedCommands.registerCommand("autointake", autointake());
   }
 
   public Command l4() {

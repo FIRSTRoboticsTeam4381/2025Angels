@@ -63,11 +63,11 @@ public class RobotContainer {
     new Rotation3d(Units.degreesToRadians(0),Units.degreesToRadians(-3.06),Units.degreesToRadians(-17.11))));
 
   public final PhotonCam camC = new PhotonCam("BL", new Transform3d(
-    new Translation3d(Units.inchesToMeters(0.13), Units.inchesToMeters(9.44),  Units.inchesToMeters(12.76)),
-    new Rotation3d(0,Units.degreesToRadians(-16.5), Units.degreesToRadians(47.52+180))));
+    new Translation3d(Units.inchesToMeters(0.07), Units.inchesToMeters(9.41),  Units.inchesToMeters(12.85)),
+    new Rotation3d(0,Units.degreesToRadians(-16.91), Units.degreesToRadians(37.4+180))));
   public final PhotonCam camD = new PhotonCam("BR", new Transform3d(
-    new Translation3d(Units.inchesToMeters(0.13), Units.inchesToMeters(-9.44),  Units.inchesToMeters(12.76)),
-    new Rotation3d(0,Units.degreesToRadians(-16.5),  Units.degreesToRadians(-47.52-180))) );
+    new Translation3d(Units.inchesToMeters(0.07), Units.inchesToMeters(-9.41),  Units.inchesToMeters(12.85)),
+    new Rotation3d(0,Units.degreesToRadians(-16.91),  Units.degreesToRadians(-37.4-180))) );
 
     public DriverCam hangCam = new DriverCam("HangCamera");
     public ChuteLEDs chuteLEDs;

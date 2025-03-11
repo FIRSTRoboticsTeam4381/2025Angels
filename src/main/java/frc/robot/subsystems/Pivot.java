@@ -104,7 +104,7 @@ private SparkFlex pivotmotor;
 
   public Command intake()
   {
-    return goToPosition(0.75,0.05);
+    return goToPosition(0.75,0.02);
   }
   public Command trough()
   {

@@ -4,15 +4,14 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.spark.SparkLowLevel.MotorType;
-import com.revrobotics.spark.config.SparkMaxConfig;
-import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
-
 import com.pathplanner.lib.auto.NamedCommands;
-import com.revrobotics.spark.SparkLimitSwitch;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkFlex;
+import com.revrobotics.spark.SparkLimitSwitch;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
@@ -54,6 +53,8 @@ public class Coralintake extends SubsystemBase {
     NamedCommands.registerCommand("coralinorout", coralInOrOut());
     NamedCommands.registerCommand("coralin", coralIn());
     NamedCommands.registerCommand("coralout", out());
+    NamedCommands.registerCommand("Mcoralintake", ManualCoarlIn().withTimeout(.3));
+    NamedCommands.registerCommand("Mcoralout", ManualCoarlOut());
     // assign properties to motor
     coralmotor1Config
         .smartCurrentLimit(80)

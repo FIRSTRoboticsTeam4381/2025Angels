@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.7842500000000001,
-        "y": 0.7489999999999998
+        "x": 1.697902397260274,
+        "y": 0.5089897260273972
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.4131562499999997,
-        "y": 2.2164479166666666
+        "x": 2.3268086472602745,
+        "y": 1.9764376426940617
       },
       "isLocked": false,
       "linkedName": "Bottom Coral Station"
     },
     {
       "anchor": {
-        "x": 3.5977499999999996,
-        "y": 2.7575
+        "x": 3.531035958904109,
+        "y": 2.8229452054794524
       },
       "prevControl": {
-        "x": 3.420973304703364,
-        "y": 2.580723304703362
+        "x": 3.3542592636074726,
+        "y": 2.6461685101828154
       },
       "nextControl": null,
       "isLocked": false,
@@ -31,7 +31,19 @@
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "in",
+      "waypointRelativePos": 0.15,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "Mcoralintake"
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -42,7 +54,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 59.62087398863163
+    "rotation": 59.621
   },
   "reversed": false,
   "folder": "BCoral station to Reef",
