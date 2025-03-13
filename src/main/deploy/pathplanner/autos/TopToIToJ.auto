@@ -23,7 +23,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "placel4"
+                  "name": "coralout"
                 }
               }
             ]
@@ -38,7 +38,7 @@
         {
           "type": "named",
           "data": {
-            "name": "autointake"
+            "name": "algaeInOrOut"
           }
         },
         {
@@ -54,7 +54,19 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "placel4"
+                  "name": "l4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "coralout"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "l1"
                 }
               }
             ]

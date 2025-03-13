@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.8525,
-        "y": 7.2035
+        "x": 1.5104508196721311,
+        "y": 7.171772540983605
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.3272786885245917,
-        "y": 5.896477459016393
+        "x": 2.985229508196723,
+        "y": 5.864749999999998
       },
       "isLocked": false,
       "linkedName": "T Coral Station"

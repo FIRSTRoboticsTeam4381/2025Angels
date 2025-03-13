@@ -52,7 +52,7 @@ public class Coralintake extends SubsystemBase {
     SparkMaxConfig coralmotor1Config = new SparkMaxConfig();
     NamedCommands.registerCommand("coralinorout", coralInOrOut());
     NamedCommands.registerCommand("coralin", coralIn());
-    NamedCommands.registerCommand("coralout", out());
+    NamedCommands.registerCommand("coralout", out().withTimeout(.3));
     NamedCommands.registerCommand("Mcoralintake", ManualCoarlIn().withTimeout(.3));
     NamedCommands.registerCommand("Mcoralout", ManualCoarlOut());
     NamedCommands.registerCommand("algaeInOrOut", algaeInOrOut());
