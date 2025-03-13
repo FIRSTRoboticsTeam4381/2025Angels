@@ -105,8 +105,11 @@ public final class Autos {
         public static PreviewAuto BottomtoEtoD() {
             return new PreviewAuto("BottomtoEtoD");
         }
-        public static PreviewAuto BottomtoFtoE() {
+        /*public static PreviewAuto BottomtoFtoE() {
             return new PreviewAuto("BottomtoFtoE");
+        }*/
+        public static PreviewAuto CopyofBottomtoFtoE() {
+            return new PreviewAuto("CopyofBottomtoFtoE");
         }
         public static PreviewAuto BottomtoBBtoMB() {
             return new PreviewAuto("BottomtoBBtoMB");
