@@ -161,7 +161,7 @@ public class AdvancedCommands {
 
   public Command algaeGround(){
     return new ParallelCommandGroup(robot.pivot.algaepickup(),
-    robot.elevator.level1());
+    robot.elevator.groundalgae());
   }
 
 
