@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ConditionalCommand;
 import edu.wpi.first.wpilibj2.command.FunctionalCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
@@ -55,7 +56,7 @@ public class Coralintake extends SubsystemBase {
     NamedCommands.registerCommand("coralout", out().withTimeout(.3));
     NamedCommands.registerCommand("Mcoralintake", ManualCoarlIn().withTimeout(.3));
     NamedCommands.registerCommand("Mcoralout", ManualCoarlOut());
-    NamedCommands.registerCommand("algaeInOrOut", algaeInOrOut());
+    NamedCommands.registerCommand("algaeIn", algaeIn());
     // assign properties to motor
     coralmotor1Config
         .smartCurrentLimit(80)
@@ -161,6 +162,7 @@ public class Coralintake extends SubsystemBase {
         algaeIn(), // this will run when the sensor doesn't see anything
         this::hascoral).withName("Algae in or out is running"); // this tells it which sensor to use
   }
+  
 
   public boolean hascoral() {
     return coralsensor1.isPressed(); //|| coralsensor2.isPressed();
