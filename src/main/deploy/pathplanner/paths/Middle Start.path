@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.370491803278688,
-        "y": 5.25373975409836
+        "x": 7.12725,
+        "y": 3.9859999999999998
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.87199661162618,
-        "y": 6.245509732723626
+        "x": 6.137704918032787,
+        "y": 3.70732581967213
       },
       "isLocked": false,
-      "linkedName": "IJ"
+      "linkedName": "Middle Start"
     },
     {
       "anchor": {
-        "x": 1.5344262295081967,
-        "y": 7.195747950819672
+        "x": 6.017827868852459,
+        "y": 3.8511782786885242
       },
       "prevControl": {
-        "x": 4.3050146219798915,
-        "y": 5.656706205665572
+        "x": 6.71311475409836,
+        "y": 3.9111168032786883
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "T Coral Station"
+      "linkedName": "HG"
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 123.69006752597979
+    "rotation": 180.0
   },
   "reversed": false,
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -119.11999999999999
+    "rotation": -179.46949868332618
   },
   "useDefaultConstraints": true
 }
