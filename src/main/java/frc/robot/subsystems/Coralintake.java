@@ -53,7 +53,7 @@ public class Coralintake extends SubsystemBase {
     SparkMaxConfig coralmotor1Config = new SparkMaxConfig();
     NamedCommands.registerCommand("coralinorout", coralInOrOut());
     NamedCommands.registerCommand("coralin", coralIn());
-    NamedCommands.registerCommand("coralout", out().withTimeout(.3));
+    NamedCommands.registerCommand("coralout", autoOut().withTimeout(.3));
     NamedCommands.registerCommand("Mcoralintake", ManualCoarlIn().withTimeout(.3));
     NamedCommands.registerCommand("Mcoralout", ManualCoarlOut());
     NamedCommands.registerCommand("algaeIn", algaeIn());
@@ -147,6 +147,16 @@ public class Coralintake extends SubsystemBase {
             new WaitUntilCommand(() -> hascoral())),//hascoral())),
         RobotContainer.getRobot().vibrateDriverForTime(RumbleType.kBothRumble, 0.8, 0.5),
         new InstantCommand(() -> coralmotor1.set(0), this)).withName("Coral Intaking");
+  }
+
+  public Command autoOut() {
+    return new SequentialCommandGroup(
+        // this command will run until the sensor sees the coral
+        new InstantCommand(() -> coralmotor1.set(-1), this),
+        new WaitCommand(1),
+        new InstantCommand(() -> coralmotor1.set(0), this)
+    );
+        
   }
 
   public Command coralInOrOut() {

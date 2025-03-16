@@ -45,9 +45,9 @@ private SparkFlex pivotmotor;
       idleMode(IdleMode.kBrake);
       inverted(false);
 
-      softLimit.forwardSoftLimit(0.752);
+      softLimit.forwardSoftLimit(0.769);
       softLimit.forwardSoftLimitEnabled(true);
-      softLimit.reverseSoftLimit(0.425);
+      softLimit.reverseSoftLimit(0.390);
       softLimit.reverseSoftLimitEnabled(true);
 
       closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder);
@@ -104,7 +104,7 @@ private SparkFlex pivotmotor;
 
   public Command intake()
   {
-    return goToPosition(0.75,0.02);
+    return goToPosition(0.769,0.02);
   }
   public Command trough()
   {
