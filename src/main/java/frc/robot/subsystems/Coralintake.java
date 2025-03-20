@@ -32,7 +32,7 @@ public class Coralintake extends SubsystemBase {
   // **creating the variables for the motors**
 
   private SparkFlex coralmotor1;
-  private SparkFlex coralmotor2;
+ // private SparkFlex coralmotor2;
 
   // creating a sensor
   private SparkLimitSwitch coralsensor1;
@@ -71,7 +71,7 @@ public class Coralintake extends SubsystemBase {
     coralmotor2Config.apply(coralmotor1Config);
     coralmotor2Config.follow(coralmotor1, true);// telling motor4 to be a follower of motor3
 
-    coralmotor2.configure(coralmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    //coralmotor2.configure(coralmotor2Config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
     this.setDefaultCommand(
         // sets default command
