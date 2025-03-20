@@ -42,8 +42,8 @@ public class Coralintake extends SubsystemBase {
   public Coralintake() {
 
     // assign cAn ID and Motor type
-    coralmotor1 = new SparkFlex(55, MotorType.kBrushless);
-    coralmotor2 = new SparkFlex(56, MotorType.kBrushless);
+    coralmotor1 = new SparkFlex(56, MotorType.kBrushless);
+    //coralmotor2 = new SparkFlex(56, MotorType.kBrushless);
 
     // sets the can ID for a sensor
     coralsensor1 = coralmotor1.getForwardLimitSwitch();

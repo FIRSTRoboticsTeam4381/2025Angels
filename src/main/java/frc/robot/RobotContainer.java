@@ -70,7 +70,7 @@ public class RobotContainer {
     new Rotation3d(0,Units.degreesToRadians(-16.91),  Units.degreesToRadians(-37.4-180))) );
 
     public DriverCam hangCam = new DriverCam("HangCamera");
-    public ChuteLEDs chuteLEDs;
+   // public ChuteLEDs chuteLEDs;
 
   public final AdvancedCommands advancedCommands;
   // Constructor: set up the robot! 
@@ -87,7 +87,7 @@ public class RobotContainer {
 
     // Set default commands here
 
-    chuteLEDs = new ChuteLEDs();
+    //chuteLEDs = new ChuteLEDs();
 
 
 
@@ -148,6 +148,7 @@ specialist.y().onTrue(advancedCommands.NetAlgae());
 specialist.x().onTrue(advancedCommands.algaeGround());
 specialist.a().onTrue(advancedCommands.processor());
 specialist.b().onTrue(advancedCommands.AlgaeReef());
+driver.x().whileTrue(swerve.brake());
 
 specialist.axisMagnitudeGreaterThan(1, Constants.stickDeadband).onTrue(elevator.getDefaultCommand());
 specialist.axisMagnitudeGreaterThan(5, Constants.stickDeadband).onTrue(pivot.getDefaultCommand());
@@ -156,8 +157,8 @@ specialist.axisMagnitudeGreaterThan(5, Constants.stickDeadband).onTrue(pivot.get
 specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));
 
 
-driver.leftTrigger(0.5).onTrue(chuteLEDs.setLeftChute());
-driver.rightTrigger(0.5).onTrue(chuteLEDs.setRightChute());
+//driver.leftTrigger(0.5).onTrue(chuteLEDs.setLeftChute());
+//driver.rightTrigger(0.5).onTrue(chuteLEDs.setRightChute());
 
 
 specialist.leftBumper().and(specialist.start()).whileTrue(coralintake.ManualCoarlIn());
