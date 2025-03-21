@@ -139,8 +139,8 @@ pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(specialist::ge
 hang.setDefaultCommand(hang.joystickcontrol(() -> specialist.getLeftTriggerAxis() - specialist.getRightTriggerAxis()));
 //specialist.x().onTrue(hang.HangControl());
 specialist.povUp().onTrue(advancedCommands.l4Teleop().andThen(advancedCommands.hold()));
-specialist.povRight().onTrue(advancedCommands.l3().andThen(advancedCommands.hold()));
-specialist.povDown().onTrue(advancedCommands.l2().andThen(advancedCommands.hold()));
+specialist.povRight().onTrue(advancedCommands.l3Teleop().andThen(advancedCommands.hold()));
+specialist.povDown().onTrue(advancedCommands.l2Teleop().andThen(advancedCommands.hold()));
 specialist.povLeft().onTrue(advancedCommands.l1().andThen(advancedCommands.hold()));
 driver.rightBumper().whileTrue(new SnaptoPose(swerve));
 driver.leftBumper().whileTrue(swerve.setCoast());

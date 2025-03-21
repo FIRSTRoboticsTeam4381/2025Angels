@@ -89,7 +89,7 @@ private SparkFlex pivotmotor;
 
   public Command coralScoringTeleop()
   {
-    return goToPosition(0.689, 0.01);
+    return goToPosition(0.64, 0.01);
   }
   
   public Command coralScoringTop()
@@ -118,7 +118,7 @@ private SparkFlex pivotmotor;
   }
   public Command algaepickup()
   {
-    return goToPosition(0.43,0.05);
+    return goToPosition(0.46,0.05);
   }
   public Command Proccesor()
   {
