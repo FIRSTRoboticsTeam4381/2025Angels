@@ -32,6 +32,9 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.Constants;
+import frc.robot.subsystems.vision.Bionics;
+import frc.robot.subsystems.vision.Citrus2024;
+import frc.robot.subsystems.vision.ConfidenceAlgorithm;
 
 @Logged
 public class Swerve extends SubsystemBase{
@@ -128,6 +131,11 @@ public class Swerve extends SubsystemBase{
 
 
           setupSysIDTests();
+
+          ConfidenceAlgorithm.algorithms = new ConfidenceAlgorithm[] {
+            new Citrus2024(this, startPose),
+            new Bionics(this,startPose)
+          };
     }
 
     public void drive(Translation2d translation, double rotation, boolean fieldRelative, boolean isOpenLoop){
@@ -266,6 +274,16 @@ public class Swerve extends SubsystemBase{
             :
             Rotation2d.kZero
         );
+
+        for(ConfidenceAlgorithm c : ConfidenceAlgorithm.algorithms)
+        {
+            c.resetRotation(
+                a.isPresent() && a.get() == Alliance.Red ?
+                Rotation2d.k180deg
+                :
+                Rotation2d.kZero
+            );
+        }
     }
 
     public Rotation2d getGyroYaw(){
@@ -279,6 +297,11 @@ public class Swerve extends SubsystemBase{
     @Override
     public void periodic(){
         swerveOdometry.update(getGyroYaw(), getPositions());
+
+        for(ConfidenceAlgorithm a : ConfidenceAlgorithm.algorithms)
+        {
+            a.updateFromOdometry(this);
+        }
         
         resetToEdge();
 

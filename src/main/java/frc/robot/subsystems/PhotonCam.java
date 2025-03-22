@@ -27,6 +27,7 @@ import edu.wpi.first.wpilibj.Alert.AlertType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.vision.ConfidenceAlgorithm;
 
 @Logged
 public class PhotonCam extends SubsystemBase {
@@ -161,6 +162,12 @@ public class PhotonCam extends SubsystemBase {
               e.estimatedPose.toPose2d(),
               e.timestampSeconds,
               confidenceMatrix);
+        }
+
+
+        for(ConfidenceAlgorithm a : ConfidenceAlgorithm.algorithms)
+        {
+            a.updateFromVision(e);
         }
       }
     }
