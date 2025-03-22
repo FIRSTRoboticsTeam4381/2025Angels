@@ -35,6 +35,7 @@ import frc.robot.Constants;
 import frc.robot.subsystems.vision.Bionics;
 import frc.robot.subsystems.vision.Citrus2024;
 import frc.robot.subsystems.vision.ConfidenceAlgorithm;
+import frc.robot.subsystems.vision.Wavelength;
 
 @Logged
 public class Swerve extends SubsystemBase{
@@ -134,7 +135,8 @@ public class Swerve extends SubsystemBase{
 
           ConfidenceAlgorithm.algorithms = new ConfidenceAlgorithm[] {
             new Citrus2024(this, startPose),
-            new Bionics(this,startPose)
+            new Bionics(this,startPose),
+            new Wavelength(this, startPose)
           };
     }
 
