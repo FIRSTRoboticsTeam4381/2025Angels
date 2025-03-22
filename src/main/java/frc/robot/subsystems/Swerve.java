@@ -36,6 +36,7 @@ import frc.robot.subsystems.vision.Bionics;
 import frc.robot.subsystems.vision.Citrus2024;
 import frc.robot.subsystems.vision.ConfidenceAlgorithm;
 import frc.robot.subsystems.vision.Strykeforce2024;
+import frc.robot.subsystems.vision.TorBots;
 import frc.robot.subsystems.vision.Wavelength;
 
 @Logged
@@ -138,7 +139,8 @@ public class Swerve extends SubsystemBase{
             new Citrus2024(this, startPose),
             new Bionics(this,startPose),
             new Wavelength(this, startPose),
-            new Strykeforce2024(this,startPose)
+            new Strykeforce2024(this,startPose),
+            new TorBots(this,startPose)
           };
     }
 
