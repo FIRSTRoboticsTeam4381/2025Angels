@@ -107,7 +107,7 @@ public class SnaptoPose extends Command
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute(){
-       swerve.drive(new Translation2d(-getXPower(),-getYPower()), getRPower(), true, true);
+       swerve.drive(new Translation2d(-getXPower(),-getYPower()), getRPower(), true, true, false);
     }
 
     // Called once the command ends or is interrupted.

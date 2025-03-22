@@ -32,6 +32,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.Constants;
+import frc.robot.commands.AutoCorrection;
 
 @Logged
 public class Swerve extends SubsystemBase{
@@ -118,6 +119,7 @@ public class Swerve extends SubsystemBase{
         PathPlannerLogging.setLogTargetPoseCallback((pose) -> {
             // Do whatever you want with the pose here
             field.getObject("target").setPose(pose);
+            AutoCorrection.target = pose;
         });
 
         // Logging callback for the active path, this is sent as a list of poses
@@ -130,7 +132,7 @@ public class Swerve extends SubsystemBase{
           setupSysIDTests();
     }
 
-    public void drive(Translation2d translation, double rotation, boolean fieldRelative, boolean isOpenLoop){
+    public void drive(Translation2d translation, double rotation, boolean fieldRelative, boolean isOpenLoop, boolean humans){
         
         Optional<Alliance> a = DriverStation.getAlliance();
 
@@ -139,12 +141,12 @@ public class Swerve extends SubsystemBase{
                 translation.getX(),
                 translation.getY(),
                 rotation,
-                getOdometryYaw().plus(
+                humans ? (getOdometryYaw().plus(
                     a.isPresent() && a.get() == Alliance.Red ?
                     Rotation2d.k180deg
                     :
                     Rotation2d.kZero
-                ))
+                )) : getOdometryYaw().plus(Rotation2d.k180deg))
             : new ChassisSpeeds(
                 translation.getX(),
                 translation.getY(),
@@ -169,7 +171,7 @@ public class Swerve extends SubsystemBase{
     public void drive(ChassisSpeeds robotRelativeSpeeds){
         Translation2d translation = new Translation2d(robotRelativeSpeeds.vxMetersPerSecond, robotRelativeSpeeds.vyMetersPerSecond);
         double rotation = robotRelativeSpeeds.omegaRadiansPerSecond;
-        drive(translation, rotation, false, false);
+        drive(translation, rotation, false, false, false);
     }
 
     // TODO check - auto
