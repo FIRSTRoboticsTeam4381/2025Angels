@@ -17,15 +17,15 @@
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "l3"
-          }
-        },
-        {
           "type": "path",
           "data": {
             "pathName": "G to Rmiddle"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "l3"
           }
         },
         {
