@@ -54,7 +54,7 @@ public class Coralintake extends SubsystemBase {
     NamedCommands.registerCommand("coralinorout", coralInOrOut());
     NamedCommands.registerCommand("coralin", coralIn());
     NamedCommands.registerCommand("coralout", autoOut().withTimeout(.3));
-    NamedCommands.registerCommand("Mcoralintake", ManualCoarlIn().withTimeout(.3));
+    NamedCommands.registerCommand("Mcoralintake", ManualCoarlIn().withTimeout(.75).andThen(()->coralmotor1.set(0)));
     NamedCommands.registerCommand("Mcoralout", ManualCoarlOut());
     NamedCommands.registerCommand("algaeIn", algaeIn());
     // assign properties to motor

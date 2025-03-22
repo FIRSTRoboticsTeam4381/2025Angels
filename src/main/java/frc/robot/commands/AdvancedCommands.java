@@ -27,6 +27,7 @@ public class AdvancedCommands {
     NamedCommands.registerCommand("l1", l1());
     NamedCommands.registerCommand("placel4", placel4());
     NamedCommands.registerCommand("autointake", autointake());
+    NamedCommands.registerCommand("AutoCorrect", new AutoCorrection(robot.swerve));
   }
 
   public Command l4() {
