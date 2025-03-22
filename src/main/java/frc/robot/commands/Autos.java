@@ -132,6 +132,10 @@ public final class Autos {
         public static PreviewAuto EtoBCoralStation(){
             return ReefSelectBottom("EtoBCoralStation");
         }
+        public static PreviewAuto middleball(){
+            return ReefSelectBottom("middle ball");
+        }
+            
 
 
 
