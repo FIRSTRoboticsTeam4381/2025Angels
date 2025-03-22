@@ -48,8 +48,8 @@ public class AutoCorrection extends Command
     public AutoCorrection(Swerve s){
 
         swerve = s;
-        x = new PIDController(1.6, 0, 0);
-        y = new PIDController(1.6, 0, 0);
+        x = new PIDController(2, 0, 0);
+        y = new PIDController(2, 0, 0);
         r = new PIDController(.04, 0, 0);
         r.enableContinuousInput(180,-180);
         addRequirements(swerve);
