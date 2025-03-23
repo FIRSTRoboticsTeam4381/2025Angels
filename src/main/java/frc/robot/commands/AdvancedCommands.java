@@ -27,6 +27,9 @@ public class AdvancedCommands {
     NamedCommands.registerCommand("l1", l1());
     NamedCommands.registerCommand("placel4", placel4());
     NamedCommands.registerCommand("autointake", autointake());
+    NamedCommands.registerCommand("AutoCorrect", new AutoCorrection(robot.swerve));
+    NamedCommands.registerCommand("lowAlgae", lowAlgae());
+    NamedCommands.registerCommand("net", NetAlgaeauto());
   }
 
   public Command l4() {
@@ -149,6 +152,11 @@ public class AdvancedCommands {
     robot.elevator.net());
   }
 
+  public Command NetAlgaeauto(){
+    return new SequentialCommandGroup(new ParallelCommandGroup(robot.pivot.net(),
+    robot.elevator.net()), robot.coralintake.autoOut());
+  }
+
   public Command AlgaeReef(){
     return new ParallelCommandGroup(robot.pivot.Algaereef(),
     robot.elevator.Algaereef());
@@ -162,6 +170,10 @@ public class AdvancedCommands {
   public Command algaeGround(){
     return new ParallelCommandGroup(robot.pivot.algaepickup(),
     robot.elevator.groundalgae());
+  }
+  public Command lowAlgae(){
+    return new SequentialCommandGroup( new ParallelCommandGroup(robot.pivot.trough(),
+    robot.elevator.lowalgae()), robot.coralintake.ManualCoarlIn());
   }
 
 

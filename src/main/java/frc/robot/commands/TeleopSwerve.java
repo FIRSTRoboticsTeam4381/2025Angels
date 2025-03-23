@@ -83,7 +83,7 @@ public class TeleopSwerve extends Command{
         });*/
 
         translation = y.times(Constants.Swerve.maxSpeed);
-        s_Swerve.drive(translation, rotation, true, openLoop);
+        s_Swerve.drive(translation, rotation, true, openLoop, true);
 
 
     }

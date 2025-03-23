@@ -23,7 +23,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "coralout"
+                  "name": "AutoCorrect"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "l4"
                 }
               }
             ]
@@ -36,9 +42,22 @@
           }
         },
         {
-          "type": "named",
+          "type": "parallel",
           "data": {
-            "name": "algaeIn"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "AutoCorrect"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "algaeIn"
+                }
+              }
+            ]
           }
         },
         {
@@ -54,22 +73,22 @@
               {
                 "type": "named",
                 "data": {
+                  "name": "AutoCorrect"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
                   "name": "l4"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "coralout"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "l1"
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "K To TCoral Station"
           }
         }
       ]

@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.017827868852459,
-        "y": 3.8511782786885242
+        "x": 6.06,
+        "y": 3.88
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.413422131147541,
-        "y": 7.6512807377049175
+        "x": 6.455594262295081,
+        "y": 7.680102459016393
       },
       "isLocked": false,
       "linkedName": "HG"
     },
     {
       "anchor": {
-        "x": 1.5344262295081967,
-        "y": 7.195747950819672
+        "x": 1.579,
+        "y": 7.262
       },
       "prevControl": {
-        "x": 4.231950819672132,
-        "y": 7.003581967213114
+        "x": 4.276524590163934,
+        "y": 7.0698340163934414
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 123.69006752597979
+    "rotation": 127.56859202882747
   },
   "reversed": false,
   "folder": "Reef To TCoral Station",

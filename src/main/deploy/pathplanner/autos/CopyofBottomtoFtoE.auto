@@ -15,9 +15,9 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
+                "type": "named",
                 "data": {
-                  "waitTime": 0.5
+                  "name": "AutoCorrect"
                 }
               },
               {
@@ -36,9 +36,22 @@
           }
         },
         {
-          "type": "named",
+          "type": "parallel",
           "data": {
-            "name": "algaeIn"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "AutoCorrect"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "algaeIn"
+                }
+              }
+            ]
           }
         },
         {
@@ -48,9 +61,28 @@
           }
         },
         {
-          "type": "named",
+          "type": "sequential",
           "data": {
-            "name": "placel4"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "AutoCorrect"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "l4"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C to BCoral Station"
           }
         }
       ]

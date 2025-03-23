@@ -99,6 +99,7 @@ public class RobotContainer {
     autoChooser.addOption("Right to F to E", Autos.CopyofBottomtoFtoE());
     autoChooser.addOption("Top To I To J", Autos.TopToIToJ());
     autoChooser.addOption("Middle auto", Autos.Middleauto());
+    autoChooser.addOption("middle ball", Autos.middleball());
     //autoChooser.addOption("Top To I To K", Autos.TopToIToK());
     //autoChooser.addOption("Top To I To L", Autos.TopToIToL());
     //autoChooser.addOption("Bottom to BB to MB", Autos.BottomtoBBtoMB());

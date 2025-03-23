@@ -73,8 +73,8 @@ public class SnaptoPose extends Command
     public SnaptoPose(Swerve s){
 
         swerve = s;
-        x = new PIDController(1.6, 0, 0);
-        y = new PIDController(1.6, 0, 0);
+        x = new PIDController(2, 0, 0);
+        y = new PIDController(2, 0, 0);
         r = new PIDController(.04, 0, 0);
         r.enableContinuousInput(180,-180);
         addRequirements(swerve);
@@ -107,7 +107,7 @@ public class SnaptoPose extends Command
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute(){
-       swerve.drive(new Translation2d(-getXPower(),-getYPower()), getRPower(), true, true);
+       swerve.drive(new Translation2d(-getXPower(),-getYPower()), getRPower(), true, true, false);
     }
 
     // Called once the command ends or is interrupted.
