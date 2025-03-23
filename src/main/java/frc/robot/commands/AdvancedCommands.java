@@ -172,8 +172,8 @@ public class AdvancedCommands {
     robot.elevator.groundalgae());
   }
   public Command lowAlgae(){
-    return new ParallelCommandGroup(robot.pivot.trough(),
-    robot.elevator.lowalgae());
+    return new SequentialCommandGroup( new ParallelCommandGroup(robot.pivot.trough(),
+    robot.elevator.lowalgae()), robot.coralintake.ManualCoarlIn());
   }
 
 

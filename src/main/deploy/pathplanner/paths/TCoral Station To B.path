@@ -3,12 +3,12 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.5795,
+        "x": 1.579,
         "y": 7.262
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.886450819672132,
+        "x": 2.885950819672133,
         "y": 4.732231557377048
       },
       "isLocked": false,
@@ -48,7 +48,7 @@
   "folder": "TCoral Station To Reef",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 123.69006752597979
+    "rotation": 127.56859202882747
   },
   "useDefaultConstraints": true
 }

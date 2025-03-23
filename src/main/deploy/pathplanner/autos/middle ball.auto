@@ -13,6 +13,12 @@
         {
           "type": "named",
           "data": {
+            "name": "AutoCorrect"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
             "name": "l4"
           }
         },
@@ -25,13 +31,7 @@
         {
           "type": "named",
           "data": {
-            "name": "l3"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "lowAlgae"
+            "name": "Mcoralintake"
           }
         },
         {
@@ -44,6 +44,18 @@
           "type": "named",
           "data": {
             "name": "net"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "NET STATION"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "l1"
           }
         }
       ]
