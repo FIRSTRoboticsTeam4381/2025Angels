@@ -84,6 +84,12 @@
           "data": {
             "pathName": "C to BCoral Station"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "l1"
+          }
         }
       ]
     }
