@@ -25,7 +25,8 @@ public class AutoCorrection extends Command
 
         swerve = s;
         x = new PIDController(3, 0, 0);
-        y = new PIDController(3, 0, 0);
+        y = new PIDController(3
+        , 0, 0);
         r = new PIDController(.04, 0, 0);
         r.enableContinuousInput(180,-180);
         addRequirements(swerve);
