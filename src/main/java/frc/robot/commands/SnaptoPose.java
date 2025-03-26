@@ -27,42 +27,52 @@ import frc.robot.subsystems.Swerve;
 public class SnaptoPose extends Command 
 {
     public final ArrayList<Pose2d> snapPositions= new ArrayList<Pose2d>(){{
-        add(new Pose2d(3.764, 5.242, new Rotation2d(Radians.convertFrom(-60, Degrees))));
-        add(new Pose2d(5.240, 5.340, new Rotation2d(Radians.convertFrom(-119.120, Degrees))));
-        add(new Pose2d(5.970, 4.007, new Rotation2d(Radians.convertFrom(180, Degrees))));
-        add(new Pose2d(5.203, 2.784, new Rotation2d(Radians.convertFrom(120, Degrees))));
-        add(new Pose2d(3.740, 2.784, new Rotation2d(Radians.convertFrom(60, Degrees))));
-        add(new Pose2d(3.045, 4.031, new Rotation2d(Radians.convertFrom(0, Degrees))));
-        add(new Pose2d(7.333, 7.586, new Rotation2d(Radians.convertFrom(180, Degrees))));
-
+        add(new Pose2d(3.559, 2.738, new Rotation2d(Radians.convertFrom(59.62, Degrees))));//blue C
+        add(new Pose2d(2.949, 4.175, new Rotation2d(Radians.convertFrom(1, Degrees))));//blue a
+        add(new Pose2d(6.06, 3.88, new Rotation2d(Radians.convertFrom(180, Degrees))));//blue g
+        add(new Pose2d(3.85, 5.43, new Rotation2d(Radians.convertFrom(-60.17, Degrees))));//blue k
+        add(new Pose2d(5.382, 5.273, new Rotation2d(Radians.convertFrom(-119.12, Degrees))));//blue i
+        add(new Pose2d(5.98, 3.86, new Rotation2d(Radians.convertFrom(175.36, Degrees))));//blue g
+        add(new Pose2d(5.45, 2.77, new Rotation2d(Radians.convertFrom(124.59, Degrees))));//blue f
+        add(new Pose2d(3.91, 2.58, new Rotation2d(Radians.convertFrom(63.16, Degrees))));//blue d
+        add(new Pose2d(2.95, 3.80, new Rotation2d(Radians.convertFrom(3.09, Degrees))));//blue b
+        add(new Pose2d(3.56, 5.24, new Rotation2d(Radians.convertFrom(-57.24, Degrees))));//blue l
+        add(new Pose2d(5.11, 5.47, new Rotation2d(Radians.convertFrom(-121.06, Degrees))));//blue j
+        add(new Pose2d(5.99, 4.16, new Rotation2d(Radians.convertFrom(176.9, Degrees))));//blue h
+        add(new Pose2d(5.23, 2.67, new Rotation2d(Radians.convertFrom(127.89, Degrees))));//blue e
         //Blue Top Starting Pose
-        add(new Pose2d(7.333, 4.025, new Rotation2d(Radians.convertFrom(180, Degrees))));
+        //add(new Pose2d(7.333, 4.025, new Rotation2d(Radians.convertFrom(180, Degrees))));
 
         //Red Top starting Pose
-        add(new Pose2d(10, 0.25, new Rotation2d(Radians.convertFrom(0, Degrees))));
+        //add(new Pose2d(10, 0.25, new Rotation2d(Radians.convertFrom(0, Degrees))));
 
         //I and J
-        add(new Pose2d(12.32, 2.75, new Rotation2d(Radians.convertFrom(65, Degrees))));
+        //add(new Pose2d(12.32, 2.75, new Rotation2d(Radians.convertFrom(65, Degrees))));
 
         // G and H
-        add(new Pose2d(11.49, 4, new Rotation2d(Radians.convertFrom(-4, Degrees))));
+        //add(new Pose2d(11.49, 4, new Rotation2d(Radians.convertFrom(-4, Degrees))));
 
         // F and E
-        add(new Pose2d(12.31, 5.30, new Rotation2d(Radians.convertFrom(-58, Degrees))));
+        //add(new Pose2d(12.31, 5.30, new Rotation2d(Radians.convertFrom(-58, Degrees))));
 
         //D and C
-        add(new Pose2d(13.85, 5.37, new Rotation2d(Radians.convertFrom(-118, Degrees))));
+        //add(new Pose2d(13.85, 5.37, new Rotation2d(Radians.convertFrom(-118, Degrees))));
 
         // A and B
-        add(new Pose2d(14.63, 3.97, new Rotation2d(Radians.convertFrom(180, Degrees))));
+        //add(new Pose2d(14.63, 3.97, new Rotation2d(Radians.convertFrom(180, Degrees))));
 
         // K and L
-        add(new Pose2d(13.82, 2.66, new Rotation2d(Radians.convertFrom(120, Degrees))));
+        //add(new Pose2d(13.82, 2.66, new Rotation2d(Radians.convertFrom(120, Degrees))));
 
         // Coral pickups
+        add(new Pose2d(1.57, 7.24, new Rotation2d(Radians.convertFrom(127.25, Degrees))));//blue left
+        add(new Pose2d(1.49, 0.75, new Rotation2d(Radians.convertFrom(-127.69, Degrees))));//blue right
+        add(new Pose2d(15.97, 0.71, new Rotation2d(Radians.convertFrom(-55.33, Degrees))));//red left
+        add(new Pose2d(16.00, 7.28, new Rotation2d(Radians.convertFrom(53.32, Degrees))));//red right
         // Red left
         add(new Pose2d(16.77, 1.38, new Rotation2d(Radians.convertFrom(-53.95, Degrees))));
         add(new Pose2d(15.71, 0.74, new Rotation2d(Radians.convertFrom(-54.29, Degrees))));
+        
     
     }};
     public Swerve swerve;
@@ -73,8 +83,8 @@ public class SnaptoPose extends Command
     public SnaptoPose(Swerve s){
 
         swerve = s;
-        x = new PIDController(2, 0, 0);
-        y = new PIDController(2, 0, 0);
+        x = new PIDController(3, 0, 0);
+        y = new PIDController(3, 0, 0);
         r = new PIDController(.04, 0, 0);
         r.enableContinuousInput(180,-180);
         addRequirements(swerve);

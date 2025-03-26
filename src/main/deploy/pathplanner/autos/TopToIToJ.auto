@@ -90,6 +90,12 @@
           "data": {
             "pathName": "K To TCoral Station"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "l1"
+          }
         }
       ]
     }
