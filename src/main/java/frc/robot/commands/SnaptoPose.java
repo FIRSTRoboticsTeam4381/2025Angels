@@ -26,7 +26,13 @@ import frc.robot.subsystems.Swerve;
 
 public class SnaptoPose extends Command 
 {
+    // Offset between the reefs
+    // 8569.325 mm from other reef
+    private final double REEF_TO_REEF = 8.569325;
+
     public final ArrayList<Pose2d> snapPositions= new ArrayList<Pose2d>(){{
+        
+        // Blue snaps
         add(new Pose2d(3.559, 2.738, new Rotation2d(Radians.convertFrom(59.62, Degrees))));//blue C
         add(new Pose2d(2.949, 4.175, new Rotation2d(Radians.convertFrom(1, Degrees))));//blue a
         add(new Pose2d(6.06, 3.88, new Rotation2d(Radians.convertFrom(180, Degrees))));//blue g
@@ -40,6 +46,27 @@ public class SnaptoPose extends Command
         add(new Pose2d(5.11, 5.47, new Rotation2d(Radians.convertFrom(-121.06, Degrees))));//blue j
         add(new Pose2d(5.99, 4.16, new Rotation2d(Radians.convertFrom(176.9, Degrees))));//blue h
         add(new Pose2d(5.23, 2.67, new Rotation2d(Radians.convertFrom(127.89, Degrees))));//blue e
+        
+        // Red snaps
+        // POSITION LETTERS MAY BE WRONG!
+        add(new Pose2d(3.559+REEF_TO_REEF, 2.738, new Rotation2d(Radians.convertFrom(59.62, Degrees))));//red ?
+        add(new Pose2d(11.49, 4.13, new Rotation2d(Radians.convertFrom(1, Degrees))));//red g
+        add(new Pose2d(14.56, 3.88, new Rotation2d(Radians.convertFrom(180, Degrees))));//red a
+        add(new Pose2d(12.43, 5.465, new Rotation2d(Radians.convertFrom(-60.17, Degrees))));//red e
+        add(new Pose2d(13.94, 5.26, new Rotation2d(Radians.convertFrom(-119.12, Degrees))));//red c
+        add(new Pose2d(5.98+REEF_TO_REEF, 3.86, new Rotation2d(Radians.convertFrom(175.36, Degrees))));//red ?
+        add(new Pose2d(14.06, 2.86, new Rotation2d(Radians.convertFrom(124.59, Degrees))));//red L
+        add(new Pose2d(12.52, 2.61, new Rotation2d(Radians.convertFrom(63.16, Degrees))));//red d
+        add(new Pose2d(11.5, 3.77, new Rotation2d(Radians.convertFrom(3.09, Degrees))));//red h
+        add(new Pose2d(12.05, 5.29, new Rotation2d(Radians.convertFrom(-57.24, Degrees))));//red f
+        add(new Pose2d(13.64, 5.41, new Rotation2d(Radians.convertFrom(-121.06, Degrees))));//red d
+        add(new Pose2d(14.63, 4.16, new Rotation2d(Radians.convertFrom(176.9, Degrees))));//red b
+        add(new Pose2d(13.75, 2.67, new Rotation2d(Radians.convertFrom(127.89, Degrees))));//red k
+        
+        
+        
+        
+        
         //Blue Top Starting Pose
         //add(new Pose2d(7.333, 4.025, new Rotation2d(Radians.convertFrom(180, Degrees))));
 
@@ -66,12 +93,12 @@ public class SnaptoPose extends Command
 
         // Coral pickups
         add(new Pose2d(1.57, 7.24, new Rotation2d(Radians.convertFrom(127.25, Degrees))));//blue left
-        add(new Pose2d(1.49, 0.75, new Rotation2d(Radians.convertFrom(-127.69, Degrees))));//blue right
+        add(new Pose2d(1.48, 0.74, new Rotation2d(Radians.convertFrom(-128.79, Degrees))));//blue right
         add(new Pose2d(15.97, 0.71, new Rotation2d(Radians.convertFrom(-55.33, Degrees))));//red left
         add(new Pose2d(16.00, 7.28, new Rotation2d(Radians.convertFrom(53.32, Degrees))));//red right
         // Red left
-        add(new Pose2d(16.77, 1.38, new Rotation2d(Radians.convertFrom(-53.95, Degrees))));
-        add(new Pose2d(15.71, 0.74, new Rotation2d(Radians.convertFrom(-54.29, Degrees))));
+        //add(new Pose2d(16.77, 1.38, new Rotation2d(Radians.convertFrom(-53.95, Degrees))));
+        //add(new Pose2d(15.71, 0.74, new Rotation2d(Radians.convertFrom(-54.29, Degrees))));
         
     
     }};
