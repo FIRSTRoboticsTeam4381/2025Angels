@@ -94,18 +94,18 @@ public class RobotContainer {
     // Set up autonomous picker
     // Add any autos you want to be able to select below
     autoChooser.setDefaultOption("None", Autos.none());
-    autoChooser.addOption("Test", Autos.testAuto());
+    //autoChooser.addOption("Test", Autos.testAuto());
     //autoChooser.addOption("Bottom to E to D", Autos.BottomtoEtoD());
-    autoChooser.addOption("blue Right to F to E", Autos.CopyofBottomtoFtoE());
-    autoChooser.addOption("red Right to F to E", Autos.CopyofCopyofBottomtoFtoE());
-    autoChooser.addOption("Top To I To J", Autos.TopToIToJ());
+    autoChooser.addOption("Blue Right F-E", Autos.BlueRightFToE());
+    autoChooser.addOption("Red Right F-E", Autos.RedRightFToE());
+    autoChooser.addOption("Left I-J", Autos.TopToIToJ());
     //autoChooser.addOption("Middle auto", Autos.Middleauto());
-    autoChooser.addOption("middle ball", Autos.middleball());
+    autoChooser.addOption("Middle Ball", Autos.middleball());
     //autoChooser.addOption("Top To I To K", Autos.TopToIToK());
     //autoChooser.addOption("Top To I To L", Autos.TopToIToL());
     //autoChooser.addOption("Bottom to BB to MB", Autos.BottomtoBBtoMB());
     //autoChooser.addOption("CustomAutoTop", Autos.JtoTCoarlstation());
-    autoChooser.addOption("CustomAutoBottom", Autos.EtoBCoralStation());
+    //autoChooser.addOption("CustomAutoBottom", Autos.EtoBCoralStation());
     SmartDashboard.putString("Choose Reef", "");
     SmartDashboard.putString("ReefSelectTop", "");
     

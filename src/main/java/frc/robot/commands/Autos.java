@@ -108,11 +108,11 @@ public final class Autos {
         /*public static PreviewAuto BottomtoFtoE() {
             return new PreviewAuto("BottomtoFtoE");
         }*/
-        public static PreviewAuto CopyofBottomtoFtoE() {
-            return new PreviewAuto("CopyofBottomtoFtoE");
+        public static PreviewAuto BlueRightFToE() {
+            return new PreviewAuto("BlueRightFToE");
         }
-        public static PreviewAuto CopyofCopyofBottomtoFtoE() {
-            return new PreviewAuto("CopyofCopyBottomtoFtoE");
+        public static PreviewAuto RedRightFToE() {
+            return new PreviewAuto("RedRightFToE");
         }
         public static PreviewAuto Middleauto() {
             return new PreviewAuto("Middleauto");

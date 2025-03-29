@@ -1,10 +1,10 @@
 {
   "hubs": [
     {
-      "x": -8,
-      "y": -8,
-      "width": 1296,
-      "height": 696,
+      "x": 90,
+      "y": 34,
+      "width": 1100,
+      "height": 654,
       "state": {
         "sidebar": {
           "width": 300,
@@ -25,7 +25,6 @@
             "/URCL/SwingArm/motor1",
             "/Robot/m_robotContainer",
             "/SmartDashboard/RIO/6v",
-            "/NT/Swerve",
             "/NTConnection",
             "/URCL/Extender",
             "/URCL/Wrist",
@@ -56,13 +55,8 @@
             "/NT/URCL/Algaeintake/algaemotor3",
             "/NT/URCL/Coralintake/coralmotor2",
             "/NT/URCL/Elevator",
-            "/NT/URCL/Elevator/motorEL1",
-            "/NT/URCL/Hang",
-            "/NT/URCL/Pivot",
             "/NT/URCL/Pivot/pivotmotor",
             "/NT/SmartDashboard/AlgaeIntake",
-            "/NT/URCL/Raw",
-            "/NT/URCL",
             "/NT/SmartDashboard/PDP",
             "/photonvision/BL",
             "/NT",
@@ -70,19 +64,24 @@
             "/NT/Robot/m_robotContainer/swerve",
             "/NT/Robot/m_robotContainer/swerve/gyro",
             "/NT/Robot/m_robotContainer/swerve/gyro/Velocity",
-            "/NT/PathPlanner",
-            "/NT/SmartDashboard",
             "/NT/SmartDashboard/Field",
             "/PathPlanner",
             "/SmartDashboard/vision",
             "/SmartDashboard/vision/BL",
             "/SmartDashboard/vision/BR",
             "/SmartDashboard/vision/FL",
-            "/SmartDashboard/vision/FR"
+            "/SmartDashboard/vision/FR",
+            "/SmartDashboard/Field",
+            "/SmartDashboard/Field/Robot",
+            "/NT/SmartDashboard/Choose Auto",
+            "/NT/URCL/Coralintake",
+            "/NT/URCL/Coralintake/coralmotor1",
+            "/PathPlanner/targetPose",
+            "/PathPlanner/targetPose/translation"
           ]
         },
         "tabs": {
-          "selected": 3,
+          "selected": 2,
           "tabs": [
             {
               "type": 0,
@@ -188,7 +187,7 @@
                     "options": {
                       "color": "#ff0000",
                       "format": "Pose2d",
-                      "units": "radians"
+                      "units": "degrees"
                     }
                   },
                   {
@@ -288,6 +287,129 @@
               "controllerUUID": "9fy2g9430003w93pf9zd99yunrd93oa7",
               "renderer": null,
               "controlsHeight": -139
+            },
+            {
+              "type": 1,
+              "title": "Auto Selected",
+              "controller": {
+                "leftSources": [],
+                "rightSources": [],
+                "discreteSources": [
+                  {
+                    "type": "stripes",
+                    "logKey": "NT:/SmartDashboard/Choose Auto:/selected",
+                    "logType": "String",
+                    "visible": true,
+                    "options": {
+                      "color": "#2b66a2"
+                    }
+                  },
+                  {
+                    "type": "stripes",
+                    "logKey": "NT:/SmartDashboard/Choose Auto:/active",
+                    "logType": "String",
+                    "visible": true,
+                    "options": {
+                      "color": "#e5b31b"
+                    }
+                  },
+                  {
+                    "type": "stripes",
+                    "logKey": "DS:enabled",
+                    "logType": "Boolean",
+                    "visible": true,
+                    "options": {
+                      "color": "#af2437"
+                    }
+                  }
+                ],
+                "leftLockedRange": null,
+                "rightLockedRange": null,
+                "leftUnitConversion": {
+                  "type": null,
+                  "factor": 1
+                },
+                "rightUnitConversion": {
+                  "type": null,
+                  "factor": 1
+                },
+                "leftFilter": 0,
+                "rightFilter": 0
+              },
+              "controllerUUID": "ukkapoz9rzubrr0ebakjjh5mbi8kjwpl",
+              "renderer": null,
+              "controlsHeight": 200
+            },
+            {
+              "type": 1,
+              "title": "NetworkTables",
+              "controller": {
+                "leftSources": [],
+                "rightSources": [],
+                "discreteSources": [
+                  {
+                    "type": "stripes",
+                    "logKey": "NTConnection/remote_id",
+                    "logType": "String",
+                    "visible": true,
+                    "options": {
+                      "color": "#2b66a2"
+                    }
+                  },
+                  {
+                    "type": "stripes",
+                    "logKey": "NTConnection/connected",
+                    "logType": "Boolean",
+                    "visible": true,
+                    "options": {
+                      "color": "#e5b31b"
+                    }
+                  },
+                  {
+                    "type": "stripes",
+                    "logKey": "NTConnection/remote_ip",
+                    "logType": "String",
+                    "visible": true,
+                    "options": {
+                      "color": "#af2437"
+                    }
+                  },
+                  {
+                    "type": "stripes",
+                    "logKey": "DS:enabled",
+                    "logType": "Boolean",
+                    "visible": true,
+                    "options": {
+                      "color": "#80588e"
+                    }
+                  }
+                ],
+                "leftLockedRange": null,
+                "rightLockedRange": null,
+                "leftUnitConversion": {
+                  "type": null,
+                  "factor": 1
+                },
+                "rightUnitConversion": {
+                  "type": null,
+                  "factor": 1
+                },
+                "leftFilter": 0,
+                "rightFilter": 0
+              },
+              "controllerUUID": "znhp0qleo7gps0mdp3yydzagri6oh0az",
+              "renderer": null,
+              "controlsHeight": 200
+            },
+            {
+              "type": 5,
+              "title": "Console",
+              "controller": "console",
+              "controllerUUID": "seegfqdj68u12txp7r0j1o2qq4btwvat",
+              "renderer": {
+                "highlight": false
+              },
+              "controlsHeight": 0
             },
             {
               "type": 3,
@@ -1753,29 +1875,20 @@
                 "discreteSources": [
                   {
                     "type": "stripes",
-                    "logKey": "NT:/URCL/Coralintake/coralmotor1/HardForwardLimitReached",
-                    "logType": "Boolean",
-                    "visible": true,
-                    "options": {
-                      "color": "#e5b31b"
-                    }
-                  },
-                  {
-                    "type": "stripes",
-                    "logKey": "NT:/URCL/Coralintake/coralmotor2/HardForwardLimitReached",
-                    "logType": "Boolean",
-                    "visible": true,
-                    "options": {
-                      "color": "#af2437"
-                    }
-                  },
-                  {
-                    "type": "stripes",
                     "logKey": "NT:/SmartDashboard/Coralintake/.command",
                     "logType": "String",
                     "visible": true,
                     "options": {
                       "color": "#e48b32"
+                    }
+                  },
+                  {
+                    "type": "stripes",
+                    "logKey": "NT:/URCL/Coralintake/coralmotor1/HardForwardLimitReached",
+                    "logType": "Boolean",
+                    "visible": true,
+                    "options": {
+                      "color": "#e5b31b"
                     }
                   }
                 ],
@@ -1960,7 +2073,7 @@
                     "type": "alerts",
                     "logKey": "NT:/SmartDashboard/Alerts",
                     "logType": "Alerts",
-                    "visible": false,
+                    "visible": true,
                     "options": {}
                   },
                   {
