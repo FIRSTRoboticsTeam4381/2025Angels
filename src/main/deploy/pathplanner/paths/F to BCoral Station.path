@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.17,
-        "y": 2.61
+        "x": 5.19,
+        "y": 2.63
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.78578595890411,
-        "y": 1.4145565068493158
+        "x": 5.80578595890411,
+        "y": 1.4345565068493158
       },
       "isLocked": false,
       "linkedName": "EF"
@@ -37,19 +37,6 @@
       "constraints": {
         "maxVelocity": 3.0,
         "maxAcceleration": 1.0,
-        "maxAngularVelocity": 540.0,
-        "maxAngularAcceleration": 720.0,
-        "nominalVoltage": 12.0,
-        "unlimited": false
-      }
-    },
-    {
-      "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.5593220338983056,
-      "maxWaypointRelativePos": 0.7694915254237291,
-      "constraints": {
-        "maxVelocity": 3.0,
-        "maxAcceleration": 5.5,
         "maxAngularVelocity": 540.0,
         "maxAngularAcceleration": 720.0,
         "nominalVoltage": 12.0,

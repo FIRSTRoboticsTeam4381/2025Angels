@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 3.55875,
-        "y": 2.7379999999999995
+        "y": 2.72
       },
       "prevControl": null,
       "nextControl": {
         "x": 2.7884999999999986,
-        "y": 1.63625
+        "y": 1.6182500000000006
       },
       "isLocked": false,
       "linkedName": "CD"
@@ -36,7 +36,7 @@
       "maxWaypointRelativePos": 0.7389830508474572,
       "constraints": {
         "maxVelocity": 3.0,
-        "maxAcceleration": 2.0,
+        "maxAcceleration": 1.0,
         "maxAngularVelocity": 540.0,
         "maxAngularAcceleration": 720.0,
         "nominalVoltage": 12.0,

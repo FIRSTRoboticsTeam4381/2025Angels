@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 1.579,
-        "y": 7.262
+        "x": 1.479,
+        "y": 7.362
       },
       "prevControl": {
-        "x": 2.857496325810641,
-        "y": 6.342494891319951
+        "x": 2.7575000000000043,
+        "y": 6.442499999999999
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,11 +32,11 @@
   "constraintZones": [
     {
       "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.2305084745762711,
-      "maxWaypointRelativePos": 0.6779661016949146,
+      "minWaypointRelativePos": 0.10803511141120743,
+      "maxWaypointRelativePos": 0.6725185685347739,
       "constraints": {
         "maxVelocity": 3.0,
-        "maxAcceleration": 2.5,
+        "maxAcceleration": 1.0,
         "maxAngularVelocity": 540.0,
         "maxAngularAcceleration": 720.0,
         "nominalVoltage": 12.0,
@@ -68,7 +68,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 127.56859202882747
+    "rotation": 123.69006752597979
   },
   "reversed": false,
   "folder": "Reef To TCoral Station",

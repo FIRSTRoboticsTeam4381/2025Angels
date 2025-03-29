@@ -3,37 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.047,
+        "x": 5.137,
         "y": 2.6
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.466349315068493,
-        "y": 2.512585616438356
+        "x": 5.752785958904109,
+        "y": 1.404556506849316
       },
       "isLocked": false,
-      "linkedName": "Bottom"
+      "linkedName": "funkyE"
     },
     {
       "anchor": {
-        "x": 5.19,
-        "y": 2.63
+        "x": 1.6769999999999998,
+        "y": 0.7002499999999998
       },
       "prevControl": {
-        "x": 6.52728595890411,
-        "y": 2.6376626712328766
+        "x": 3.2560902777777763,
+        "y": 1.678770833333334
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "EF"
+      "linkedName": "Bottom Coral Station"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [
     {
       "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.3,
-      "maxWaypointRelativePos": 0.5,
+      "minWaypointRelativePos": 0.0,
+      "maxWaypointRelativePos": 0.35254237288135587,
       "constraints": {
         "maxVelocity": 3.0,
         "maxAcceleration": 1.0,
@@ -47,13 +47,13 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "up",
-      "waypointRelativePos": 0.15,
+      "name": "l1",
+      "waypointRelativePos": 0.18983050847457622,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
         "data": {
-          "name": "l4"
+          "name": "l1"
         }
       }
     }
@@ -68,13 +68,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 121.09205820823829
+    "rotation": -127.26640190097714
   },
   "reversed": false,
-  "folder": "Bottom Paths",
+  "folder": "Reef to BCoral Station",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 121.09205820823829
   },
   "useDefaultConstraints": true
 }

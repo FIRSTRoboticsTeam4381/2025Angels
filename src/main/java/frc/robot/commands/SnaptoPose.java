@@ -92,7 +92,7 @@ public class SnaptoPose extends Command
         //add(new Pose2d(13.82, 2.66, new Rotation2d(Radians.convertFrom(120, Degrees))));
 
         // Coral pickups
-        add(new Pose2d(1.57, 7.24, new Rotation2d(Radians.convertFrom(127.25, Degrees))));//blue left
+        add(new Pose2d(1.57, 7.26, new Rotation2d(Radians.convertFrom(123.69, Degrees))));//blue left
         add(new Pose2d(1.48, 0.74, new Rotation2d(Radians.convertFrom(-128.79, Degrees))));//blue right
         add(new Pose2d(15.97, 0.71, new Rotation2d(Radians.convertFrom(-55.33, Degrees))));//red left
         add(new Pose2d(16.00, 7.28, new Rotation2d(Radians.convertFrom(53.32, Degrees))));//red right

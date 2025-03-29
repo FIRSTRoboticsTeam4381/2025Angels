@@ -111,6 +111,9 @@ public final class Autos {
         public static PreviewAuto CopyofBottomtoFtoE() {
             return new PreviewAuto("CopyofBottomtoFtoE");
         }
+        public static PreviewAuto CopyofCopyofBottomtoFtoE() {
+            return new PreviewAuto("CopyofCopyBottomtoFtoE");
+        }
         public static PreviewAuto Middleauto() {
             return new PreviewAuto("Middleauto");
         }
