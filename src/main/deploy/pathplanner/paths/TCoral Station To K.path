@@ -56,17 +56,6 @@
           "name": "Mcoralintake"
         }
       }
-    },
-    {
-      "name": "up",
-      "waypointRelativePos": 0.5320729237001873,
-      "endWaypointRelativePos": null,
-      "command": {
-        "type": "named",
-        "data": {
-          "name": "l4"
-        }
-      }
     }
   ],
   "globalConstraints": {
