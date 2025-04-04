@@ -1,0 +1,67 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Blue Middle Start"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoCorrect"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "l4"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Blue G to Rmiddle"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Mcoralintake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "BlueMGtoNet"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "net"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "NET STATION"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "l1"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

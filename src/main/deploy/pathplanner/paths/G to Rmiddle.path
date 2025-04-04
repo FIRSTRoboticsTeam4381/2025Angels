@@ -12,16 +12,16 @@
         "y": 3.7808217213114754
       },
       "isLocked": false,
-      "linkedName": "HG"
+      "linkedName": "middle coral score"
     },
     {
       "anchor": {
-        "x": 6.017827868852459,
-        "y": 4.03475
+        "x": 6.018,
+        "y": 4.035
       },
       "prevControl": {
-        "x": 7.4197500000000005,
-        "y": 4.1907499999999995
+        "x": 7.419922131147541,
+        "y": 4.191
       },
       "nextControl": null,
       "isLocked": false,

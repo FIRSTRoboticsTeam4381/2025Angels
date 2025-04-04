@@ -111,6 +111,9 @@ public final class Autos {
         public static PreviewAuto BlueRightFToE() {
             return new PreviewAuto("BlueRightFToE");
         }
+        public static PreviewAuto bluemiddleball() {
+            return new PreviewAuto("BlueMiddleBall");
+        }
         public static PreviewAuto RedRightFToE() {
             return new PreviewAuto("RedRightFToE");
         }
