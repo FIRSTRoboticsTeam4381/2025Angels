@@ -152,7 +152,13 @@ specialist.y().onTrue(advancedCommands.NetAlgae());
 specialist.x().onTrue(advancedCommands.algaeGround());
 specialist.a().onTrue(advancedCommands.processor());
 specialist.b().onTrue(advancedCommands.AlgaeReef());
+
 driver.x().whileTrue(swerve.brake());
+driver.start().toggleOnTrue(new TeleopSwerve(swerve, 
+driver::getLeftY,
+driver::getLeftX,
+driver::getRightX,
+   true, () -> false , false));
 
 specialist.axisMagnitudeGreaterThan(1, Constants.stickDeadband).onTrue(elevator.getDefaultCommand());
 specialist.axisMagnitudeGreaterThan(5, Constants.stickDeadband).onTrue(pivot.getDefaultCommand());

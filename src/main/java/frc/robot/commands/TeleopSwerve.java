@@ -23,11 +23,10 @@ public class TeleopSwerve extends Command{
     private Supplier<Double> leftright;
     private Supplier<Double> rotate;
     private Supplier<Boolean> slow;
+    private boolean fieldrelitive; 
 
     //static StructArrayPublisher<Translation2d> pointPub = NetworkTableInstance.getDefault()
     //  .getStructArrayTopic("joystick", Translation2d.struct).publish();
-    
-    
     /**
      * Command for driver control of a swerve drive. 
      * Can also be used in other ways by passing in different suppliers.
@@ -39,6 +38,21 @@ public class TeleopSwerve extends Command{
      * @param slow Supplier for whether to activate slow mode
      */
     public TeleopSwerve(Swerve s_Swerve, Supplier<Double> forward, Supplier<Double> leftright, Supplier<Double> rotate, boolean openLoop, Supplier<Boolean> slow){
+      this(s_Swerve, forward, leftright, rotate, openLoop, slow, true);
+       
+    }
+    
+    /**
+     * Command for driver control of a swerve drive. 
+     * Can also be used in other ways by passing in different suppliers.
+     * @param s_Swerve Swerve drive object to control
+     * @param forward Supplier for forward/back motion (likely a joystick)
+     * @param leftright Supplier for left/right motion (likely a joystick)
+     * @param rotate Supplier for rotation control (likely a joystick)
+     * @param openLoop Whether to use open or closed loop math
+     * @param slow Supplier for whether to activate slow mode
+     */
+    public TeleopSwerve(Swerve s_Swerve, Supplier<Double> forward, Supplier<Double> leftright, Supplier<Double> rotate, boolean openLoop, Supplier<Boolean> slow, boolean fieldrelitive){
         this.s_Swerve = s_Swerve;
         addRequirements(s_Swerve);
 
@@ -47,6 +61,7 @@ public class TeleopSwerve extends Command{
         this.rotate = rotate;
         this.openLoop = openLoop;
         this.slow = slow;
+        this.fieldrelitive = fieldrelitive;
 
     }
 
@@ -83,7 +98,7 @@ public class TeleopSwerve extends Command{
         });*/
 
         translation = y.times(Constants.Swerve.maxSpeed);
-        s_Swerve.drive(translation, rotation, true, openLoop, true);
+        s_Swerve.drive(translation, rotation, fieldrelitive, openLoop, true);
 
 
     }
