@@ -30,6 +30,7 @@ public class AdvancedCommands {
     NamedCommands.registerCommand("AutoCorrect", new AutoCorrection(robot.swerve));
     NamedCommands.registerCommand("lowAlgae", lowAlgae());
     NamedCommands.registerCommand("net", NetAlgaeauto());
+    NamedCommands.registerCommand("algaeReef", AlgaeReef());
   }
 
   public Command l4() {

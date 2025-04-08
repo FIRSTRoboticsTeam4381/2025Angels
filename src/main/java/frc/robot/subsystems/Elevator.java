@@ -103,7 +103,7 @@ public class Elevator extends SubsystemBase {
     }
     public Command Algaereef()
     {
-      return goToPosition(59.71, 0.5);
+      return goToPosition(50.34, 0.5);
     }
     public Command groundalgae()
     {

@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.25,
-        "y": 5.302249999999999
+        "x": 5.406454918032787,
+        "y": 5.55343237704918
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.385916095890411,
-        "y": 5.572645547945205
+        "x": 5.3273979765285775,
+        "y": 5.3162615525365515
       },
       "isLocked": false,
-      "linkedName": "NETBlue"
+      "linkedName": "IJwait"
     },
     {
       "anchor": {
-        "x": 5.679708904109589,
-        "y": 5.707876712328767
+        "x": 5.24,
+        "y": 5.361629098360655
       },
       "prevControl": {
-        "x": 6.4610445205479445,
-        "y": 5.452440068493151
+        "x": 5.38247950819672,
+        "y": 5.697284836065574
       },
       "nextControl": null,
       "isLocked": false,
@@ -29,31 +29,17 @@
     }
   ],
   "rotationTargets": [],
-  "constraintZones": [
-    {
-      "name": "Constraints Zone",
-      "minWaypointRelativePos": 1.0,
-      "maxWaypointRelativePos": 0.061016949152542375,
-      "constraints": {
-        "maxVelocity": 1.0,
-        "maxAcceleration": 3.0,
-        "maxAngularVelocity": 540.0,
-        "maxAngularAcceleration": 720.0,
-        "nominalVoltage": 12.0,
-        "unlimited": false
-      }
-    }
-  ],
+  "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "l1",
-      "waypointRelativePos": 0.0915254237288135,
+      "name": "algaeReef",
+      "waypointRelativePos": 0.0,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
         "data": {
-          "name": "l1"
+          "name": "algaeReef"
         }
       }
     }
@@ -68,13 +54,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.7161599454704011
+    "rotation": -118.36037934615179
   },
   "reversed": false,
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 14.999999999999998
+    "rotation": -119.60445074600489
   },
   "useDefaultConstraints": true
 }

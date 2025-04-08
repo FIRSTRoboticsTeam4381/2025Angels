@@ -141,7 +141,12 @@ public final class Autos {
         public static PreviewAuto middleball(){
             return ReefSelectBottom("middle ball");
         }
-            
+        public static PreviewAuto extramiddleball(){
+            return ReefSelectBottom("extra middle ball");
+        }
+        public static PreviewAuto extrabluemiddleball() {
+            return new PreviewAuto("ExtraBlueMiddleBall");
+        }
 
 
 

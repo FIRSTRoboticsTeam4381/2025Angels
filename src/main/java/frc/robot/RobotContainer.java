@@ -102,6 +102,8 @@ public class RobotContainer {
     //autoChooser.addOption("Middle auto", Autos.Middleauto());
     autoChooser.addOption("Middle Ball", Autos.middleball());
     autoChooser.addOption("Blue Middle Ball", Autos.bluemiddleball());
+    autoChooser.addOption("Extra Blue Middle Ball", Autos.extrabluemiddleball());
+    autoChooser.addOption("Extra Middle Ball", Autos.extramiddleball());
     //autoChooser.addOption("Top To I To K", Autos.TopToIToK());
     //autoChooser.addOption("Top To I To L", Autos.TopToIToL());
     //autoChooser.addOption("Bottom to BB to MB", Autos.BottomtoBBtoMB());
