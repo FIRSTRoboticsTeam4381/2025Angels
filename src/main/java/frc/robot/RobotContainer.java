@@ -25,6 +25,7 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.AdvancedCommands;
 import frc.robot.commands.Autos;
+import frc.robot.commands.SnapToAngle;
 import frc.robot.commands.SnaptoPose;
 import frc.robot.commands.TeleopSwerve;
 import frc.robot.subsystems.ChuteLEDs;
@@ -176,6 +177,7 @@ specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance()
 specialist.leftBumper().and(specialist.start()).whileTrue(coralintake.ManualCoarlIn());
 specialist.rightBumper().and(specialist.start()).whileTrue(coralintake.ManualCoarlOut());
 
+driver.leftTrigger(0.2).whileTrue(new SnapToAngle(swerve));
 
   }
 
