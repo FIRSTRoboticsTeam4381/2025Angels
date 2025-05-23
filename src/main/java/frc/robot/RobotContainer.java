@@ -11,11 +11,13 @@ import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.FunctionalCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
@@ -36,14 +38,17 @@ import frc.robot.subsystems.Hang;
 import frc.robot.subsystems.PhotonCam;
 import frc.robot.subsystems.Pivot;
 import frc.robot.subsystems.Swerve;
+import edu.wpi.first.wpilibj2.command.button.CommandGenericHID;
 
 @Logged
 public class RobotContainer {
   
   // Controllers
   public final CommandXboxController driver = new CommandXboxController(0);
-  public final CommandXboxController specialist = new CommandXboxController(1);
-
+  //public final CommandXboxController specialist = new CommandXboxController(1);
+  public CommandGenericHID specialGenericHID = new CommandGenericHID(1);
+  public CommandGenericHID special2GenericHID = new CommandGenericHID(2);
+  
   //Auto Chooser
   SendableChooser<Autos.PreviewAuto> autoChooser = new SendableChooser<>();
 
@@ -134,27 +139,29 @@ public class RobotContainer {
           driver::getRightX,
              true, () -> false));
 
-specialist.rightBumper().and(
-    specialist.start().negate()
-  ).toggleOnTrue(coralintake.coralInOrOut());
-specialist.leftBumper().and(
-  specialist.start().negate()
-).toggleOnTrue(coralintake.algaeInOrOut());
-elevator.setDefaultCommand(elevator.joystickcontrol(interpolateJoystick(specialist::getLeftY, Constants.stickDeadband)));
-pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(specialist::getRightY, Constants.stickDeadband)));
-hang.setDefaultCommand(hang.joystickcontrol(() -> specialist.getLeftTriggerAxis() - specialist.getRightTriggerAxis()));
+special2GenericHID.button(12);
+
+//.and(
+   // special2GenericHID.start().negate()
+ // ).toggleOnTrue(coralintake.coralInOrOut());
+//specialist.leftBumper().and(
+  //specialist.start().negate()
+//.toggleOnTrue(coralintake.algaeInOrOut());
+elevator.setDefaultCommand(elevator.joystickcontrol(interpolateJoystick(()-> special2GenericHID.getRawAxis(1), Constants.stickDeadband)));
+pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(()-> specialGenericHID.getRawAxis(0), Constants.stickDeadband)));
+hang.setDefaultCommand(hang.joystickcontrol(interpolateJoystick(() -> specialGenericHID.getRawAxis(1), Constants.stickDeadband )));
 //specialist.x().onTrue(hang.HangControl());
-specialist.povUp().onTrue(advancedCommands.l4Teleop().andThen(advancedCommands.hold()));
-specialist.povRight().onTrue(advancedCommands.l3Teleop().andThen(advancedCommands.hold()));
-specialist.povDown().and(specialist.start().negate()).onTrue(advancedCommands.l2Teleop().andThen(advancedCommands.hold()));
-specialist.povDown().and(specialist.start()).onTrue(elevator.level2().andThen(advancedCommands.hold()));
-specialist.povLeft().onTrue(advancedCommands.l1().andThen(advancedCommands.hold()));
+specialGenericHID.button(4).and (special2GenericHID.button(1)).onTrue(advancedCommands.l4Teleop().andThen(advancedCommands.hold()));
+specialGenericHID.button(3).and (special2GenericHID.button(1)).onTrue(advancedCommands.l3Teleop().andThen(advancedCommands.hold()));
+specialGenericHID.button(2).and(special2GenericHID.button(1)).onTrue(advancedCommands.l2Teleop().andThen(advancedCommands.hold()));
+//specialist.povDown().and(specialist.start()).onTrue(elevator.level2().andThen(advancedCommands.hold()));
+specialGenericHID.button(6).onTrue(advancedCommands.l1().andThen(advancedCommands.hold()));
 driver.rightBumper().whileTrue(new SnaptoPose(swerve));
 driver.leftBumper().whileTrue(swerve.setCoast());
-specialist.y().onTrue(advancedCommands.NetAlgae());
-specialist.x().onTrue(advancedCommands.algaeGround());
-specialist.a().onTrue(advancedCommands.processor());
-specialist.b().onTrue(advancedCommands.AlgaeReef());
+specialGenericHID.button(12).onTrue(advancedCommands.NetAlgae());
+special2GenericHID.button(8).onTrue(advancedCommands.algaeGround());
+specialGenericHID.button(11).onTrue(advancedCommands.processor());
+//specialist.b().onTrue(advancedCommands.AlgaeReef());
 
 driver.x().whileTrue(swerve.brake());
 driver.start().toggleOnTrue(new TeleopSwerve(swerve, 
@@ -163,19 +170,19 @@ driver::getLeftX,
 driver::getRightX,
    true, () -> false , false));
 
-specialist.axisMagnitudeGreaterThan(1, Constants.stickDeadband).onTrue(elevator.getDefaultCommand());
-specialist.axisMagnitudeGreaterThan(5, Constants.stickDeadband).onTrue(pivot.getDefaultCommand());
+special2GenericHID.axisMagnitudeGreaterThan(1, Constants.stickDeadband).onTrue(elevator.getDefaultCommand());
+specialGenericHID.axisMagnitudeGreaterThan(0, Constants.stickDeadband).onTrue(pivot.getDefaultCommand());
 
 
-specialist.back().onTrue(new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));
+special2GenericHID.button(11).onTrue(new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));
 
 
 //driver.leftTrigger(0.5).onTrue(chuteLEDs.setLeftChute());
 //driver.rightTrigger(0.5).onTrue(chuteLEDs.setRightChute());
 
 
-specialist.leftBumper().and(specialist.start()).whileTrue(coralintake.ManualCoarlIn());
-specialist.rightBumper().and(specialist.start()).whileTrue(coralintake.ManualCoarlOut());
+//specialist.leftBumper().and(specialist.start()).whileTrue(coralintake.ManualCoarlIn());
+//specialist.rightBumper().and(specialist.start()).whileTrue(coralintake.ManualCoarlOut());
 
 driver.leftTrigger(0.2).whileTrue(new SnapToAngle(swerve));
 
@@ -247,7 +254,8 @@ driver.leftTrigger(0.2).whileTrue(new SnapToAngle(swerve));
    */
   public Command vibrateSpecialist(RumbleType rumbleside, double rumblestrength )
   {
-    return new InstantCommand(() -> specialist.setRumble(rumbleside, rumblestrength));
+    return Commands.none();
+    //return new InstantCommand(() -> specialist.setRumble(rumbleside, rumblestrength));
   }
 
   /**
@@ -289,7 +297,8 @@ driver.leftTrigger(0.2).whileTrue(new SnapToAngle(swerve));
    */
   public Command vibrateSpecialistWhile(RumbleType rumbleside, double rumblestrength, Command c)
   {
-    return vibrateWhile(specialist, rumbleside, rumblestrength, c);
+    return Commands.none();
+  //  return vibrateWhile(specialist, rumbleside, rumblestrength, c);
   }
 
   /**
@@ -314,7 +323,8 @@ driver.leftTrigger(0.2).whileTrue(new SnapToAngle(swerve));
    */
   public Command vibrateSpecialistForTime(RumbleType rumbleside, double rumblestrength, double time)
   {
-    return vibrateForTime(specialist, rumbleside, rumblestrength, time);
+    return Commands.none();
+    //return vibrateForTime(specialist, rumbleside, rumblestrength, time);
   }
 
   /**

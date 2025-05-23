@@ -26,7 +26,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 import frc.robot.RobotContainer;
-
+import edu.wpi.first.wpilibj2.command.button.CommandGenericHID;
 @Logged
 public class Coralintake extends SubsystemBase {
   // **creating the variables for the motors**
@@ -136,6 +136,7 @@ public class Coralintake extends SubsystemBase {
         //new WaitCommand(0.75),
         //new InstantCommand(() -> coralmotor1.set(0), this)
         )
+
         .withName("Coral Intaking");
   }
 
