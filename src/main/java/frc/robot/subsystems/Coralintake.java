@@ -144,9 +144,9 @@ public class Coralintake extends SubsystemBase {
     return new SequentialCommandGroup(
         // this command will run until the sensor sees the coral
         new InstantCommand(() -> coralmotor1.set(-1), this),
-        RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kRightRumble, 0.5,
-            new WaitUntilCommand(() -> hascoral())),//hascoral())),
-        RobotContainer.getRobot().vibrateDriverForTime(RumbleType.kBothRumble, 0.8, 0.5),
+        //RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kRightRumble, 0.5,
+            new WaitUntilCommand(() -> hascoral()),//hascoral())),
+       // RobotContainer.getRobot().vibrateDriverForTime(RumbleType.kBothRumble, 0.8, 0.5),
         new InstantCommand(() -> coralmotor1.set(0), this)).withName("Coral Intaking");
   }
 
@@ -188,7 +188,7 @@ public class Coralintake extends SubsystemBase {
   }
   public Command ManualAlgaeIn() 
   {
-    return new InstantCommand(() -> coralmotor1.set(-.1), this).repeatedly();
+    return new InstantCommand(() -> coralmotor1.set(-.2), this).repeatedly();
   }
 
 }
