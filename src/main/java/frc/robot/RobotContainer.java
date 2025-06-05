@@ -25,6 +25,7 @@ import edu.wpi.first.wpilibj2.command.ScheduleCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.AdvancedCommands;
 import frc.robot.commands.Autos;
 import frc.robot.commands.SnapToAngle;
@@ -139,8 +140,16 @@ public class RobotContainer {
           driver::getRightX,
              true, () -> false));
 
-special2GenericHID.button(12);
 
+  //if(special2GenericHID.button(12).whileTrue())
+ // {
+ //   return new InstantCommand(Coralintake(()-> coralIn()));
+  //}
+  
+  special2GenericHID.button(12).and(new Trigger(coralintake::hascoral)).whileTrue(coralintake.ManualCoarlIn());
+  special2GenericHID.button(12).and(new Trigger(coralintake::hascoral).negate()).onTrue(coralintake.coralIn());
+  special2GenericHID.button(7).and(new Trigger(coralintake::hascoral)).whileTrue(coralintake.algaeIn());
+  special2GenericHID.button(7).and(new Trigger(coralintake::hascoral).negate()).onTrue(coralintake.ManualAlgaeIn());
 //.and(
    // special2GenericHID.start().negate()
  // ).toggleOnTrue(coralintake.coralInOrOut());
