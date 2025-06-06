@@ -148,9 +148,10 @@ public class RobotContainer {
   
   special2GenericHID.button(12).and(new Trigger(coralintake::hascoral)).whileTrue(coralintake.ManualCoarlIn());
   special2GenericHID.button(12).and(new Trigger(coralintake::hascoral).negate()).onTrue(coralintake.coralIn());
-  special2GenericHID.button(7).and(new Trigger(coralintake::hascoral)).whileTrue(coralintake.algaeIn());
-  special2GenericHID.button(7).and(new Trigger(coralintake::hascoral).negate()).onTrue(coralintake.ManualAlgaeIn());
-  specialGenericHID.button(10).onTrue(coralintake.out());
+  special2GenericHID.button(7).and(new Trigger(coralintake::hascoral)).whileTrue(coralintake.ManualAlgaeIn());
+  special2GenericHID.button(7).and(new Trigger(coralintake::hascoral).negate()).onTrue(coralintake.algaeIn());
+  specialGenericHID.button(10).and(new Trigger(coralintake::hascoral)).onTrue(coralintake.out());
+  specialGenericHID.button(10).and(new Trigger(coralintake::hascoral).negate()).whileTrue(coralintake.ManualOut());
 //.and(
    // special2GenericHID.start().negate()
  // ).toggleOnTrue(coralintake.coralInOrOut());

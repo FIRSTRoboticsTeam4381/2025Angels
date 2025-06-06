@@ -190,5 +190,8 @@ public class Coralintake extends SubsystemBase {
   {
     return new InstantCommand(() -> coralmotor1.set(-.2), this).repeatedly();
   }
-
+  public Command ManualOut() 
+  {
+    return new InstantCommand(() -> coralmotor1.set(1), this).repeatedly();
+  }
 }
