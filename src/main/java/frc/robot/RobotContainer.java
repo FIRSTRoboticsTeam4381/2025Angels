@@ -138,7 +138,7 @@ public class RobotContainer {
           driver::getLeftY,
           driver::getLeftX,
           driver::getRightX,
-             true, () -> false));
+             true, () -> driver.getRightTriggerAxis() > 0.5));
 
 
   //if(special2GenericHID.button(12).whileTrue())

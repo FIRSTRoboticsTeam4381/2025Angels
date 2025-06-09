@@ -74,7 +74,7 @@ private SparkFlex pivotmotor;
   public Command joystickcontrol(Supplier<Double> joystickMove)
   {
     return 
-      new InstantCommand(()-> pivotmotor.set(-joystickMove.get()),this).repeatedly()
+      new InstantCommand(()-> pivotmotor.set(joystickMove.get()),this).repeatedly()
     ;
   }
 
