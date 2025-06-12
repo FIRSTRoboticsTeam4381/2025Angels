@@ -190,6 +190,7 @@ specialGenericHID.axisMagnitudeGreaterThan(0, Constants.stickDeadband).onTrue(pi
 
 
 special2GenericHID.button(11).onTrue(new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));
+specialGenericHID.button(1).and (special2GenericHID.button(1)).onTrue(advancedCommands.coralL1().andThen(advancedCommands.hold()));
 
 
 //driver.leftTrigger(0.5).onTrue(chuteLEDs.setLeftChute());

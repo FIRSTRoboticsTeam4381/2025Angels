@@ -121,4 +121,8 @@ public class Elevator extends SubsystemBase {
     {
       return goToPosition(53, 0.5);
     }
+    public Command corall1()
+    {
+      return goToPosition(38, 0.5);
+    }
 }
