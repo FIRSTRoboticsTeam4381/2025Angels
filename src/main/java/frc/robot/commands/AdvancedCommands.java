@@ -184,6 +184,10 @@ public class AdvancedCommands {
     return new ParallelCommandGroup(robot.pivot.Algael2(),
     robot.elevator.algael2());
   }
+public Command algaeL3(){
+return new ParallelCommandGroup(robot.pivot.Algael3(),
+robot.elevator.algael3());
 
+}
 
 }

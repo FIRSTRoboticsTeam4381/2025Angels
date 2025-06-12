@@ -117,4 +117,8 @@ public class Elevator extends SubsystemBase {
     {
       return goToPosition(31, 0.5);
     }
+    public Command algael3()
+    {
+      return goToPosition(53, 0.5);
+    }
 }

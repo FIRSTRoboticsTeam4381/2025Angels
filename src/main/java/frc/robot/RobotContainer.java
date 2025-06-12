@@ -152,6 +152,7 @@ public class RobotContainer {
   special2GenericHID.button(7).and(new Trigger(coralintake::hascoral).negate()).onTrue(coralintake.algaeIn());
   specialGenericHID.button(10).and(new Trigger(coralintake::hascoral)).onTrue(coralintake.out());
   specialGenericHID.button(10).and(new Trigger(coralintake::hascoral).negate()).whileTrue(coralintake.ManualOut());
+
 //.and(
    // special2GenericHID.start().negate()
  // ).toggleOnTrue(coralintake.coralInOrOut());
@@ -174,6 +175,7 @@ specialGenericHID.button(8).onTrue(advancedCommands.lollypop());
 specialGenericHID.button(11).onTrue(advancedCommands.processor());
 special2GenericHID.button(8).onTrue(advancedCommands.algaeGround());
 special2GenericHID.button(6).onTrue(advancedCommands.algaeL2());
+specialGenericHID.button(7).onTrue(advancedCommands.algaeL3());
 //specialist.b().onTrue(advancedCommands.AlgaeReef());
 
 driver.x().whileTrue(swerve.brake());
