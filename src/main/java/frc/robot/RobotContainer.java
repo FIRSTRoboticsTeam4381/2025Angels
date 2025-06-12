@@ -170,8 +170,10 @@ specialGenericHID.button(6).onTrue(advancedCommands.l1().andThen(advancedCommand
 driver.rightBumper().whileTrue(new SnaptoPose(swerve));
 driver.leftBumper().whileTrue(swerve.setCoast());
 specialGenericHID.button(12).onTrue(advancedCommands.NetAlgae());
-special2GenericHID.button(8).onTrue(advancedCommands.algaeGround());
+specialGenericHID.button(8).onTrue(advancedCommands.lollypop());
 specialGenericHID.button(11).onTrue(advancedCommands.processor());
+special2GenericHID.button(8).onTrue(advancedCommands.algaeGround());
+special2GenericHID.button(6).onTrue(advancedCommands.algaeL2());
 //specialist.b().onTrue(advancedCommands.AlgaeReef());
 
 driver.x().whileTrue(swerve.brake());

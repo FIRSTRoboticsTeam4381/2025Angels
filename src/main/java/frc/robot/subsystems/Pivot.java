@@ -116,9 +116,9 @@ private SparkFlex pivotmotor;
   {
     return goToPosition(.6906,0.05);
   }
-  public Command algaepickup()
+  public Command lollypoppickup()
   {
-    return goToPosition(0.46,0.05);
+    return goToPosition(0.54,0.05);
   }
   public Command Proccesor()
   {
@@ -127,5 +127,13 @@ private SparkFlex pivotmotor;
   public Command Algaereef()
   {
     return goToPosition(0.475, 0.05);
+  }
+  public Command Algaeground ()
+  {
+    return goToPosition(0.43,0.05);
+  }
+  public Command Algael2()
+  {
+    return goToPosition(0.47, 0.05);
   }
 }

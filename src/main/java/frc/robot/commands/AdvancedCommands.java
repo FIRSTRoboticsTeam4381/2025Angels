@@ -168,15 +168,22 @@ public class AdvancedCommands {
     robot.elevator.level1());
   }
 
-  public Command algaeGround(){
-    return new ParallelCommandGroup(robot.pivot.algaepickup(),
-    robot.elevator.groundalgae());
+  public Command lollypop(){
+    return new ParallelCommandGroup(robot.pivot.lollypoppickup(),
+    robot.elevator.lollypopalgae());
   }
   public Command lowAlgae(){
     return new SequentialCommandGroup( new ParallelCommandGroup(robot.pivot.trough(),
     robot.elevator.lowalgae()), robot.coralintake.ManualCoarlIn());
   }
-
+  public Command algaeGround(){
+    return new ParallelCommandGroup(robot.pivot.Algaeground(),
+     robot.elevator.lollypopalgae());
+  }
+  public Command algaeL2(){
+    return new ParallelCommandGroup(robot.pivot.Algael2(),
+    robot.elevator.algael2());
+  }
 
 
 }

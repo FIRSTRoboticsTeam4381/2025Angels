@@ -105,12 +105,16 @@ public class Elevator extends SubsystemBase {
     {
       return goToPosition(50.34, 0.5);
     }
-    public Command groundalgae()
+    public Command lollypopalgae()
     {
       return goToPosition(0.26, 0.5);
     }
     public Command lowalgae()
     {
       return goToPosition(34, 0.5);
+    }
+    public Command algael2()
+    {
+      return goToPosition(31, 0.5);
     }
 }
