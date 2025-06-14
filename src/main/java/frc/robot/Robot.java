@@ -34,7 +34,7 @@ public class Robot extends TimedRobot {
 
   private final RobotContainer m_robotContainer;
 
-  private RadioLogger robotRadioLogger;
+  private RadioLogger robotRadioLogger, apRadioLogger;
 
   public Robot() {
 
@@ -82,7 +82,8 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer();
 
     // Radio logging setup
-    robotRadioLogger = new RadioLogger("http://10.44.22.1");
+    robotRadioLogger = new RadioLogger("http://10.44.22.1/status");
+    apRadioLogger = new RadioLogger("http://10.44.22.4/status");
   }
 
   @Override

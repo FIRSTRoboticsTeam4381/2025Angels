@@ -13,17 +13,10 @@ import java.time.Duration;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-
-import org.json.simple.JSONObject;
-
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.pathplanner.lib.util.JSONUtil;
-
-import edu.wpi.first.epilogue.CustomLoggerFor;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.wpi.first.epilogue.Logged;
-import edu.wpi.first.epilogue.logging.ClassSpecificLogger;
-import edu.wpi.first.epilogue.logging.EpilogueBackend;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -47,12 +40,18 @@ public class RadioLogger {
     private HttpClient client = HttpClient.newHttpClient();
     private HttpRequest request;
 
-    @Logged
     private long lastResultsTimestamp = RobotController.getFPGATime();
     private boolean requestInFlight = false;
     private CompletableFuture<String> liveRequest;
 
-    private String latestResults = "Initializing";
+    private String latestResults = "";
+
+    @Logged
+    private String requestStatus = "Initializing...";
+
+    private ObjectMapper mapper = new ObjectMapper();
+
+    private JsonNode latestJson;
 
     public RadioLogger(String ip)
     {
@@ -69,37 +68,11 @@ public class RadioLogger {
 
     private void query()
     {
-        /*client.sendAsync(request, BodyHandlers.ofString())
-         .thenApply(HttpResponse::body)
-         .thenAccept((str) -> SmartDashboard.putString("radioLog", str))
-         .join();
-        */
-
-        /*client.sendAsync(request, BodyHandlers.ofString())
-        
-        .thenApply(HttpResponse::body)
-        .thenAccept((str) -> SmartDashboard.putString("radioLog", str))
-        .exceptionally(this::handleException)
-        
-        ;*/
-        //.join();
-
         requestInFlight = true;
         liveRequest = client.sendAsync(request, BodyHandlers.ofString())
             .thenApply(HttpResponse::body);
     }
 
-    private Void handleException(Throwable t)
-    {
-        DriverStation.reportError("Failed to query "+target+": "+t.getLocalizedMessage(), t.getStackTrace());
-        SmartDashboard.putString("radioLog", t.getLocalizedMessage());
-        return null;// Needs OBJECT Void, not void void
-    }
-
-    private void handleLog(String str)
-    {
-        
-    }
 
     private void checkResult()
     {
@@ -110,8 +83,15 @@ public class RadioLogger {
 
             try {
                 latestResults = liveRequest.get();
+                requestStatus = "OK";
             } catch (InterruptedException | ExecutionException | CancellationException e) {
-                latestResults = e.getLocalizedMessage();
+                requestStatus = e.getLocalizedMessage();
+            }
+
+            try {
+                latestJson = mapper.readTree(latestResults);
+            } catch (JsonProcessingException e) {
+                requestStatus = "Parse failure: "+e.getLocalizedMessage();
             }
         }
     }
@@ -119,7 +99,7 @@ public class RadioLogger {
    
 
     @Logged
-    public String logData()
+    public JsonNode logData()
     {
         // If a query is in flight, check if it is done
         if(requestInFlight)
@@ -132,7 +112,7 @@ public class RadioLogger {
             query();
         }
 
-        return latestResults;
+        return latestJson;
     }
 
    
