@@ -10,7 +10,9 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
+import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 import org.json.simple.JSONObject;
@@ -18,7 +20,12 @@ import org.json.simple.JSONObject;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.pathplanner.lib.util.JSONUtil;
 
+import edu.wpi.first.epilogue.CustomLoggerFor;
+import edu.wpi.first.epilogue.Logged;
+import edu.wpi.first.epilogue.logging.ClassSpecificLogger;
+import edu.wpi.first.epilogue.logging.EpilogueBackend;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /** Class to poll the /status endpoint of a radio and put the results on NetworkTables.
@@ -29,9 +36,9 @@ public class RadioLogger {
     // Target radio IP
     private String target;
 
-    // Timing intervals for querying status in seconds
+    // Timing intervals for querying status in microseconds
     // This does not include the time taken for the request to arrive
-    private double pollRate = 0.25;
+    private long pollRate = 250000;
 
     // Timeout length for when the endpoint doesn't respond, in milliseconds
     private long timeout = 2000;
@@ -40,6 +47,12 @@ public class RadioLogger {
     private HttpClient client = HttpClient.newHttpClient();
     private HttpRequest request;
 
+    @Logged
+    private long lastResultsTimestamp = RobotController.getFPGATime();
+    private boolean requestInFlight = false;
+    private CompletableFuture<String> liveRequest;
+
+    private String latestResults = "Initializing";
 
     public RadioLogger(String ip)
     {
@@ -51,14 +64,10 @@ public class RadioLogger {
          .header("Accept","application/json")
          .build();
 
-
-         // Start querying
-         query();
-
     }
 
 
-    public void query()
+    private void query()
     {
         /*client.sendAsync(request, BodyHandlers.ofString())
          .thenApply(HttpResponse::body)
@@ -66,14 +75,18 @@ public class RadioLogger {
          .join();
         */
 
-        client.sendAsync(request, BodyHandlers.ofString())
+        /*client.sendAsync(request, BodyHandlers.ofString())
         
         .thenApply(HttpResponse::body)
         .thenAccept((str) -> SmartDashboard.putString("radioLog", str))
         .exceptionally(this::handleException)
         
-        ;
+        ;*/
         //.join();
+
+        requestInFlight = true;
+        liveRequest = client.sendAsync(request, BodyHandlers.ofString())
+            .thenApply(HttpResponse::body);
     }
 
     private Void handleException(Throwable t)
@@ -87,5 +100,42 @@ public class RadioLogger {
     {
         
     }
+
+    private void checkResult()
+    {
+        if(liveRequest.isDone())
+        {
+            requestInFlight = false;
+            lastResultsTimestamp = RobotController.getFPGATime();
+
+            try {
+                latestResults = liveRequest.get();
+            } catch (InterruptedException | ExecutionException | CancellationException e) {
+                latestResults = e.getLocalizedMessage();
+            }
+        }
+    }
+
+   
+
+    @Logged
+    public String logData()
+    {
+        // If a query is in flight, check if it is done
+        if(requestInFlight)
+        {
+            checkResult();
+        }
+        // Check if we need to send another request
+        else if(!requestInFlight && RobotController.getFPGATime() > lastResultsTimestamp+pollRate)
+        {
+            query();
+        }
+
+        return latestResults;
+    }
+
+   
     
 }
+
