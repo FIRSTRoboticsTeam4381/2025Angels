@@ -4,6 +4,11 @@
 
 package frc.robot;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.Map;
 
 import org.littletonrobotics.urcl.URCL;
@@ -21,12 +26,15 @@ import edu.wpi.first.wpilibj.Alert.AlertType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.lib.logging.RadioLogger;
 
 @Logged
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private final RobotContainer m_robotContainer;
+
+  private RadioLogger robotRadioLogger;
 
   public Robot() {
 
@@ -72,6 +80,9 @@ public class Robot extends TimedRobot {
     Epilogue.bind(this);
 
     m_robotContainer = new RobotContainer();
+
+    // Radio logging setup
+    robotRadioLogger = new RadioLogger("http://10.44.22.1");
   }
 
   @Override
