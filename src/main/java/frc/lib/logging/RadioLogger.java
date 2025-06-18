@@ -17,9 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.wpi.first.epilogue.Logged;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotController;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /** Class to poll the /status endpoint of a radio and put the results on NetworkTables.
  * This class assumes NetworkTables is already being auto-logged.
@@ -31,10 +29,14 @@ public class RadioLogger {
 
     // Timing intervals for querying status in microseconds
     // This does not include the time taken for the request to arrive
-    private long pollRate = 250000;
+    // Radios refresh data roughly every 5 seconds
+    private long pollRate = 250000*4*5;
 
     // Timeout length for when the endpoint doesn't respond, in milliseconds
     private long timeout = 2000;
+
+    @Logged
+    short resNum = 0;
 
 
     private HttpClient client = HttpClient.newHttpClient();
@@ -62,7 +64,6 @@ public class RadioLogger {
          .timeout(Duration.ofMillis(timeout))
          .header("Accept","application/json")
          .build();
-
     }
 
 
@@ -71,6 +72,8 @@ public class RadioLogger {
         requestInFlight = true;
         liveRequest = client.sendAsync(request, BodyHandlers.ofString())
             .thenApply(HttpResponse::body);
+        
+        lastResultsTimestamp = RobotController.getFPGATime();
     }
 
 
@@ -79,11 +82,11 @@ public class RadioLogger {
         if(liveRequest.isDone())
         {
             requestInFlight = false;
-            lastResultsTimestamp = RobotController.getFPGATime();
-
+            
             try {
                 latestResults = liveRequest.get();
                 requestStatus = "OK";
+                resNum++;
             } catch (InterruptedException | ExecutionException | CancellationException e) {
                 requestStatus = e.getLocalizedMessage();
             }

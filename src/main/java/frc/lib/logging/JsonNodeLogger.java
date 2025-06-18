@@ -6,8 +6,6 @@ package frc.lib.logging;
 
 import java.util.Map.Entry;
 
-import javax.lang.model.util.ElementScanner14;
-
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -52,7 +50,7 @@ public class JsonNodeLogger extends ClassSpecificLogger<JsonNode> {
                 // Note: Not sure how to use Epilogue to make a "native" 
                 // network tables array of arbitrary stuff
 
-                // TODO not sure how to implement when we recurse over value nodes
+                // Not sure how to implement when we recurse over value nodes
                 int i = 0;
                 for(JsonNode n : object)
                 {
@@ -65,7 +63,7 @@ public class JsonNodeLogger extends ClassSpecificLogger<JsonNode> {
             else if(object.isValueNode())
             {
                 // How do we get the key for a value node?
-                // TODO we shouldn't end up here
+                // We shouldn't end up here
                 // because we have no idea what the key is
                 // This only makes sense when we have an array I guess
                 logValueNode(backend, "value", object);
