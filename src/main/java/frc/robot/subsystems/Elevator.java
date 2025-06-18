@@ -107,7 +107,7 @@ public class Elevator extends SubsystemBase {
     }
     public Command lollypopalgae()
     {
-      return goToPosition(0.26, 0.5);
+      return goToPosition(0.26, 1);
     }
     public Command lowalgae()
     {

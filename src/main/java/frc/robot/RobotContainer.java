@@ -173,12 +173,12 @@ specialGenericHID.button(2).and(special2GenericHID.button(1)).onTrue(advancedCom
 specialGenericHID.button(6).onTrue(advancedCommands.l1().andThen(advancedCommands.hold()));
 driver.rightBumper().whileTrue(new SnaptoPose(swerve));
 driver.leftBumper().whileTrue(swerve.setCoast());
-specialGenericHID.button(12).onTrue(advancedCommands.NetAlgae());
-specialGenericHID.button(8).onTrue(advancedCommands.lollypop());
-specialGenericHID.button(11).onTrue(advancedCommands.processor());
-special2GenericHID.button(8).onTrue(advancedCommands.algaeGround());
-special2GenericHID.button(6).onTrue(advancedCommands.algaeL2());
-specialGenericHID.button(7).onTrue(advancedCommands.algaeL3());
+specialGenericHID.button(12).onTrue(advancedCommands.NetAlgae().andThen(advancedCommands.hold()));
+specialGenericHID.button(8).onTrue(advancedCommands.lollypop().andThen(advancedCommands.hold()));
+specialGenericHID.button(11).onTrue(advancedCommands.processor().andThen(advancedCommands.hold()));
+special2GenericHID.button(8).onTrue(advancedCommands.algaeGround().andThen(advancedCommands.hold()));
+special2GenericHID.button(6).onTrue(advancedCommands.algaeL2().andThen(advancedCommands.hold()));
+specialGenericHID.button(7).onTrue(advancedCommands.algaeL3().andThen(advancedCommands.hold()));
 //specialist.b().onTrue(advancedCommands.AlgaeReef());
 
 driver.x().whileTrue(swerve.brake());
