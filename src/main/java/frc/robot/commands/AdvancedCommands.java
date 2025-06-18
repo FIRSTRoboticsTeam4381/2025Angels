@@ -189,5 +189,9 @@ return new ParallelCommandGroup(robot.pivot.Algael3(),
 robot.elevator.algael3());
 
 }
-
+public Command coralL1(){
+  return new ParallelCommandGroup(robot.pivot.Corall1(),
+  robot.elevator.corall1());
+  
+  }
 }

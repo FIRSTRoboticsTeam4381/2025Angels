@@ -25,6 +25,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
+import edu.wpi.first.wpilibj2.command.Command.InterruptionBehavior;
 import frc.robot.RobotContainer;
 import edu.wpi.first.wpilibj2.command.button.CommandGenericHID;
 @Logged
@@ -37,7 +38,7 @@ public class Coralintake extends SubsystemBase {
   // creating a sensor
   private SparkLimitSwitch coralsensor1;
   //private SparkLimitSwitch coralsensor2;
-
+  private boolean coralintaken = true;
   // Creates a new Coralintake
   public Coralintake() {
 
@@ -111,15 +112,19 @@ public class Coralintake extends SubsystemBase {
   public Command out() {// creating a sequential command group
     return new SequentialCommandGroup(
         // seting the motor speed to 1
-        new InstantCommand(() -> coralmotor1.set(1), this),
+        new ConditionalCommand(
+          new InstantCommand(() -> coralmotor1.set(0.5), this),
+          new InstantCommand(() -> coralmotor1.set(1),this),
+          () -> coralintaken),
         // checking to see if the sensor can see the coral
         new WaitUntilCommand(() -> !hascoral()),//!hascoral()),
         // wait time after throwing coral out
         new WaitCommand(1),
         // stopping the motor.
-        new InstantCommand(() -> coralmotor1.set(0), this)
+        new InstantCommand(() -> coralmotor1.set(0), this),
     // giving the action a name for logging/
-    ).withName("Coral Outaking");
+        new InstantCommand(()->coralintaken = false)
+    ).withName("Coral Outaking").withInterruptBehavior(InterruptionBehavior.kCancelIncoming);
   };
 
   public Command coralIn() {
@@ -130,7 +135,8 @@ public class Coralintake extends SubsystemBase {
             new WaitUntilCommand(() -> hascoral()),
         //RobotContainer.getRobot().vibrateDriverForTime(RumbleType.kBothRumble, 0.8, 0.5),
         new WaitCommand(0.5),
-        new InstantCommand(() -> coralmotor1.set(0), this)//,
+        new InstantCommand(() -> coralmotor1.set(0), this),//,
+        new InstantCommand(() -> coralintaken = true)
         //new WaitCommand(1),
         //new InstantCommand(() -> coralmotor1.set(-1), this),
         //new WaitCommand(0.75),
@@ -147,7 +153,8 @@ public class Coralintake extends SubsystemBase {
         //RobotContainer.getRobot().vibrateSpecialistWhile(RumbleType.kRightRumble, 0.5,
             new WaitUntilCommand(() -> hascoral()),//hascoral())),
        // RobotContainer.getRobot().vibrateDriverForTime(RumbleType.kBothRumble, 0.8, 0.5),
-        new InstantCommand(() -> coralmotor1.set(0), this)).withName("Coral Intaking");
+        new InstantCommand(() -> coralmotor1.set(0), this),
+        new InstantCommand(() -> coralintaken = false)).withName("Coral Intaking");
   }
 
   public Command autoOut() {
@@ -180,11 +187,11 @@ public class Coralintake extends SubsystemBase {
   }
    public Command ManualCoarlIn() 
   {
-    return new InstantCommand(() -> coralmotor1.set(-.3), this).repeatedly();
+    return new InstantCommand(() -> coralmotor1.set(-.3), this).withName("Manual In").repeatedly();
   }
   public Command ManualCoarlOut() 
   {
-    return new InstantCommand(() -> coralmotor1.set(.5), this).repeatedly();
+    return new InstantCommand(() -> coralmotor1.set(.5), this).withName("Manual C Out").repeatedly();
   }
   public Command ManualAlgaeIn() 
   {
@@ -192,6 +199,6 @@ public class Coralintake extends SubsystemBase {
   }
   public Command ManualOut() 
   {
-    return new InstantCommand(() -> coralmotor1.set(1), this).repeatedly();
+    return new InstantCommand(() -> coralmotor1.set(1), this).withName("Manual Out").repeatedly();
   }
 }

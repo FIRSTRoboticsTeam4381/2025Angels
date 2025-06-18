@@ -60,6 +60,8 @@ public class RobotContainer {
   public final Elevator elevator;
   public final Hang hang;
   public final Pivot pivot;
+
+  
   
 
   public final PhotonCam camA = new PhotonCam("FR", new Transform3d(
@@ -153,6 +155,7 @@ public class RobotContainer {
   specialGenericHID.button(10).and(new Trigger(coralintake::hascoral)).onTrue(coralintake.out());
   specialGenericHID.button(10).and(new Trigger(coralintake::hascoral).negate()).whileTrue(coralintake.ManualOut());
 
+
 //.and(
    // special2GenericHID.start().negate()
  // ).toggleOnTrue(coralintake.coralInOrOut());
@@ -190,6 +193,7 @@ specialGenericHID.axisMagnitudeGreaterThan(0, Constants.stickDeadband).onTrue(pi
 
 
 special2GenericHID.button(11).onTrue(new InstantCommand(() -> CommandScheduler.getInstance().cancelAll()));
+specialGenericHID.button(1).and (special2GenericHID.button(1)).onTrue(advancedCommands.coralL1().andThen(advancedCommands.hold()));
 
 
 //driver.leftTrigger(0.5).onTrue(chuteLEDs.setLeftChute());
