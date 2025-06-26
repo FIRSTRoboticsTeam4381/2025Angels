@@ -81,7 +81,7 @@ public class JsonNodeLogger extends ClassSpecificLogger<JsonNode> {
         if(t == JsonToken.VALUE_NUMBER_FLOAT)
             backend.log(key, n.asDouble());
         else if(t == JsonToken.VALUE_NUMBER_INT)
-            backend.log(key, n.asInt());
+            backend.log(key, n.asDouble());
         else if(t == JsonToken.VALUE_TRUE || t == JsonToken.VALUE_FALSE)
             backend.log(key, n.asBoolean());
         else
