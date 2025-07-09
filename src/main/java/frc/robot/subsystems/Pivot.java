@@ -45,7 +45,7 @@ private SparkFlex pivotmotor;
       idleMode(IdleMode.kBrake);
       inverted(false);
 
-      softLimit.forwardSoftLimit(0.759);
+      softLimit.forwardSoftLimit(0.758);
       softLimit.forwardSoftLimitEnabled(true);
       softLimit.reverseSoftLimit(0.390);
       softLimit.reverseSoftLimitEnabled(true);
