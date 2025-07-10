@@ -178,7 +178,7 @@ public class AdvancedCommands {
   }
   public Command algaeGround(){
     return new ParallelCommandGroup(robot.pivot.Algaeground(),
-     robot.elevator.lollypopalgae());
+     robot.elevator.groundalgae());
   }
   public Command algaeL2(){
     return new ParallelCommandGroup(robot.pivot.Algael2(),

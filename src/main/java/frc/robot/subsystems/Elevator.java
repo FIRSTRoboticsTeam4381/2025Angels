@@ -109,6 +109,10 @@ public class Elevator extends SubsystemBase {
     {
       return goToPosition(0.26, 1);
     }
+    public Command groundalgae()
+    {
+      return goToPosition(10, 1);
+    }
     public Command lowalgae()
     {
       return goToPosition(34, 0.5);
@@ -119,7 +123,7 @@ public class Elevator extends SubsystemBase {
     }
     public Command algael3()
     {
-      return goToPosition(53, 0.5);
+      return goToPosition(51, 0.5);
     }
     public Command corall1()
     {
