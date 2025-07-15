@@ -130,7 +130,7 @@ private SparkFlex pivotmotor;
   }
   public Command Algaeground ()
   {
-    return goToPosition(0.45,0.05);
+    return goToPosition(0.35,0.05);
   }
   public Command Algael2()
   {
@@ -138,7 +138,7 @@ private SparkFlex pivotmotor;
   }
   public Command Algael3()
   {
-    return goToPosition(0.47, 0.05);
+    return goToPosition(0.46, 0.05);
   }
   public Command Corall1()
   {

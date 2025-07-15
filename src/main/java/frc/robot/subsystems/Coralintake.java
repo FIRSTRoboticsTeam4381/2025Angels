@@ -113,8 +113,8 @@ public class Coralintake extends SubsystemBase {
     return new SequentialCommandGroup(
         // seting the motor speed to 1
         new ConditionalCommand(
-          new InstantCommand(() -> coralmotor1.set(0.75), this),
-          new InstantCommand(() -> coralmotor1.set(1),this),
+          new InstantCommand(() -> coralmotor1.set(0.5), this),
+          new InstantCommand(() -> coralmotor1.set(0.75),this),
           () -> coralintaken),
         // checking to see if the sensor can see the coral
         new WaitUntilCommand(() -> !hascoral()),//!hascoral()),
