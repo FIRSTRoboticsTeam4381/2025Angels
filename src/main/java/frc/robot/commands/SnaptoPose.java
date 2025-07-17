@@ -93,7 +93,7 @@ public class SnaptoPose extends Command
 
         // Coral pickups
         add(new Pose2d(1.57, 7.26, new Rotation2d(Radians.convertFrom(123.69, Degrees))));//blue left
-        add(new Pose2d(1.48, 0.74, new Rotation2d(Radians.convertFrom(-128.79, Degrees))));//blue right
+        add(new Pose2d(1.49, 0.6, new Rotation2d(Radians.convertFrom(-129.67, Degrees))));//blue right
         add(new Pose2d(15.97, 0.71, new Rotation2d(Radians.convertFrom(-55.33, Degrees))));//red left
         add(new Pose2d(16.00, 7.28, new Rotation2d(Radians.convertFrom(53.32, Degrees))));//red right
         // Red left
@@ -110,8 +110,8 @@ public class SnaptoPose extends Command
     public SnaptoPose(Swerve s){
 
         swerve = s;
-        x = new PIDController(3.5, 0, 0);
-        y = new PIDController(3.5, 0, 0);
+        x = new PIDController(4.5, 0, 0);//x = new PIDController(3.5, 0, 0);
+        y = new PIDController(4.5, 0, 0);//y = new PIDController(3.5, 0, 0);
         r = new PIDController(.04, 0, 0);
         r.enableContinuousInput(180,-180);
         addRequirements(swerve);
