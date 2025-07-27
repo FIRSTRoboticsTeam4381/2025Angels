@@ -162,15 +162,15 @@ public class RobotContainer {
 //specialist.leftBumper().and(
   //specialist.start().negate()
 //.toggleOnTrue(coralintake.algaeInOrOut());
-elevator.setDefaultCommand(elevator.joystickcontrol(interpolateJoystick(()-> special2GenericHID.getRawAxis(1), Constants.stickDeadband)));
-pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(()-> specialGenericHID.getRawAxis(0), Constants.stickDeadband)));
-hang.setDefaultCommand(hang.joystickcontrol(interpolateJoystick(() -> specialGenericHID.getRawAxis(1), Constants.stickDeadband )));
+elevator.setDefaultCommand(elevator.joystickcontrol(interpolateJoystick(stretchJoystick(()-> special2GenericHID.getRawAxis(1), -1.0, 1.0), Constants.stickDeadband)));
+pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(stretchJoystick(()-> specialGenericHID.getRawAxis(0), -1.00, 1.00), Constants.stickDeadband)));
+hang.setDefaultCommand(hang.joystickcontrol(interpolateJoystick(stretchJoystick(() -> specialGenericHID.getRawAxis(1), -1.00, 1.00), Constants.stickDeadband )));
 //specialist.x().onTrue(hang.HangControl());
 specialGenericHID.button(4).and (special2GenericHID.button(1)).onTrue(advancedCommands.l4Teleop().andThen(advancedCommands.hold()));
 specialGenericHID.button(3).and (special2GenericHID.button(1)).onTrue(advancedCommands.l3Teleop().andThen(advancedCommands.hold()));
 specialGenericHID.button(2).and(special2GenericHID.button(1)).onTrue(advancedCommands.l2Teleop().andThen(advancedCommands.hold()));
 //specialist.povDown().and(specialist.start()).onTrue(elevator.level2().andThen(advancedCommands.hold()));
-specialGenericHID.button(6).onTrue(advancedCommands.l1().andThen(advancedCommands.hold()));
+specialGenericHID.button(6).onTrue(advancedCommands.parallelHome().andThen(advancedCommands.hold()));
 driver.rightBumper().whileTrue(new SnaptoPose(swerve));
 driver.leftBumper().whileTrue(swerve.setCoast());
 specialGenericHID.button(12).onTrue(advancedCommands.NetAlgae().andThen(advancedCommands.hold()));
@@ -213,6 +213,32 @@ driver.leftTrigger(0.2).whileTrue(new SnapToAngle(swerve));
     return new SequentialCommandGroup( 
     new WaitCommand(startDelay), 
     new ScheduleCommand(autoChooser.getSelected().auto)); 
+  }
+
+
+  /**
+   * This function fixes joysticks where an axis doesn't quite reach
+   * 1.00 or -1.00 (but correctly rests at 0) by stretching the positive
+   * and/or negative range of the joystick based on the min/max value it reads.
+   * @param in Supplier for raw joystick value
+   * @param min Minimum measured joystick value. Must be between -1.00 and 0.
+   * @param max Maximum measured joystick value. Must be between 0 and 1.00.
+   * @return Supplier which resolves to a "fixed" joystick value that reaches
+   * from -1.00 to 1.00.
+   */
+  public static Supplier<Double> stretchJoystick(Supplier<Double> in, double min, double max)
+  {
+    return () -> {
+      double x = in.get();
+      if(x>0)
+        // Stretch positive joystick value
+        return x * (1d / max);
+      else if(x < 0)
+        // Stretch negative joystick value
+        return x * (1d / -min);
+      else
+        return 0d;
+    };
   }
 
 

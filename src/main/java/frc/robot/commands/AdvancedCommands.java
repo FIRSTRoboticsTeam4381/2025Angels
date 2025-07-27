@@ -128,6 +128,14 @@ public class AdvancedCommands {
       );*/
   }
 
+  public Command parallelHome() {
+
+    return new ParallelCommandGroup(
+      robot.pivot.intake(),
+      robot.elevator.level1()
+      );
+  }
+
   public Command placel4(){
 
     return new SequentialCommandGroup(
