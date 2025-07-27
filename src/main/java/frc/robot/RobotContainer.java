@@ -162,9 +162,9 @@ public class RobotContainer {
 //specialist.leftBumper().and(
   //specialist.start().negate()
 //.toggleOnTrue(coralintake.algaeInOrOut());
-elevator.setDefaultCommand(elevator.joystickcontrol(interpolateJoystick(stretchJoystick(()-> special2GenericHID.getRawAxis(1), -1.0, 1.0), Constants.stickDeadband)));
-pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(stretchJoystick(()-> specialGenericHID.getRawAxis(0), -1.00, 1.00), Constants.stickDeadband)));
-hang.setDefaultCommand(hang.joystickcontrol(interpolateJoystick(stretchJoystick(() -> specialGenericHID.getRawAxis(1), -1.00, 1.00), Constants.stickDeadband )));
+elevator.setDefaultCommand(elevator.joystickcontrol(interpolateJoystick(stretchJoystick(()-> special2GenericHID.getRawAxis(1), -0.94, 1.0), Constants.stickDeadband)));
+pivot.setDefaultCommand(pivot.joystickcontrol(interpolateJoystick(stretchJoystick(()-> specialGenericHID.getRawAxis(0), -0.94, 1.00), Constants.stickDeadband)));
+hang.setDefaultCommand(hang.joystickcontrol(interpolateJoystick(stretchJoystick(() -> specialGenericHID.getRawAxis(1), -0.94, 1.00), Constants.stickDeadband )));
 //specialist.x().onTrue(hang.HangControl());
 specialGenericHID.button(4).and (special2GenericHID.button(1)).onTrue(advancedCommands.l4Teleop().andThen(advancedCommands.hold()));
 specialGenericHID.button(3).and (special2GenericHID.button(1)).onTrue(advancedCommands.l3Teleop().andThen(advancedCommands.hold()));
