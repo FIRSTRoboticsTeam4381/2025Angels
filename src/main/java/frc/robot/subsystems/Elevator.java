@@ -72,7 +72,7 @@ public class Elevator extends SubsystemBase {
     public Command joystickcontrol(Supplier<Double> joystickMove)
     {
       return new RepeatCommand(
-        new InstantCommand(() -> motorEL1.set(-joystickMove.get()*.3),this)
+        new InstantCommand(() -> motorEL1.set(-joystickMove.get()*0.456),this)
       );
     }
     
