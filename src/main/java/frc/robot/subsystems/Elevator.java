@@ -40,7 +40,7 @@ public class Elevator extends SubsystemBase {
              .forwardSoftLimitEnabled(true);
              motorEL1Config.closedLoop.p(.3);
              motorEL1Config.closedLoop.d(3);
-             motorEL1Config.closedLoop.maxMotion.maxAcceleration(9000).maxVelocity(5000);
+             motorEL1Config.closedLoop.maxMotion.maxAcceleration(11500).maxVelocity(5500);
 
 
              //motorEL1Config.closedLoopRampRate(.5);
