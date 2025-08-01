@@ -60,6 +60,7 @@ public class Elevator extends SubsystemBase {
         // Quick and dirty way to enable position logging
         // The line is a no-op here but enables the desired packets
         motorEL1.getEncoder().getPosition();
+        motorEL2.getEncoder().getPosition();
   }
 
   @Override
